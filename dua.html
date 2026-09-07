@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Islamic Soldier - Authentic Dua Library"
+    >
+
+    <title>Dua Library | Islamic Soldier</title>
+
+    <link rel="stylesheet" href="dua.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         PAGE HEADER
+    ========================== -->
+    <header class="dua-header">
+
+        <div class="header-inner">
+
+            <a href="../index.html" class="back-btn">
+                ← Home
+            </a>
+
+            <div class="header-title">
+                <span class="header-icon">🤲</span>
+
+                <div>
+                    <h1>Dua Library</h1>
+                    <p>দোয়া শিখুন • পড়ুন • সংরক্ষণ করুন</p>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+    <main class="dua-main">
+
+        <!-- =========================
+             HERO
+        ========================== -->
+        <section class="dua-hero">
+
+            <div class="hero-content">
+
+                <span class="hero-badge">
+                    ✦ Islamic Soldier
+                </span>
+
+                <h2>
+                    প্রতিদিনের প্রয়োজনীয়
+                    <span>দোয়া</span>
+                </h2>
+
+                <p>
+                    কুরআন ও সহিহ হাদিস থেকে নির্বাচিত
+                    প্রয়োজনীয় দোয়াগুলো সহজভাবে পড়ুন,
+                    শিখুন এবং সংরক্ষণ করুন।
+                </p>
+
+            </div>
+
+            <div class="hero-decoration">
+                <div class="crescent">☪</div>
+                <div class="star star-one">✦</div>
+                <div class="star star-two">✧</div>
+                <div class="star star-three">✦</div>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SEARCH
+        ========================== -->
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    type="search"
+                    id="duaSearch"
+                    placeholder="দোয়া খুঁজুন..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    id="clearSearch"
+                    class="clear-search"
+                    aria-label="Clear search"
+                >
+                    ×
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CATEGORY SECTION
+        ========================== -->
+        <section class="category-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        CATEGORIES
+                    </span>
+
+                    <h2>দোয়ার বিভাগ</h2>
+                </div>
+
+            </div>
+
+
+            <div class="category-grid" id="categoryGrid">
+
+                <button
+                    type="button"
+                    class="category-btn active"
+                    data-category="all"
+                >
+                    <span>📚</span>
+                    <strong>সব দোয়া</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="daily"
+                >
+                    <span>☀️</span>
+                    <strong>দৈনন্দিন</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="morning"
+                >
+                    <span>🌅</span>
+                    <strong>সকাল</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="evening"
+                >
+                    <span>🌇</span>
+                    <strong>সন্ধ্যা</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="salah"
+                >
+                    <span>🕌</span>
+                    <strong>সালাত</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="food"
+                >
+                    <span>🍽️</span>
+                    <strong>খাবার</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="travel"
+                >
+                    <span>✈️</span>
+                    <strong>সফর</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="protection"
+                >
+                    <span>🛡️</span>
+                    <strong>সুরক্ষা</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="forgiveness"
+                >
+                    <span>🤍</span>
+                    <strong>ক্ষমা</strong>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="sleep"
+                >
+                    <span>🌙</span>
+                    <strong>ঘুম</strong>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FAVORITES BAR
+        ========================== -->
+        <section class="favorites-bar">
+
+            <div class="favorites-info">
+
+                <span class="favorites-icon">
+                    ★
+                </span>
+
+                <div>
+                    <strong>আমার পছন্দের দোয়া</strong>
+
+                    <small>
+                        সংরক্ষিত দোয়াগুলো এখানে দেখুন
+                    </small>
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="favoritesToggle"
+                class="favorites-toggle"
+            >
+                <span>★</span>
+
+                <span>
+                    Favorites
+                </span>
+
+                <b id="favoriteCount">0</b>
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             DUA LIST HEADER
+        ========================== -->
+        <section class="dua-list-section">
+
+            <div class="list-header">
+
+                <div>
+                    <span class="section-label">
+                        DUA COLLECTION
+                    </span>
+
+                    <h2 id="listTitle">
+                        সব দোয়া
+                    </h2>
+                </div>
+
+                <span
+                    class="dua-count"
+                    id="duaCount"
+                >
+                    0 দোয়া
+                </span>
+
+            </div>
+
+
+            <!-- =========================
+                 DUA CARDS
+            ========================== -->
+            <div
+                class="dua-grid"
+                id="duaGrid"
+            >
+                <!-- JavaScript will insert dua cards here -->
+            </div>
+
+
+            <!-- =========================
+                 EMPTY STATE
+            ========================== -->
+            <div
+                class="empty-state"
+                id="emptyState"
+                hidden
+            >
+
+                <div class="empty-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    কোনো দোয়া পাওয়া যায়নি
+                </h3>
+
+                <p>
+                    অন্য কোনো শব্দ দিয়ে আবার চেষ্টা করুন।
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         DUA READING MODAL
+    ========================== -->
+    <div
+        class="dua-modal"
+        id="duaModal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-overlay" id="modalOverlay"></div>
+
+
+        <div
+            class="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modalTitle"
+        >
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+
+                <div>
+                    <span
+                        class="modal-category"
+                        id="modalCategory"
+                    >
+                        Daily
+                    </span>
+
+                    <h2 id="modalTitle">
+                        Dua
+                    </h2>
+                </div>
+
+
+                <button
+                    type="button"
+                    id="closeModal"
+                    class="close-modal"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- Arabic -->
+            <div class="reading-block arabic-block">
+
+                <div class="block-label">
+                    <span>عربي</span>
+                    <span>Arabic</span>
+                </div>
+
+                <p
+                    id="modalArabic"
+                    class="arabic-text"
+                    dir="rtl"
+                >
+                </p>
+
+            </div>
+
+
+            <!-- Transliteration -->
+            <div class="reading-block">
+
+                <div class="block-label">
+                    <span>উচ্চারণ</span>
+                    <span>Transliteration</span>
+                </div>
+
+                <p
+                    id="modalTransliteration"
+                    class="transliteration-text"
+                >
+                </p>
+
+            </div>
+
+
+            <!-- Bangla Meaning -->
+            <div class="reading-block">
+
+                <div class="block-label">
+                    <span>বাংলা অর্থ</span>
+                    <span>Meaning</span>
+                </div>
+
+                <p
+                    id="modalMeaning"
+                    class="meaning-text"
+                >
+                </p>
+
+            </div>
+
+
+            <!-- Reference -->
+            <div class="reference-box">
+
+                <span class="reference-icon">
+                    📖
+                </span>
+
+                <div>
+                    <small>Reference</small>
+
+                    <p id="modalReference">
+                        —
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Modal Actions -->
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="modalFavorite"
+                    class="modal-action favorite-action"
+                >
+                    <span>☆</span>
+                    <span>Favorite</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    id="modalListen"
+                    class="modal-action listen-action"
+                >
+                    <span id="listenIcon">🔊</span>
+                    <span id="listenText">Listen</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="dua-footer">
+
+        <div class="footer-inner">
+
+            <div class="footer-logo">
+                <span>☪</span>
+
+                <div>
+                    <strong>Islamic Soldier</strong>
+                    <small>Dua Library</small>
+                </div>
+            </div>
+
+            <p>
+                আল্লাহ আমাদের সবাইকে সঠিকভাবে দোয়া
+                পড়া ও আমল করার তাওফিক দান করুন। আমিন। 🤲
+            </p>
+
+            <span class="footer-line"></span>
+
+            <small>
+                © 2026 Islamic Soldier • Dua Library
+            </small>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+    <script src="dua.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Islamic Soldier Quran — Read, Listen and Explore the Holy Quran">
+
+    <title>Quran | Islamic Soldier</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Quran CSS -->
+    <link rel="stylesheet" href="quran.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div class="quran-bg">
+    <div class="bg-pattern"></div>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+</div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="quran-header">
+
+    <div class="header-inner">
+
+        <a href="../index.html" class="brand">
+
+            <div class="brand-icon">
+                ☾
+            </div>
+
+            <div>
+                <strong>Islamic Soldier</strong>
+                <span>Quran</span>
+            </div>
+
+        </a>
+
+
+        <div class="header-actions">
+
+            <button
+                class="icon-btn"
+                id="themeBtn"
+                title="Change Theme">
+                🌙
+            </button>
+
+            <button
+                class="icon-btn"
+                id="bookmarkBtn"
+                title="Bookmarks">
+                🔖
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="quran-container">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="quran-hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            ﷽
+        </div>
+
+        <p class="arabic-subtitle">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+        </p>
+
+        <h1>
+            Read the
+            <span>Holy Quran</span>
+        </h1>
+
+        <p class="hero-description">
+            Read, listen and understand the Quran
+            in a peaceful and beautiful experience.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                id="continueReadingBtn">
+                📖 Continue Reading
+            </button>
+
+            <button
+                class="secondary-btn"
+                id="randomSurahBtn">
+                ✨ Discover a Surah
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-decoration">
+
+        <div class="quran-orbit orbit-one"></div>
+        <div class="quran-orbit orbit-two"></div>
+
+        <div class="hero-quran-symbol">
+            ﷲ
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<section class="search-section">
+
+    <div class="search-box">
+
+        <span class="search-icon">
+            🔎
+        </span>
+
+        <input
+            type="search"
+            id="surahSearch"
+            placeholder="Search Surah by name or number..."
+            autocomplete="off">
+
+        <button
+            id="clearSearch"
+            class="clear-search">
+            ×
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUICK FILTERS
+===================================================== -->
+
+<section class="quick-section">
+
+    <button
+        class="filter-btn active"
+        data-filter="all">
+        All Surahs
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="meccan">
+        Meccan
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="medinan">
+        Medinan
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="favorite">
+        ❤️ Favorites
+    </button>
+
+</section>
+
+
+
+<!-- =====================================================
+     SURAH AREA
+===================================================== -->
+
+<section class="surah-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">
+                HOLY QURAN
+            </span>
+
+            <h2>
+                Surah Collection
+            </h2>
+        </div>
+
+        <span
+            id="surahCount"
+            class="surah-count">
+            114 Surahs
+        </span>
+
+    </div>
+
+
+    <div
+        id="surahGrid"
+        class="surah-grid">
+
+        <!-- Surahs generated by JavaScript -->
+
+    </div>
+
+
+    <div
+        id="emptyState"
+        class="empty-state hidden">
+
+        <div class="empty-icon">
+            🔎
+        </div>
+
+        <h3>
+            No Surah Found
+        </h3>
+
+        <p>
+            Try another Surah name or number.
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =====================================================
+     READING MODAL
+===================================================== -->
+
+<div
+    id="readingModal"
+    class="reading-modal hidden">
+
+    <div class="reading-panel">
+
+
+        <!-- Reading Header -->
+
+        <div class="reading-header">
+
+            <button
+                id="closeReading"
+                class="close-btn">
+                ×
+            </button>
+
+
+            <div class="reading-title">
+
+                <span id="readingSurahNumber">
+                    1
+                </span>
+
+                <div>
+
+                    <h2 id="readingSurahName">
+                        Al-Fatihah
+                    </h2>
+
+                    <p id="readingSurahInfo">
+                        The Opening • 7 Ayahs
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="reading-actions">
+
+                <button
+                    id="fontDecrease"
+                    class="small-action">
+                    A-
+                </button>
+
+                <button
+                    id="fontIncrease"
+                    class="small-action">
+                    A+
+                </button>
+
+                <button
+                    id="translationToggle"
+                    class="small-action active">
+                    বাংলা
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Bismillah -->
+
+        <div
+            id="bismillah"
+            class="bismillah">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+        </div>
+
+
+
+        <!-- Loading -->
+
+        <div
+            id="ayahLoading"
+            class="ayah-loading">
+
+            <div class="loader"></div>
+
+            <p>
+                Loading Quran...
+            </p>
+
+        </div>
+
+
+
+        <!-- Ayah Container -->
+
+        <div
+            id="ayahContainer"
+            class="ayah-container">
+
+        </div>
+
+
+
+        <!-- Reading Footer -->
+
+        <div class="reading-footer">
+
+            <button
+                id="previousSurah"
+                class="nav-surah-btn">
+                ← Previous
+            </button>
+
+            <div
+                id="readingProgress"
+                class="reading-progress">
+                0%
+            </div>
+
+            <button
+                id="nextSurah"
+                class="nav-surah-btn">
+                Next →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     BOOKMARK PANEL
+===================================================== -->
+
+<div
+    id="bookmarkPanel"
+    class="bookmark-panel hidden">
+
+    <div class="bookmark-box">
+
+        <div class="bookmark-header">
+
+            <h3>
+                🔖 Your Bookmarks
+            </h3>
+
+            <button
+                id="closeBookmark"
+                class="close-btn">
+                ×
+            </button>
+
+        </div>
+
+        <div
+            id="bookmarkList"
+            class="bookmark-list">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    id="toast"
+    class="toast">
+    Saved
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="quran.js"></script>
+
+</body>
+</html>

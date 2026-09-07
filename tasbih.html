@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#071a1d"
+    >
+
+    <title>Tasbih 2.0 | Islamic Soldier</title>
+
+    <link
+        rel="stylesheet"
+        href="tasbih.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================================
+         MAIN WRAPPER
+    ========================================== -->
+
+    <main class="tasbih-page">
+
+        <!-- =====================================
+             HEADER
+        ====================================== -->
+
+        <header class="tasbih-header">
+
+            <div class="header-icon">
+                📿
+            </div>
+
+            <div class="header-content">
+
+                <p class="eyebrow">
+                    ISLAMIC SOLDIER
+                </p>
+
+                <h1>
+                    Tasbih
+                    <span>2.0</span>
+                </h1>
+
+                <p class="header-subtitle">
+                    Digital Dhikr Counter
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             INTRO / VISUAL AREA
+        ====================================== -->
+
+        <section class="tasbih-intro">
+
+            <div class="intro-glow"></div>
+
+            <div class="intro-content">
+
+                <span class="intro-badge">
+                    ✦ Dhikr & Remembrance
+                </span>
+
+                <h2>
+                    Keep Your Heart
+                    <strong>Connected</strong>
+                </h2>
+
+                <p>
+                    Count your dhikr peacefully,
+                    simply and beautifully.
+                </p>
+
+            </div>
+
+            <div class="intro-symbol">
+                <span>ﷲ</span>
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ZIKR SELECTION
+        ====================================== -->
+
+        <section class="panel">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    01
+                </span>
+
+                <div>
+                    <h2>
+                        Choose Dhikr
+                    </h2>
+
+                    <p>
+                        Select the zikr you want to count.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="zikr-grid">
+
+                <button
+                    type="button"
+                    class="zikr-btn active"
+                    data-zikr="SubhanAllah"
+                    data-meaning="Glory be to Allah"
+                >
+                    <span class="zikr-arabic">
+                        سُبْحَانَ اللّٰهِ
+                    </span>
+
+                    <span class="zikr-name">
+                        SubhanAllah
+                    </span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="zikr-btn"
+                    data-zikr="Alhamdulillah"
+                    data-meaning="All praise is due to Allah"
+                >
+                    <span class="zikr-arabic">
+                        الْحَمْدُ لِلّٰهِ
+                    </span>
+
+                    <span class="zikr-name">
+                        Alhamdulillah
+                    </span>
+                </button>
+
+
+                <button
+                    type="button"
+                    class="zikr-btn"
+                    data-zikr="Allahu Akbar"
+                    data-meaning="Allah is the Greatest"
+                >
+                    <span class="zikr-arabic">
+                        اللّٰهُ أَكْبَرُ
+                    </span>
+
+                    <span class="zikr-name">
+                        Allahu Akbar
+                    </span>
+                </button>
+
+            </div>
+
+
+            <div class="current-zikr">
+
+                <span class="current-label">
+                    CURRENT DHIKR
+                </span>
+
+                <strong id="currentZikr">
+                    SubhanAllah
+                </strong>
+
+                <span id="currentMeaning">
+                    Glory be to Allah
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             COUNTER
+        ====================================== -->
+
+        <section class="counter-panel">
+
+            <div class="counter-top">
+
+                <div>
+                    <span class="section-number">
+                        02
+                    </span>
+
+                    <h2>
+                        Your Tasbih
+                    </h2>
+                </div>
+
+
+                <!-- SOUND TOGGLE -->
+
+                <button
+                    type="button"
+                    id="soundToggle"
+                    class="sound-toggle"
+                    aria-label="Toggle sound"
+                    aria-pressed="true"
+                >
+
+                    <span
+                        id="soundIcon"
+                        class="sound-icon"
+                    >
+                        🔊
+                    </span>
+
+                    <span
+                        id="soundText"
+                    >
+                        Sound ON
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- COUNTER RING -->
+
+            <div
+                class="counter-ring"
+                id="counterRing"
+            >
+
+                <div class="counter-inner">
+
+                    <span
+                        class="counter-label"
+                    >
+                        COUNT
+                    </span>
+
+                    <strong
+                        id="countDisplay"
+                    >
+                        0
+                    </strong>
+
+                    <span
+                        class="target-display"
+                    >
+                        / <span id="targetDisplay">33</span>
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress-area">
+
+                <div class="progress-info">
+
+                    <span>
+                        Progress
+                    </span>
+
+                    <span>
+                        <strong id="progressPercent">
+                            0%
+                        </strong>
+                    </span>
+
+                </div>
+
+
+                <div class="progress-track">
+
+                    <div
+                        class="progress-fill"
+                        id="progressFill"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAIN TAP BUTTON -->
+
+            <button
+                type="button"
+                id="tapButton"
+                class="tap-button"
+            >
+
+                <span class="tap-icon">
+                    ☝
+                </span>
+
+                <span class="tap-title">
+                    TAP TO COUNT
+                </span>
+
+                <span class="tap-subtitle">
+                    Tap anywhere on this button
+                </span>
+
+            </button>
+
+
+            <!-- SECONDARY BUTTONS -->
+
+            <div class="counter-actions">
+
+                <button
+                    type="button"
+                    id="minusButton"
+                    class="action-btn"
+                >
+                    −
+                    <span>Minus</span>
+                </button>
+
+
+                <button
+                    type="button"
+                    id="resetButton"
+                    class="action-btn reset"
+                >
+                    ↻
+                    <span>Reset</span>
+                </button>
+
+            </div>
+
+
+            <!-- COMPLETION MESSAGE -->
+
+            <div
+                id="completionMessage"
+                class="completion-message"
+                hidden
+            >
+
+                <span class="completion-icon">
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        Target Completed!
+                    </strong>
+
+                    <p>
+                        Alhamdulillah 🤍
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             TARGET SELECTION
+        ====================================== -->
+
+        <section class="panel">
+
+            <div class="section-heading">
+
+                <span class="section-number">
+                    03
+                </span>
+
+                <div>
+
+                    <h2>
+                        Set Target
+                    </h2>
+
+                    <p>
+                        Choose your preferred dhikr target.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="target-grid">
+
+                <button
+                    type="button"
+                    class="target-btn active"
+                    data-target="33"
+                >
+                    33
+                </button>
+
+
+                <button
+                    type="button"
+                    class="target-btn"
+                    data-target="99"
+                >
+                    99
+                </button>
+
+
+                <button
+                    type="button"
+                    class="target-btn"
+                    data-target="100"
+                >
+                    100
+                </button>
+
+
+                <button
+                    type="button"
+                    id="customTargetButton"
+                    class="target-btn"
+                >
+                    Custom
+                </button>
+
+            </div>
+
+
+            <div
+                id="customTargetArea"
+                class="custom-target-area"
+                hidden
+            >
+
+                <label for="customTarget">
+                    Enter target
+                </label>
+
+                <div class="custom-target-row">
+
+                    <input
+                        type="number"
+                        id="customTarget"
+                        min="1"
+                        max="99999"
+                        placeholder="Example: 500"
+                    >
+
+                    <button
+                        type="button"
+                        id="applyCustomTarget"
+                    >
+                        Apply
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             INFORMATION CARDS
+        ====================================== -->
+
+        <section class="info-grid">
+
+            <article class="info-card">
+
+                <span class="info-icon">
+                    💾
+                </span>
+
+                <h3>
+                    Auto Save
+                </h3>
+
+                <p>
+                    Your counter is automatically
+                    saved on this device.
+                </p>
+
+            </article>
+
+
+            <article class="info-card">
+
+                <span class="info-icon">
+                    📱
+                </span>
+
+                <h3>
+                    Mobile Friendly
+                </h3>
+
+                <p>
+                    Designed for phones,
+                    tablets and computers.
+                </p>
+
+            </article>
+
+
+            <article class="info-card">
+
+                <span class="info-icon">
+                    🔊
+                </span>
+
+                <h3>
+                    Optional Sound
+                </h3>
+
+                <p>
+                    Turn the counting sound
+                    ON or OFF whenever you want.
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer class="tasbih-footer">
+
+            <div class="footer-line"></div>
+
+            <p>
+                بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+            </p>
+
+            <span>
+                Islamic Soldier • Tasbih 2.0
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script
+        src="tasbih.js"
+        defer
+    ></script>
+
+</body>
+</html>

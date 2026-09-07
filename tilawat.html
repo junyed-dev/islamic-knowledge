@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Tilawat — Islamic Soldier</title>
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<link
+    rel="stylesheet"
+    href="tilawat.css"
+>
+
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="tilawat-header">
+
+
+<div class="tilawat-brand">
+
+    <div class="brand-icon">
+        📖
+    </div>
+
+    <div class="brand-text">
+
+        <span>
+            Islamic
+        </span>
+
+        <strong>
+            Tilawat
+        </strong>
+
+    </div>
+
+</div>
+
+
+<nav class="tilawat-nav">
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="quran.html">
+        Quran
+    </a>
+
+    <a
+        href="#learning-path"
+        class="active"
+    >
+        Tilawat
+    </a>
+
+</nav>
+
+
+<button
+    class="theme-btn"
+    id="themeBtn"
+    aria-label="Toggle theme"
+>
+    🌙
+</button>
+
+
+</header>
+
+<!-- ================= MAIN ================= -->
+
+<main class="tilawat-main">
+
+<!-- ================= HERO ================= -->
+
+<section class="tilawat-hero">
+
+
+<div class="hero-content">
+
+    <span class="hero-badge">
+        🕌 Quran Learning Journey
+    </span>
+
+
+    <h1>
+
+        Learn to Read the
+        <span>Quran</span>
+        with Confidence
+
+    </h1>
+
+
+    <p>
+
+        Start from the basics and build your
+        Quran reading skills step by step —
+        completely free.
+
+    </p>
+
+
+    <div class="hero-actions">
+
+        <button
+            class="primary-btn"
+            id="startLearningBtn"
+        >
+
+            Start Learning
+            <span>→</span>
+
+        </button>
+
+
+        <button
+            class="secondary-btn"
+            id="continueBtn"
+        >
+
+            Continue Learning
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<div class="hero-visual">
+
+    <div class="quran-glow"></div>
+
+
+    <div class="quran-card">
+
+        <div class="quran-card-top">
+            ﷽
+        </div>
+
+
+        <div class="quran-arabic">
+
+            وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا
+
+        </div>
+
+
+        <div class="quran-meaning">
+
+            “And recite the Quran with measured
+            recitation.”
+
+        </div>
+
+
+        <div class="quran-reference">
+
+            Al-Muzzammil · 73:4
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- ================= PROGRESS ================= -->
+
+<section class="progress-section">
+
+
+<div class="section-heading">
+
+    <div>
+
+        <span class="eyebrow">
+            YOUR JOURNEY
+        </span>
+
+        <h2>
+            Learning Progress
+        </h2>
+
+    </div>
+
+
+    <span
+        class="progress-percent"
+        id="progressPercent"
+    >
+        0%
+    </span>
+
+</div>
+
+
+<div class="progress-card">
+
+    <div class="progress-info">
+
+        <div>
+
+            <strong id="completedLessons">
+                0
+            </strong>
+
+            <span>
+                Lessons Completed
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <strong id="totalLessons">
+                6
+            </strong>
+
+            <span>
+                Available Lessons
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="progress-track">
+
+        <div
+            class="progress-fill"
+            id="progressFill"
+        ></div>
+
+    </div>
+
+
+    <div class="progress-message">
+
+        <span>
+            🌱 Every journey begins with one step.
+        </span>
+
+        <span id="progressStatus">
+            Begin your first lesson
+        </span>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- ================= LEARNING PATH ================= -->
+
+<section
+    class="learning-section"
+    id="learning-path"
+>
+
+
+<div class="section-heading centered">
+
+    <span class="eyebrow">
+        LEARNING PATH
+    </span>
+
+    <h2>
+        Build Your Quran Reading Skills
+    </h2>
+
+    <p>
+        Follow the lessons in order and
+        strengthen your foundation step by step.
+    </p>
+
+</div>
+
+
+<div
+    class="learning-path"
+    id="learningPath"
+>
+
+</div>
+
+
+</section>
+
+<!-- ================= LESSON AREA ================= -->
+
+<section
+    class="lesson-area"
+    id="lessonArea"
+>
+
+
+<div class="lesson-header">
+
+    <div>
+
+        <span class="eyebrow">
+            CURRENT LESSON
+        </span>
+
+        <h2 id="lessonTitle">
+            Arabic Letters
+        </h2>
+
+        <p id="lessonDescription">
+            Learn the 28 basic Arabic letters.
+        </p>
+
+    </div>
+
+
+    <button
+        class="close-lesson"
+        id="closeLesson"
+    >
+        ✕
+    </button>
+
+</div>
+
+
+
+<!-- LETTERS -->
+
+<div
+    class="letters-grid"
+    id="lettersGrid"
+>
+</div>
+
+
+
+<!-- PRACTICE -->
+
+<div class="practice-card">
+
+    <div class="practice-icon">
+        🎯
+    </div>
+
+    <div class="practice-content">
+
+        <span class="eyebrow">
+            PRACTICE
+        </span>
+
+        <h3>
+            Practice What You Learned
+        </h3>
+
+        <p>
+            Click any letter to hear its name.
+            Read each letter aloud and practice
+            recognizing its shape.
+        </p>
+
+    </div>
+
+</div>
+
+
+
+<button
+    class="complete-btn"
+    id="completeLessonBtn"
+>
+
+    ✓ Mark Lesson as Completed
+
+</button>
+
+
+</section>
+
+<!-- ================= PRINCIPLE ================= -->
+
+<section class="principle-section">
+
+
+<div class="principle-card">
+
+    <div class="principle-icon">
+        🎧
+    </div>
+
+
+    <div>
+
+        <span class="eyebrow">
+            OUR LEARNING METHOD
+        </span>
+
+        <h2>
+            Listen · Learn · Practice
+        </h2>
+
+        <p>
+            Each lesson combines clear explanations,
+            examples, audio guidance and practical
+            exercises.
+        </p>
+
+    </div>
+
+</div>
+
+
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="tilawat-footer">
+
+
+<p>
+    © 2026 Islamic Soldier · Tilawat
+</p>
+
+<span>
+    Learn Quran · Live Quran · Love Quran
+</span>
+
+
+</footer>
+
+<script src="tilawat.js"></script>
+
+</body>
+
+</html>
