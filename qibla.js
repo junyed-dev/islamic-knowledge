@@ -430,7 +430,7 @@ function startCompass() {
     window.addEventListener(
         "deviceorientationabsolute",
 
-         handleOrientation, 
+         handleAbsoluteOrientation, 
          true
         
     );
@@ -464,11 +464,17 @@ function startCompass() {
    HANDLE DEVICE ORIENTATION
 ===================================================== */
 
-function handleOrientation(event) {
+let absoluteOrientationDetected = false;
+
+
+function handleAbsoluteOrientation(event) {
 
     if (event.alpha === null) {
         return;
     }
+
+    absoluteOrientationDetected = true;
+
 
     if (
         typeof event.webkitCompassHeading === "number"
@@ -480,9 +486,42 @@ function handleOrientation(event) {
     } else {
 
         heading =
-            360 - event.alpha;
+            (360 - event.alpha) % 360;
 
     }
+
+
+    smoothCompass();
+
+}
+
+
+function handleOrientation(event) {
+
+    if (absoluteOrientationDetected) {
+        return;
+    }
+
+
+    if (event.alpha === null) {
+        return;
+    }
+
+
+    if (
+        typeof event.webkitCompassHeading === "number"
+    ) {
+
+        heading =
+            event.webkitCompassHeading;
+
+    } else {
+
+        heading =
+            (360 - event.alpha) % 360;
+
+    }
+
 
     smoothCompass();
 
