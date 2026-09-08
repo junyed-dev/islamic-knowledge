@@ -1,3 +1,4 @@
+js
 /* =====================================================
    QIBLA FINDER 3.0
    ISLAMIC SOLDIER
@@ -32,6 +33,18 @@ const compassState =
 const gpsState =
     document.getElementById("gpsState");
 
+const north =
+    document.querySelector(".north");
+
+const east =
+    document.querySelector(".east");
+
+const south =
+    document.querySelector(".south");
+
+const west =
+    document.querySelector(".west");
+
 
 /* =====================================================
    KAABA COORDINATES
@@ -42,11 +55,6 @@ const KAABA_LAT =
 
 const KAABA_LON =
     39.8262;
-
-const north = document.querySelector(".north");
-const east = document.querySelector(".east");
-const south = document.querySelector(".south");
-const west = document.querySelector(".west");
 
 
 /* =====================================================
@@ -62,6 +70,8 @@ let qiblaAngle = 0;
 let compassStarted = false;
 
 let locationDetected = false;
+
+let absoluteOrientationDetected = false;
 
 
 /* =====================================================
@@ -121,7 +131,6 @@ function calculateQibla(
 
 
     const x =
-
         Math.cos(lat1) *
         Math.tan(lat2)
 
@@ -149,21 +158,28 @@ function calculateQibla(
 
 
 /* =====================================================
-   UPDATE NEEDLE
+   UPDATE QIBLA NEEDLE
 ===================================================== */
 
 function updateCompass() {
 
-    if (!needle) return;
+    if (!needle) {
+        return;
+    }
 
 
-    const rotation =
+    let rotation =
         qiblaAngle -
         smoothHeading;
 
 
-   needle.style.transform =
-    `translate(-50%, -50%) rotate(${rotation}deg)`;
+    rotation =
+        (rotation + 540) % 360 - 180;
+
+
+    needle.style.transform =
+        `translate(-50%, -50%) rotate(${rotation}deg)`;
+
 }
 
 
@@ -180,6 +196,74 @@ function updateDegree() {
     qiblaDegree.textContent =
         `${degree}°`;
 
+}
+
+
+/* =====================================================
+   UPDATE N / E / S / W
+===================================================== */
+
+function updateDirectionHighlight() {
+
+    if (
+        !north ||
+        !east ||
+        !south ||
+        !west
+    ) {
+        return;
+    }
+
+
+    let angle =
+        smoothHeading;
+
+
+    angle =
+        (angle + 360) % 360;
+
+
+    north.classList.remove("active");
+
+    east.classList.remove("active");
+
+    south.classList.remove("active");
+
+    west.classList.remove("active");
+
+
+    if (
+        angle >= 315 ||
+        angle < 45
+    ) {
+
+        north.classList.add("active");
+
+    }
+
+    else if (
+        angle >= 45 &&
+        angle < 135
+    ) {
+
+        east.classList.add("active");
+
+    }
+
+    else if (
+        angle >= 135 &&
+        angle < 225
+    ) {
+
+        south.classList.add("active");
+
+    }
+
+    else {
+
+        west.classList.add("active");
+
+    }
 
 }
 
@@ -219,7 +303,6 @@ function showLocation(
 
 function detectLocation() {
 
-
     if (!navigator.geolocation) {
 
         gpsState.textContent =
@@ -235,7 +318,8 @@ function detectLocation() {
     }
 
 
-    detectBtn.disabled = true;
+    detectBtn.disabled =
+        true;
 
 
     btnText.textContent =
@@ -253,7 +337,6 @@ function detectLocation() {
     navigator.geolocation.getCurrentPosition(
 
         function(position) {
-
 
             const latitude =
                 position.coords.latitude;
@@ -312,13 +395,11 @@ function detectLocation() {
 
         function(error) {
 
-
             gpsState.textContent =
                 "Error";
 
 
             switch (error.code) {
-
 
                 case error.PERMISSION_DENIED:
 
@@ -396,6 +477,7 @@ function resetButton() {
     detectBtn.disabled =
         false;
 
+
     btnText.textContent =
         "Detect Qibla";
 
@@ -408,11 +490,8 @@ function resetButton() {
 
 function startCompass() {
 
-
     if (compassStarted) {
-
         return;
-
     }
 
 
@@ -434,20 +513,15 @@ function startCompass() {
 
     window.addEventListener(
         "deviceorientationabsolute",
-
-         handleAbsoluteOrientation, 
-         true
-        
+        handleAbsoluteOrientation,
+        true
     );
 
+
     window.addEventListener(
-
         "deviceorientation",
-
         handleOrientation,
-
         true
-
     );
 
 
@@ -466,29 +540,33 @@ function startCompass() {
 
 
 /* =====================================================
-   HANDLE DEVICE ORIENTATION
+   ABSOLUTE ORIENTATION
 ===================================================== */
-
-let absoluteOrientationDetected = false;
-
 
 function handleAbsoluteOrientation(event) {
 
-    if (event.alpha === null) {
+    if (
+        event.alpha === null
+    ) {
         return;
     }
 
-    absoluteOrientationDetected = true;
+
+    absoluteOrientationDetected =
+        true;
 
 
     if (
-        typeof event.webkitCompassHeading === "number"
+        typeof event.webkitCompassHeading ===
+        "number"
     ) {
 
         heading =
             event.webkitCompassHeading;
 
-    } else {
+    }
+
+    else {
 
         heading =
             (360 - event.alpha) % 360;
@@ -500,27 +578,38 @@ function handleAbsoluteOrientation(event) {
 
 }
 
+
+/* =====================================================
+   NORMAL ORIENTATION
+===================================================== */
 
 function handleOrientation(event) {
 
-    if (absoluteOrientationDetected) {
-        return;
-    }
-
-
-    if (event.alpha === null) {
+    if (
+        absoluteOrientationDetected
+    ) {
         return;
     }
 
 
     if (
-        typeof event.webkitCompassHeading === "number"
+        event.alpha === null
+    ) {
+        return;
+    }
+
+
+    if (
+        typeof event.webkitCompassHeading ===
+        "number"
     ) {
 
         heading =
             event.webkitCompassHeading;
 
-    } else {
+    }
+
+    else {
 
         heading =
             (360 - event.alpha) % 360;
@@ -531,13 +620,13 @@ function handleOrientation(event) {
     smoothCompass();
 
 }
+
 
 /* =====================================================
    IOS COMPASS PERMISSION
 ===================================================== */
 
 async function requestCompassPermission() {
-
 
     if (
 
@@ -552,9 +641,7 @@ async function requestCompassPermission() {
 
     ) {
 
-
         try {
-
 
             const permission =
 
@@ -570,7 +657,9 @@ async function requestCompassPermission() {
 
                 startCompass();
 
-            } else {
+            }
+
+            else {
 
                 compassState.textContent =
                     "Permission denied";
@@ -580,8 +669,9 @@ async function requestCompassPermission() {
 
             }
 
+        }
 
-        } catch (error) {
+        catch (error) {
 
             console.error(
                 "Compass permission error:",
@@ -590,9 +680,9 @@ async function requestCompassPermission() {
 
         }
 
+    }
 
-    } else {
-
+    else {
 
         startCompass();
 
@@ -604,41 +694,8 @@ async function requestCompassPermission() {
 /* =====================================================
    SMOOTH COMPASS
 ===================================================== */
-function updateDirectionHighlight() {
-
-    let angle = smoothHeading;
-
-    angle = (angle + 360) % 360;
-
-
-    north.classList.remove("active");
-    east.classList.remove("active");
-    south.classList.remove("active");
-    west.classList.remove("active");
-
-
-    if (angle >= 315 || angle < 45) {
-
-        north.classList.add("active");
-
-    } else if (angle >= 45 && angle < 135) {
-
-        east.classList.add("active");
-
-    } else if (angle >= 135 && angle < 225) {
-
-        south.classList.add("active");
-
-    } else {
-
-        west.classList.add("active");
-
-    }
-
-}
 
 function smoothCompass() {
-
 
     let difference =
         heading -
@@ -669,9 +726,9 @@ function smoothCompass() {
 
 
     updateCompass();
-    
+
+
     updateDirectionHighlight();
-    
 
 }
 
@@ -714,6 +771,9 @@ function compassAnimation() {
 
         updateCompass();
 
+
+        updateDirectionHighlight();
+
     }
 
 
@@ -733,7 +793,6 @@ detectBtn.addEventListener(
     "click",
 
     async function() {
-
 
         statusText.textContent =
             "Starting compass";
@@ -760,12 +819,13 @@ document.addEventListener(
 
     function() {
 
-
         if (
             !document.hidden
         ) {
 
             updateCompass();
+
+            updateDirectionHighlight();
 
         }
 
@@ -784,16 +844,11 @@ window.addEventListener(
 
     function() {
 
-
         btnText.textContent =
             "Detect Qibla";
 
 
         qiblaDegree.textContent =
-            "--°";
-
-
-        bearingState.textContent =
             "--°";
 
 
@@ -807,6 +862,9 @@ window.addEventListener(
 
         statusText.textContent =
             "Ready to detect Qibla";
+
+
+        updateDirectionHighlight();
 
 
         console.log(
@@ -825,3 +883,4 @@ window.addEventListener(
 requestAnimationFrame(
     compassAnimation
 );
+
