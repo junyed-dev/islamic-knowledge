@@ -468,33 +468,27 @@ function startCompass() {
 
 function handleOrientation(event) {
 
-
     if (event.alpha === null) {
-
         return;
-
     }
 
-
-    heading =
-        event.alpha;
-
-
     if (
-        typeof event.webkitCompassHeading !==
-        "undefined"
+        typeof event.webkitCompassHeading === "number"
     ) {
 
         heading =
             event.webkitCompassHeading;
 
-    }
+    } else {
 
+        heading =
+            360 - event.alpha;
+
+    }
 
     smoothCompass();
 
 }
-
 
 /* =====================================================
    IOS COMPASS PERMISSION
