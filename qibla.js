@@ -43,6 +43,11 @@ const KAABA_LAT =
 const KAABA_LON =
     39.8262;
 
+const north = document.querySelector(".north");
+const east = document.querySelector(".east");
+const south = document.querySelector(".south");
+const west = document.querySelector(".west");
+
 
 /* =====================================================
    GLOBAL VARIABLES
