@@ -604,6 +604,38 @@ async function requestCompassPermission() {
 /* =====================================================
    SMOOTH COMPASS
 ===================================================== */
+function updateDirectionHighlight() {
+
+    let angle = smoothHeading;
+
+    angle = (angle + 360) % 360;
+
+
+    north.classList.remove("active");
+    east.classList.remove("active");
+    south.classList.remove("active");
+    west.classList.remove("active");
+
+
+    if (angle >= 315 || angle < 45) {
+
+        north.classList.add("active");
+
+    } else if (angle >= 45 && angle < 135) {
+
+        east.classList.add("active");
+
+    } else if (angle >= 135 && angle < 225) {
+
+        south.classList.add("active");
+
+    } else {
+
+        west.classList.add("active");
+
+    }
+
+}
 
 function smoothCompass() {
 
@@ -637,6 +669,9 @@ function smoothCompass() {
 
 
     updateCompass();
+    
+    updateDirectionHighlight();
+    
 
 }
 
