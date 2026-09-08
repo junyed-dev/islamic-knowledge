@@ -1,563 +1,506 @@
-/* =====================================================
-   QIBLA FINDER 3.0
+/* =========================================================
    ISLAMIC SOLDIER
-   PREMIUM 3D COMPASS
-===================================================== */
+   TASBIH 2.0
+   PREMIUM RESPONSIVE CSS
+========================================================= */
 
 
-/* =====================================================
-   RESET
-===================================================== */
-
-* {
-
-    margin: 0;
-
-    padding: 0;
-
-    box-sizing: border-box;
-
-}
-
-
-/* =====================================================
-   ROOT
-===================================================== */
+/* =========================================================
+   01. ROOT VARIABLES
+========================================================= */
 
 :root {
 
-    --bg: #031719;
+    --bg-main: #061416;
+    --bg-secondary: #0a1d20;
 
-    --card: #061f23;
+    --panel: rgba(13, 35, 38, 0.82);
+    --panel-light: rgba(20, 48, 51, 0.72);
 
-    --card-light: #0a292e;
+    --border: rgba(255, 255, 255, 0.08);
 
-    --primary: #00e6c3;
+    --text-main: #f5fffd;
+    --text-soft: #a9c2bf;
+    --text-muted: #708986;
 
-    --primary-dark: #00bfa5;
+    --teal: #00e6c3;
+    --teal-soft: rgba(0, 230, 195, 0.18);
 
-    --gold: #f4c542;
+    --gold: #e4bd68;
+    --gold-soft: rgba(228, 189, 104, 0.18);
 
-    --gold-light: #ffe28a;
+    --danger: #ff7070;
 
-    --white: #f3fffd;
+    --shadow:
+        0 25px 70px rgba(0, 0, 0, 0.38);
 
-    --text: #dff5f1;
+    --radius-large: 28px;
+    --radius-medium: 20px;
+    --radius-small: 14px;
 
-    --muted: #8aa7a3;
-
-    --border: rgba(255, 255, 255, 0.10);
-
-    --danger: #ff6565;
-
+    --progress: 0deg;
 }
 
 
-/* =====================================================
-   BODY
-===================================================== */
+/* =========================================================
+   02. RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   03. HTML
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* =========================================================
+   04. BODY
+========================================================= */
 
 body {
 
     min-height: 100vh;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    color: var(--text);
-
     background:
-
         radial-gradient(
-            circle at 0% 15%,
-            rgba(0, 230, 195, 0.14),
-            transparent 30%
+            circle at 15% 10%,
+            rgba(0, 230, 195, 0.08),
+            transparent 28%
         ),
-
         radial-gradient(
-            circle at 100% 90%,
-            rgba(244, 197, 66, 0.10),
-            transparent 32%
+            circle at 85% 20%,
+            rgba(228, 189, 104, 0.06),
+            transparent 25%
         ),
-
         linear-gradient(
-            135deg,
-            #021517,
-            #031b1e,
-            #021416
+            145deg,
+            #061416 0%,
+            #071b1d 45%,
+            #041011 100%
         );
 
+    color: var(--text-main);
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    line-height: 1.5;
+
     overflow-x: hidden;
-
 }
 
 
-/* =====================================================
-   PAGE
-===================================================== */
+/* =========================================================
+   05. BODY DECORATION
+========================================================= */
 
-.qibla-page {
+body::before {
 
-    min-height: 100vh;
-
-    width: 100%;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 24px 12px;
-
-    position: relative;
-
-    overflow: hidden;
-
-}
-
-
-/* =====================================================
-   BACKGROUND GLOW
-===================================================== */
-
-.bg-glow {
+    content: "";
 
     position: fixed;
 
-    width: 330px;
+    width: 320px;
+    height: 320px;
 
-    height: 330px;
+    top: -160px;
+    left: -160px;
 
     border-radius: 50%;
 
-    filter: blur(100px);
-
-    opacity: 0.15;
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 230, 195, 0.08),
+            transparent 70%
+        );
 
     pointer-events: none;
 
+    z-index: -1;
 }
 
 
-.glow-one {
+body::after {
 
-    top: -160px;
+    content: "";
 
-    left: -140px;
+    position: fixed;
 
-    background: var(--primary);
+    width: 360px;
+    height: 360px;
 
-}
+    right: -180px;
+    bottom: -180px;
 
-
-.glow-two {
-
-    right: -150px;
-
-    bottom: -160px;
-
-    background: var(--gold);
-
-}
-
-
-/* =====================================================
-   MAIN CARD
-===================================================== */
-
-.qibla-card {
-
-    width: min(540px, 100%);
-
-    min-height: 100px;
-
-    padding: 26px 28px 20px;
-
-    border-radius: 28px;
-
-    position: relative;
-
-    z-index: 2;
+    border-radius: 50%;
 
     background:
-
-        linear-gradient(
-            145deg,
-            rgba(8, 38, 43, 0.97),
-            rgba(3, 23, 27, 0.98)
+        radial-gradient(
+            circle,
+            rgba(228, 189, 104, 0.07),
+            transparent 70%
         );
 
-    border:
+    pointer-events: none;
 
-        1px solid
-        rgba(255, 255, 255, 0.10);
-
-    box-shadow:
-
-        0 30px 80px
-        rgba(0, 0, 0, 0.48),
-
-        inset 0 1px 0
-        rgba(255, 255, 255, 0.04);
-
-    backdrop-filter: blur(22px);
-
+    z-index: -1;
 }
 
 
-/* =====================================================
-   HEADER
-===================================================== */
+/* =========================================================
+   06. BUTTON RESET
+========================================================= */
 
-.qibla-header {
+button,
+input {
+    font: inherit;
+}
+
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   07. MAIN PAGE
+========================================================= */
+
+.tasbih-page {
+
+    width: min(
+        100%,
+        980px
+    );
+
+    margin: 0 auto;
+
+    padding:
+        28px
+        20px
+        60px;
+}
+
+
+/* =========================================================
+   08. HEADER
+========================================================= */
+
+.tasbih-header {
 
     display: flex;
 
     align-items: center;
 
-    gap: 15px;
+    gap: 18px;
 
+    margin-bottom: 28px;
 }
 
 
-/* =====================================================
-   BRAND ICON
-===================================================== */
+/* =========================================================
+   09. HEADER ICON
+========================================================= */
 
-.brand-icon {
+.header-icon {
 
-    width: 46px;
-
-    height: 46px;
+    width: 62px;
+    height: 62px;
 
     flex-shrink: 0;
 
-    display: flex;
+    display: grid;
 
-    justify-content: center;
+    place-items: center;
 
-    align-items: center;
-
-    border-radius: 15px;
+    border-radius: 20px;
 
     background:
-
         linear-gradient(
             145deg,
-            rgba(0, 230, 195, 0.16),
-            rgba(244, 197, 66, 0.10)
+            rgba(0, 230, 195, 0.18),
+            rgba(228, 189, 104, 0.08)
         );
 
     border:
-
         1px solid
-        rgba(0, 230, 195, 0.20);
-
-    font-size: 23px;
+        rgba(0, 230, 195, 0.18);
 
     box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.25);
 
-        inset 0 1px 0
-        rgba(255,255,255,0.06),
-
-        0 8px 25px
-        rgba(0, 230, 195, 0.07);
-
+    font-size: 30px;
 }
 
 
-/* =====================================================
-   EYEBROW
-===================================================== */
+/* =========================================================
+   10. EYEBROW
+========================================================= */
 
 .eyebrow {
 
-    margin-bottom: 4px;
-
-    color: var(--primary);
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    letter-spacing: 3px;
-
-}
-
-
-/* =====================================================
-   TITLE
-===================================================== */
-
-h1 {
-
-    color: var(--white);
-
-    font-size: clamp(26px, 5vw, 34px);
-
-    line-height: 1;
-
-    font-weight: 900;
-
-    letter-spacing: -0.5px;
-
-}
-
-
-h1 span {
-
-    display: inline-block;
-
-    margin-left: 4px;
-
-    padding: 5px 8px;
-
-    border-radius: 8px;
-
-    color: var(--primary);
-
-    background:
-
-        rgba(0, 230, 195, 0.13);
-
-    font-size: 0.43em;
-
-    vertical-align: middle;
-
-}
-
-
-/* =====================================================
-   DIVIDER
-===================================================== */
-
-.divider {
-
-    width: 100%;
-
-    height: 1px;
-
-    margin: 24px 0 22px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(0,230,195,0.30),
-            transparent
-        );
-
-}
-
-
-/* =====================================================
-   BISMILLAH
-===================================================== */
-
-.bismillah {
-
-    text-align: center;
-
-    color: var(--gold-light);
-
-    font-size: 36px;
-
-    line-height: 1.3;
-
-    text-shadow:
-
-        0 0 14px
-        rgba(244,197,66,0.35);
-
-}
-
-
-/* =====================================================
-   SUBTITLE
-===================================================== */
-
-.subtitle {
-
-    margin-top: 3px;
-
-    margin-bottom: 17px;
-
-    text-align: center;
-
-    color: var(--muted);
-
-    font-size: 13px;
-
-}
-
-
-/* =====================================================
-   COMPASS STATUS
-===================================================== */
-
-.compass-status {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 8px;
-
-    margin-bottom: 12px;
-
-    color: #92aaa7;
+    color: var(--teal);
 
     font-size: 11px;
 
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 3px;
 }
 
 
-.status-dot {
+/* =========================================================
+   11. HEADER TITLE
+========================================================= */
 
-    width: 8px;
+.tasbih-header h1 {
 
-    height: 8px;
+    font-size: clamp(
+        28px,
+        5vw,
+        42px
+    );
 
-    border-radius: 50%;
+    line-height: 1.05;
 
-    background: var(--primary);
+    font-weight: 850;
 
-    box-shadow:
-
-        0 0 10px
-        var(--primary);
-
-    animation:
-        statusPulse 1.8s infinite;
-
+    letter-spacing: -1px;
 }
 
 
-@keyframes statusPulse {
+.tasbih-header h1 span {
 
-    0%,
-    100% {
+    color: var(--gold);
 
-        opacity: 0.45;
+    font-size: 0.48em;
 
-        transform: scale(0.85);
+    vertical-align: middle;
 
-    }
-
-    50% {
-
-        opacity: 1;
-
-        transform: scale(1);
-
-    }
-
+    letter-spacing: 1px;
 }
 
 
-/* =====================================================
-   COMPASS SECTION
-===================================================== */
+/* =========================================================
+   12. HEADER SUBTITLE
+========================================================= */
 
-.compass-section {
+.header-subtitle {
 
-    width: 100%;
+    color: var(--text-soft);
 
-    display: flex;
+    font-size: 13px;
 
-    flex-direction: column;
-
-    align-items: center;
-
+    margin-top: 5px;
 }
 
 
-/* =====================================================
-   COMPASS BODY
-===================================================== */
+/* =========================================================
+   13. INTRO
+========================================================= */
 
-.compass {
-
-    width: min(330px, 78vw);
-
-    aspect-ratio: 1 / 1;
+.tasbih-intro {
 
     position: relative;
 
-    border-radius: 50%;
+    min-height: 220px;
 
-    background:
+    display: flex;
 
-        radial-gradient(
-            circle at 50% 45%,
-            #17363a 0%,
-            #102d31 32%,
-            #082226 62%,
-            #04191d 100%
-        );
+    align-items: center;
 
-    border:
+    justify-content: space-between;
 
-        2px solid
-        rgba(0,230,195,0.38);
-
-    box-shadow:
-
-        0 0 0 7px
-        rgba(0,230,195,0.025),
-
-        0 0 0 15px
-        rgba(0,230,195,0.018),
-
-        0 0 45px
-        rgba(0,230,195,0.08),
-
-        inset 0 0 35px
-        rgba(0,0,0,0.55);
+    gap: 25px;
 
     overflow: hidden;
 
+    padding: 38px;
+
+    margin-bottom: 22px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        var(--radius-large);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(16, 46, 49, 0.94),
+            rgba(7, 26, 28, 0.88)
+        );
+
+    box-shadow:
+        var(--shadow);
 }
 
 
-/* =====================================================
-   COMPASS GLOW
-===================================================== */
+/* =========================================================
+   14. INTRO GLOW
+========================================================= */
 
-.compass-glow {
+.intro-glow {
 
     position: absolute;
 
-    inset: 12%;
+    width: 300px;
+    height: 300px;
+
+    top: -160px;
+    right: 80px;
 
     border-radius: 50%;
 
     background:
-
         radial-gradient(
             circle,
-            rgba(0,230,195,0.12),
-            transparent 68%
+            rgba(0, 230, 195, 0.14),
+            transparent 70%
         );
 
-    filter: blur(9px);
-
     pointer-events: none;
-
 }
 
 
-/* =====================================================
-   OUTER RINGS
-===================================================== */
+/* =========================================================
+   15. INTRO CONTENT
+========================================================= */
 
-.outer-ring {
+.intro-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+.intro-badge {
+
+    display: inline-flex;
+
+    padding:
+        7px
+        12px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(0, 230, 195, 0.08);
+
+    border:
+        1px solid
+        rgba(0, 230, 195, 0.14);
+
+    color: var(--teal);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    margin-bottom: 15px;
+}
+
+
+.intro-content h2 {
+
+    max-width: 540px;
+
+    font-size: clamp(
+        28px,
+        5vw,
+        44px
+    );
+
+    line-height: 1.08;
+
+    letter-spacing: -1.5px;
+}
+
+
+.intro-content h2 strong {
+
+    color: var(--teal);
+
+    font-weight: 850;
+}
+
+
+.intro-content p {
+
+    color: var(--text-soft);
+
+    font-size: 14px;
+
+    margin-top: 12px;
+}
+
+
+/* =========================================================
+   16. INTRO SYMBOL
+========================================================= */
+
+.intro-symbol {
+
+    position: relative;
+
+    width: 125px;
+    height: 125px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(255,255,255,0.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(228, 189, 104, 0.22),
+            rgba(0, 230, 195, 0.09)
+        );
+
+    border:
+        1px solid
+        rgba(228, 189, 104, 0.25);
+
+    box-shadow:
+        inset 0 0 25px
+        rgba(255,255,255,0.03),
+        0 20px 50px
+        rgba(0,0,0,0.3);
+}
+
+
+.intro-symbol::before {
+
+    content: "";
 
     position: absolute;
 
@@ -566,1178 +509,2060 @@ h1 span {
     border-radius: 50%;
 
     border:
-
         1px solid
-        rgba(0,230,195,0.40);
-
-    box-shadow:
-
-        inset 0 0 18px
-        rgba(0,230,195,0.08);
-
+        rgba(228, 189, 104, 0.2);
 }
 
 
-.outer-ring-two {
+.intro-symbol span {
 
-    position: absolute;
+    color: var(--gold);
 
-    inset: 17px;
+    font-size: 48px;
 
-    border-radius: 50%;
-
-    border:
-
-        1px solid
-        rgba(0,230,195,0.16);
-
-}
-
-
-/* =====================================================
-   DEGREE RING
-===================================================== */
-
-.degree-ring {
-
-    position: absolute;
-
-    inset: 28px;
-
-    border-radius: 50%;
-
-    border:
-
-        1px dashed
-        rgba(255,255,255,0.14);
-
-}
-
-
-/* =====================================================
-   INNER RING
-===================================================== */
-
-.inner-ring {
-
-    position: absolute;
-
-    inset: 72px;
-
-    border-radius: 50%;
-
-    border:
-
-        1px solid
-        rgba(255,255,255,0.08);
-
-    box-shadow:
-
-        inset 0 0 25px
-        rgba(0,0,0,0.35);
-
-}
-
-
-/* =====================================================
-   COMPASS MARKS
-===================================================== */
-
-.compass-mark {
-
-    position: absolute;
-
-    top: 17px;
-
-    left: 50%;
-
-    width: 2px;
-
-    height: 10px;
-
-    background:
-
-        rgba(255,255,255,0.42);
-
-    transform-origin:
-
-        50%
-        calc((min(330px, 78vw) / 2) - 17px);
-
-    z-index: 3;
-
-}
-
-
-.mark-1 {
-
-    transform:
-        translateX(-50%)
-        rotate(0deg);
-
-}
-
-
-.mark-2 {
-
-    transform:
-        translateX(-50%)
-        rotate(45deg);
-
-}
-
-
-.mark-3 {
-
-    transform:
-        translateX(-50%)
-        rotate(90deg);
-
-}
-
-
-.mark-4 {
-
-    transform:
-        translateX(-50%)
-        rotate(135deg);
-
-}
-
-
-.mark-5 {
-
-    transform:
-        translateX(-50%)
-        rotate(180deg);
-
-}
-
-
-.mark-6 {
-
-    transform:
-        translateX(-50%)
-        rotate(225deg);
-
-}
-
-
-.mark-7 {
-
-    transform:
-        translateX(-50%)
-        rotate(270deg);
-
-}
-
-
-.mark-8 {
-
-    transform:
-        translateX(-50%)
-        rotate(315deg);
-
-}
-
-
-/* =====================================================
-   DIRECTIONS
-===================================================== */
-
-.direction {
-
-    position: absolute;
-
-    z-index: 6;
-
-    color:
-
-        rgba(255,255,255,0.76);
-
-    font-size: 15px;
-
-    font-weight: 900;
+    font-family:
+        "Times New Roman",
+        serif;
 
     text-shadow:
-
-        0 0 8px
-        rgba(255,255,255,0.12);
-
+        0 0 20px
+        rgba(228, 189, 104, 0.25);
 }
 
 
-.north {
+/* =========================================================
+   17. GENERAL PANEL
+========================================================= */
 
-    top: 28px;
+.panel {
 
-    left: 50%;
+    padding: 25px;
 
-    transform:
-        translateX(-50%);
-
-    color: var(--primary);
-
-}
-
-
-.east {
-
-    top: 50%;
-
-    right: 28px;
-
-    transform:
-        translateY(-50%);
-
-}
-
-
-.south {
-
-    bottom: 28px;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-}
-
-
-.west {
-
-    top: 50%;
-
-    left: 28px;
-
-    transform:
-        translateY(-50%);
-
-}
-
-
-/* =====================================================
-   QIBLA ARROW
-===================================================== */
-
-.qibla-arrow {
-
-    position: absolute;
-
-    width: 8px;
-
-    height: 122px;
-
-    top: 50%;
-
-    left: 50%;
-
-    z-index: 8;
-
-    transform:
-        translate(-50%, -50%)
-        rotate(0deg);
-
-    transform-origin:
-        50% 50%;
-
-    transition:
-        transform 0.25s ease-out,
-        opacity 0.25s ease;
-
-}
-
-
-/* =====================================================
-   ARROW LINE
-===================================================== */
-
-.arrow-line {
-
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 0;
-
-    width: 6px;
-
-    height: 96px;
-
-    transform:
-        translateX(-50%);
-
-    border-radius: 20px;
-
-    background:
-
-        linear-gradient(
-            to top,
-            var(--primary-dark),
-            #74ffe9
-        );
-
-    box-shadow:
-
-        0 0 10px
-        rgba(0,230,195,0.65),
-
-        0 0 25px
-        rgba(0,230,195,0.28);
-
-}
-
-
-/* =====================================================
-   ARROW HEAD
-===================================================== */
-
-.arrow-head {
-
-    position: absolute;
-
-    top: 0;
-
-    left: 50%;
-
-    width: 0;
-
-    height: 0;
-
-    transform:
-        translateX(-50%);
-
-    border-left:
-        12px solid transparent;
-
-    border-right:
-        12px solid transparent;
-
-    border-bottom:
-        22px solid var(--primary);
-
-    filter:
-
-        drop-shadow(
-            0 0 8px
-            rgba(0,230,195,0.70)
-        );
-
-}
-
-
-/* =====================================================
-   QIBLA LABEL
-===================================================== */
-
-.arrow-label {
-
-    position: absolute;
-
-    top: 24px;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    padding: 3px 7px;
-
-    border-radius: 5px;
-
-    color: var(--primary);
-
-    background:
-
-        rgba(0,60,57,0.82);
+    margin-bottom: 22px;
 
     border:
-
         1px solid
-        rgba(0,230,195,0.30);
+        var(--border);
 
-    font-size: 8px;
+    border-radius:
+        var(--radius-large);
 
-    font-weight: 900;
-
-    letter-spacing: 0.8px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(14, 38, 41, 0.9),
+            rgba(8, 25, 27, 0.86)
+        );
 
     box-shadow:
+        0 18px 55px
+        rgba(0, 0, 0, 0.25);
 
-        0 0 12px
-        rgba(0,230,195,0.12);
+    backdrop-filter:
+        blur(18px);
 
+    -webkit-backdrop-filter:
+        blur(18px);
 }
 
 
-/* =====================================================
-   CENTER
-===================================================== */
+/* =========================================================
+   18. SECTION HEADING
+========================================================= */
 
-.compass-center {
-
-    position: absolute;
-
-    width: 94px;
-
-    height: 94px;
-
-    top: 50%;
-
-    left: 50%;
-
-    transform:
-        translate(-50%, -50%);
+.section-heading {
 
     display: flex;
 
-    justify-content: center;
-
     align-items: center;
 
-    z-index: 10;
+    gap: 13px;
 
+    margin-bottom: 22px;
 }
 
 
-/* =====================================================
-   CENTER GLOW
-===================================================== */
+.section-number {
 
-.center-glow {
+    color: var(--teal);
 
-    position: absolute;
+    font-size: 11px;
 
-    inset: -15px;
+    font-weight: 900;
 
-    border-radius: 50%;
+    letter-spacing: 2px;
 
-    background:
-
-        radial-gradient(
-            circle,
-            rgba(244,197,66,0.22),
-            transparent 68%
-        );
-
-    filter: blur(8px);
-
+    opacity: 0.9;
 }
 
 
-/* =====================================================
-   KAABA
-===================================================== */
+.section-heading h2 {
 
-.kaaba {
+    font-size: 20px;
 
-    width: 82px;
+    font-weight: 800;
+}
 
-    height: 82px;
+
+.section-heading p {
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   19. ZIKR GRID
+========================================================= */
+
+.zikr-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   20. ZIKR BUTTON
+========================================================= */
+
+.zikr-btn {
 
     position: relative;
 
+    min-height: 100px;
+
+    padding: 18px 14px;
+
     display: flex;
 
-    justify-content: center;
+    flex-direction: column;
 
     align-items: center;
 
-    border-radius: 50%;
+    justify-content: center;
 
-    overflow: hidden;
+    gap: 6px;
+
+    border-radius:
+        var(--radius-medium);
 
     background:
-
-        radial-gradient(
-            circle,
-            #162b2d,
-            #040b0d
-        );
+        rgba(255,255,255,0.025);
 
     border:
-
         1px solid
-        rgba(244,197,66,0.70);
+        var(--border);
+
+    color: var(--text-main);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.zikr-btn:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(0, 230, 195, 0.28);
+
+    background:
+        rgba(0, 230, 195, 0.055);
 
     box-shadow:
-
-        0 0 18px
-        rgba(244,197,66,0.20),
-
-        inset 0 0 15px
-        rgba(244,197,66,0.08);
-
+        0 12px 30px
+        rgba(0,0,0,0.2);
 }
 
 
-/* =====================================================
-   KAABA IMAGE
-===================================================== */
+.zikr-btn.active {
 
-.kaaba img {
-
-    width: 100%;
-
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-
-    object-position: center;
-
-    border-radius: 50%;
-
-    filter:
-
-        brightness(0.88)
-        contrast(1.08)
-        saturate(1.08);
-
-}
-
-
-/* =====================================================
-   KAABA NAME
-===================================================== */
-
-.kaaba-name {
-
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 5px;
-
-    transform:
-        translateX(-50%);
-
-    padding: 2px 7px;
-
-    border-radius: 5px;
-
-    color: var(--gold-light);
+    border-color:
+        rgba(0, 230, 195, 0.5);
 
     background:
-
-        rgba(0,0,0,0.70);
-
-    font-size: 7px;
-
-    font-weight: 900;
-
-    letter-spacing: 1px;
-
-    white-space: nowrap;
-
-    text-shadow:
-
-        0 0 5px
-        rgba(244,197,66,0.45);
-
-}
-
-
-/* =====================================================
-   GLASS REFLECTION
-===================================================== */
-
-.glass {
-
-    position: absolute;
-
-    width: 150px;
-
-    height: 70px;
-
-    top: 24px;
-
-    left: 12px;
-
-    border-radius: 50%;
-
-    background:
-
         linear-gradient(
-            135deg,
-            rgba(255,255,255,0.08),
-            transparent
+            145deg,
+            rgba(0, 230, 195, 0.12),
+            rgba(0, 230, 195, 0.035)
         );
 
-    transform:
-        rotate(-35deg);
-
-    filter: blur(8px);
-
-    pointer-events: none;
-
+    box-shadow:
+        inset 0 0 25px
+        rgba(0, 230, 195, 0.035),
+        0 0 25px
+        rgba(0, 230, 195, 0.06);
 }
 
 
-/* =====================================================
-   DEGREE DISPLAY
-===================================================== */
+.zikr-btn.active::after {
 
-.degree-display {
+    content: "";
+
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    top: 10px;
+    right: 10px;
+
+    border-radius: 50%;
+
+    background:
+        var(--teal);
+
+    box-shadow:
+        0 0 10px
+        var(--teal);
+}
+
+
+/* =========================================================
+   21. ZIKR ARABIC
+========================================================= */
+
+.zikr-arabic {
+
+    color: var(--gold);
+
+    font-size: 22px;
+
+    direction: rtl;
+
+    font-family:
+        "Times New Roman",
+        serif;
+}
+
+
+/* =========================================================
+   22. ZIKR NAME
+========================================================= */
+
+.zikr-name {
+
+    color: var(--text-soft);
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   23. CURRENT ZIKR
+========================================================= */
+
+.current-zikr {
 
     margin-top: 18px;
 
-    text-align: center;
-
-}
-
-
-.degree-display span {
-
-    display: block;
-
-    min-height: 30px;
-
-    color: var(--primary);
-
-    font-size: 24px;
-
-    font-weight: 900;
-
-    line-height: 1;
-
-    text-shadow:
-
-        0 0 14px
-        rgba(0,230,195,0.28);
-
-}
-
-
-.degree-display small {
-
-    display: block;
-
-    margin-top: 6px;
-
-    color: #718e8a;
-
-    font-size: 8px;
-
-    letter-spacing: 2.5px;
-
-}
-
-
-/* =====================================================
-   DETECT BUTTON
-===================================================== */
-
-.detect-btn {
-
-    width: 100%;
-
-    margin-top: 25px;
-
-    padding: 16px 18px;
+    padding: 16px;
 
     display: flex;
 
-    justify-content: center;
+    flex-direction: column;
 
     align-items: center;
 
-    gap: 9px;
+    text-align: center;
 
-    border: 0;
-
-    border-radius: 15px;
-
-    cursor: pointer;
+    border-radius:
+        var(--radius-small);
 
     background:
+        rgba(0, 0, 0, 0.15);
 
-        linear-gradient(
-            135deg,
-            #00bfa5,
-            #00dfc1
-        );
-
-    color: #01201c;
-
-    font-size: 16px;
-
-    font-weight: 900;
-
-    box-shadow:
-
-        0 12px 30px
-        rgba(0,230,195,0.16);
-
-    transition:
-
-        transform 0.2s ease,
-
-        box-shadow 0.2s ease,
-
-        opacity 0.2s ease;
-
+    border:
+        1px solid
+        rgba(255,255,255,0.04);
 }
 
 
-.detect-btn:hover {
+.current-label {
+
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+}
+
+
+.current-zikr strong {
+
+    color: var(--teal);
+
+    font-size: 18px;
+
+    margin-top: 4px;
+}
+
+
+.current-zikr span:last-child {
+
+    color: var(--text-soft);
+
+    font-size: 11px;
+
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   24. COUNTER PANEL
+========================================================= */
+
+.counter-panel {
+
+    position: relative;
+
+    padding: 30px 25px;
+
+    margin-bottom: 22px;
+
+    border:
+        1px solid
+        rgba(0, 230, 195, 0.12);
+
+    border-radius:
+        var(--radius-large);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12, 38, 40, 0.96),
+            rgba(5, 20, 22, 0.96)
+        );
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, 0.38);
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   25. COUNTER TOP
+========================================================= */
+
+.counter-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    text-align: left;
+
+    margin-bottom: 20px;
+}
+
+
+.counter-top h2 {
+
+    font-size: 21px;
+
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   26. SOUND TOGGLE
+========================================================= */
+
+.sound-toggle {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        9px
+        13px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(0, 230, 195, 0.08);
+
+    border:
+        1px solid
+        rgba(0, 230, 195, 0.18);
+
+    color: var(--teal);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    transition:
+        all 0.25s ease;
+}
+
+
+.sound-toggle:hover {
 
     transform:
         translateY(-2px);
 
+    background:
+        rgba(0, 230, 195, 0.13);
+
     box-shadow:
-
-        0 17px 35px
-        rgba(0,230,195,0.24);
-
+        0 8px 20px
+        rgba(0, 230, 195, 0.08);
 }
 
 
-.detect-btn:active {
+.sound-toggle.sound-off {
 
-    transform:
-        scale(0.98);
-
-}
-
-
-.detect-btn:disabled {
-
-    opacity: 0.62;
-
-    cursor: wait;
-
-}
-
-
-.btn-icon {
-
-    font-size: 18px;
-
-}
-
-
-/* =====================================================
-   LOCATION CARD
-===================================================== */
-
-.location-card {
-
-    margin-top: 15px;
-
-    padding: 13px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    border-radius: 14px;
+    color: var(--text-muted);
 
     background:
+        rgba(255,255,255,0.035);
 
-        rgba(255,255,255,0.025);
-
-    border:
-
-        1px solid
-        var(--border);
-
+    border-color:
+        rgba(255,255,255,0.08);
 }
 
 
-/* =====================================================
-   LOCATION ICON
-===================================================== */
+.sound-icon {
 
-.location-icon {
+    font-size: 15px;
+}
 
-    width: 40px;
 
-    height: 40px;
+/* =========================================================
+   27. COUNTER RING
+========================================================= */
 
-    flex-shrink: 0;
+.counter-ring {
+
+    --progress: 0deg;
+
+    position: relative;
+
+    width: min(
+        310px,
+        72vw
+    );
+
+    aspect-ratio: 1;
+
+    margin:
+        8px
+        auto
+        28px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            from -90deg,
+            var(--teal)
+            var(--progress),
+            rgba(255,255,255,0.055)
+            var(--progress)
+        );
+
+    box-shadow:
+        0 0 0 1px
+        rgba(0, 230, 195, 0.08),
+        0 25px 60px
+        rgba(0,0,0,0.35);
+
+    transition:
+        background 0.3s ease;
+}
+
+
+/* =========================================================
+   28. COUNTER RING INNER
+========================================================= */
+
+.counter-ring::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 9px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            rgba(255,255,255,0.045),
+            transparent 32%
+        ),
+        #081a1c;
+
+    box-shadow:
+        inset 0 0 40px
+        rgba(0,0,0,0.55);
+}
+
+
+/* =========================================================
+   29. COUNTER RING SHINE
+========================================================= */
+
+.counter-ring::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.05);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   30. COUNTER INNER
+========================================================= */
+
+.counter-inner {
+
+    position: relative;
+
+    z-index: 2;
 
     display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   31. COUNTER LABEL
+========================================================= */
+
+.counter-label {
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   32. COUNT DISPLAY
+========================================================= */
+
+#countDisplay {
+
+    margin-top: 4px;
+
+    color: var(--text-main);
+
+    font-size: clamp(
+        58px,
+        12vw,
+        88px
+    );
+
+    font-weight: 850;
+
+    line-height: 0.95;
+
+    letter-spacing: -3px;
+
+    text-shadow:
+        0 0 25px
+        rgba(0,230,195,0.12);
+}
+
+
+/* =========================================================
+   33. TARGET DISPLAY
+========================================================= */
+
+.target-display {
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+
+    margin-top: 7px;
+}
+
+
+#targetDisplay {
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   34. COMPLETED RING
+========================================================= */
+
+.counter-ring.completed {
+
+    background:
+        conic-gradient(
+            from -90deg,
+            var(--gold),
+            var(--teal),
+            var(--gold)
+        );
+
+    animation:
+        completedRing 1.2s ease-in-out;
+}
+
+
+@keyframes completedRing {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.045);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   35. PROGRESS AREA
+========================================================= */
+
+.progress-area {
+
+    width: min(
+        500px,
+        100%
+    );
+
+    margin:
+        0
+        auto
+        25px;
+}
+
+
+/* =========================================================
+   36. PROGRESS INFO
+========================================================= */
+
+.progress-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+}
+
+
+.progress-info strong {
+
+    color: var(--teal);
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   37. PROGRESS TRACK
+========================================================= */
+
+.progress-track {
+
+    width: 100%;
+
+    height: 6px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.06);
+}
+
+
+/* =========================================================
+   38. PROGRESS FILL
+========================================================= */
+
+.progress-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--teal),
+            var(--gold)
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(0,230,195,0.25);
+
+    transition:
+        width 0.25s ease;
+}
+
+
+/* =========================================================
+   39. TAP BUTTON
+========================================================= */
+
+.tap-button {
+
+    position: relative;
+
+    width: min(
+        500px,
+        100%
+    );
+
+    min-height: 92px;
+
+    margin:
+        0
+        auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
 
     justify-content: center;
 
-    align-items: center;
+    gap: 3px;
 
-    border-radius: 12px;
+    border-radius:
+        22px;
 
     background:
+        linear-gradient(
+            145deg,
+            rgba(0, 230, 195, 0.13),
+            rgba(0, 230, 195, 0.045)
+        );
 
-        rgba(0,230,195,0.07);
+    border:
+        1px solid
+        rgba(0,230,195,0.22);
 
-    font-size: 18px;
+    color: var(--text-main);
 
+    overflow: hidden;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+    transition:
+        transform 0.12s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 
-/* =====================================================
-   LOCATION INFO
-===================================================== */
+.tap-button::before {
 
-.location-info {
+    content: "";
 
-    min-width: 0;
+    position: absolute;
 
+    width: 160px;
+    height: 160px;
+
+    top: -110px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,230,195,0.08);
+
+    filter:
+        blur(20px);
 }
 
 
-.location-label {
+.tap-button:hover {
 
-    display: block;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,230,195,0.18),
+            rgba(0,230,195,0.06)
+        );
 
-    margin-bottom: 3px;
+    box-shadow:
+        0 18px 40px
+        rgba(0,230,195,0.09);
+}
 
-    color: var(--primary);
 
-    font-size: 9px;
+.tap-button:active,
+.tap-button.touching {
+
+    transform:
+        scale(0.97);
+}
+
+
+.tap-button.tap-active {
+
+    animation:
+        tapPulse 0.18s ease;
+}
+
+
+@keyframes tapPulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.975);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   40. TAP ICON
+========================================================= */
+
+.tap-icon {
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   41. TAP TITLE
+========================================================= */
+
+.tap-title {
+
+    color: var(--teal);
+
+    font-size: 14px;
 
     font-weight: 900;
 
     letter-spacing: 1.5px;
-
 }
 
 
-#locationText {
+/* =========================================================
+   42. TAP SUBTITLE
+========================================================= */
 
-    color: var(--muted);
+.tap-subtitle {
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   43. COMPLETED TAP
+========================================================= */
+
+.tap-button.completed {
+
+    border-color:
+        rgba(228,189,104,0.45);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(228,189,104,0.14),
+            rgba(0,230,195,0.08)
+        );
+}
+
+
+/* =========================================================
+   44. COUNTER ACTIONS
+========================================================= */
+
+.counter-actions {
+
+    width: min(
+        500px,
+        100%
+    );
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 10px;
+
+    margin:
+        12px
+        auto
+        0;
+}
+
+
+/* =========================================================
+   45. ACTION BUTTON
+========================================================= */
+
+.action-btn {
+
+    min-height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    border-radius:
+        var(--radius-small);
+
+    background:
+        rgba(255,255,255,0.035);
+
+    border:
+        1px solid
+        var(--border);
+
+    color: var(--text-soft);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    transition:
+        all 0.2s ease;
+}
+
+
+.action-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    color: var(--text-main);
+
+    background:
+        rgba(255,255,255,0.06);
+}
+
+
+.action-btn:first-child {
+
+    color: var(--teal);
+}
+
+
+.action-btn.reset {
+
+    color: var(--gold);
+}
+
+
+/* =========================================================
+   46. COMPLETION MESSAGE
+========================================================= */
+
+.completion-message {
+
+    width: min(
+        500px,
+        100%
+    );
+
+    margin:
+        20px
+        auto
+        0;
+
+    padding: 14px 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    border-radius:
+        var(--radius-medium);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(228,189,104,0.12),
+            rgba(0,230,195,0.07)
+        );
+
+    border:
+        1px solid
+        rgba(228,189,104,0.22);
+
+    animation:
+        completionAppear
+        0.35s ease;
+}
+
+
+@keyframes completionAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.completion-icon {
+
+    width: 35px;
+    height: 35px;
+
+    display: grid;
+
+    place-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,230,195,0.12);
+
+    color: var(--teal);
+
+    font-weight: 900;
+}
+
+
+.completion-message strong {
+
+    display: block;
+
+    color: var(--gold);
+
+    font-size: 13px;
+}
+
+
+.completion-message p {
+
+    color: var(--text-soft);
 
     font-size: 11px;
 
-    line-height: 1.6;
-
-    word-break: break-word;
-
+    margin-top: 2px;
 }
 
 
-/* =====================================================
-   INFO GRID
-===================================================== */
+/* =========================================================
+   47. PARTICLES
+========================================================= */
+
+.tasbih-particle {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    z-index: 10;
+
+    color: var(--gold);
+
+    font-size: 14px;
+
+    pointer-events: none;
+
+    animation:
+        particleFly
+        1.1s
+        ease-out
+        var(--delay)
+        forwards;
+}
+
+
+@keyframes particleFly {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.5);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   48. TARGET GRID
+========================================================= */
+
+.target-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+/* =========================================================
+   49. TARGET BUTTON
+========================================================= */
+
+.target-btn {
+
+    min-height: 58px;
+
+    border-radius:
+        var(--radius-small);
+
+    background:
+        rgba(255,255,255,0.025);
+
+    border:
+        1px solid
+        var(--border);
+
+    color: var(--text-soft);
+
+    font-size: 15px;
+
+    font-weight: 850;
+
+    transition:
+        all 0.2s ease;
+}
+
+
+.target-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(0,230,195,0.25);
+
+    color: var(--text-main);
+}
+
+
+.target-btn.active {
+
+    color: var(--teal);
+
+    border-color:
+        rgba(0,230,195,0.42);
+
+    background:
+        rgba(0,230,195,0.08);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,230,195,0.06);
+}
+
+
+/* =========================================================
+   50. CUSTOM TARGET AREA
+========================================================= */
+
+.custom-target-area {
+
+    margin-top: 15px;
+
+    padding: 16px;
+
+    border-radius:
+        var(--radius-medium);
+
+    background:
+        rgba(0,0,0,0.14);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.05);
+}
+
+
+.custom-target-area label {
+
+    display: block;
+
+    color: var(--text-soft);
+
+    font-size: 11px;
+
+    margin-bottom: 8px;
+}
+
+
+.custom-target-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto;
+
+    gap: 8px;
+}
+
+
+/* =========================================================
+   51. CUSTOM INPUT
+========================================================= */
+
+#customTarget {
+
+    width: 100%;
+
+    min-height: 46px;
+
+    padding:
+        0
+        14px;
+
+    border-radius:
+        var(--radius-small);
+
+    outline: none;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    color: var(--text-main);
+
+    font-size: 13px;
+}
+
+
+#customTarget:focus {
+
+    border-color:
+        rgba(0,230,195,0.45);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(0,230,195,0.06);
+}
+
+
+#customTarget::placeholder {
+
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   52. APPLY BUTTON
+========================================================= */
+
+#applyCustomTarget {
+
+    min-height: 46px;
+
+    padding:
+        0
+        18px;
+
+    border-radius:
+        var(--radius-small);
+
+    background:
+        rgba(0,230,195,0.12);
+
+    border:
+        1px solid
+        rgba(0,230,195,0.2);
+
+    color: var(--teal);
+
+    font-size: 12px;
+
+    font-weight: 850;
+}
+
+
+#applyCustomTarget:hover {
+
+    background:
+        rgba(0,230,195,0.18);
+}
+
+
+/* =========================================================
+   53. INFO GRID
+========================================================= */
 
 .info-grid {
 
     display: grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(3, 1fr);
 
-    gap: 10px;
+    gap: 12px;
 
-    margin-top: 10px;
-
+    margin-bottom: 28px;
 }
 
 
-.info-box {
+/* =========================================================
+   54. INFO CARD
+========================================================= */
 
-    min-height: 55px;
+.info-card {
 
-    display: flex;
+    padding: 20px;
 
-    align-items: center;
-
-    gap: 9px;
-
-    padding: 12px;
-
-    border-radius: 14px;
+    border-radius:
+        var(--radius-medium);
 
     background:
-
-        rgba(255,255,255,0.022);
+        rgba(11,31,33,0.72);
 
     border:
-
         1px solid
         var(--border);
 
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
 }
 
+
+.info-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(0,230,195,0.16);
+}
+
+
+/* =========================================================
+   55. INFO ICON
+========================================================= */
 
 .info-icon {
 
-    font-size: 17px;
+    display: inline-flex;
 
+    width: 38px;
+    height: 38px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0,230,195,0.08);
+
+    margin-bottom: 12px;
+
+    font-size: 18px;
 }
 
 
-.info-box strong {
+/* =========================================================
+   56. INFO TITLE
+========================================================= */
 
-    display: block;
+.info-card h3 {
 
-    color: var(--white);
+    font-size: 14px;
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   57. INFO TEXT
+========================================================= */
+
+.info-card p {
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   58. FOOTER
+========================================================= */
+
+.tasbih-footer {
+
+    text-align: center;
+
+    padding-top: 8px;
+}
+
+
+/* =========================================================
+   59. FOOTER LINE
+========================================================= */
+
+.footer-line {
+
+    width: 70px;
+
+    height: 1px;
+
+    margin:
+        0
+        auto
+        15px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   60. FOOTER ARABIC
+========================================================= */
+
+.tasbih-footer p {
+
+    color: var(--gold);
+
+    font-family:
+        "Times New Roman",
+        serif;
+
+    font-size: 18px;
+
+    direction: rtl;
+
+    margin-bottom: 6px;
+}
+
+
+/* =========================================================
+   61. FOOTER TEXT
+========================================================= */
+
+.tasbih-footer span {
+
+    color: var(--text-muted);
 
     font-size: 10px;
 
+    letter-spacing: 1px;
 }
 
 
-.info-box p {
+/* =========================================================
+   62. TABLET
+========================================================= */
 
-    margin-top: 3px;
+@media (max-width: 760px) {
 
-    color: var(--muted);
+    .tasbih-page {
 
-    font-size: 9px;
-
-}
-
-
-/* =====================================================
-   CALIBRATION
-===================================================== */
-
-.calibration {
-
-    margin-top: 15px;
-
-    padding: 12px 13px;
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 9px;
-
-    border-radius: 14px;
-
-    background:
-
-        rgba(244,197,66,0.045);
-
-    border:
-
-        1px solid
-        rgba(244,197,66,0.10);
-
-}
-
-
-.calibration span {
-
-    flex-shrink: 0;
-
-    font-size: 16px;
-
-}
-
-
-.calibration p {
-
-    color: #9eb4b0;
-
-    font-size: 9px;
-
-    line-height: 1.65;
-
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer {
-
-    margin-top: 20px;
-
-    padding-top: 16px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 7px;
-
-    border-top:
-
-        1px solid
-        rgba(255,255,255,0.055);
-
-    color: #607b77;
-
-    font-size: 9px;
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 600px) {
-
-    .qibla-page {
-
-        padding: 10px;
-
-        align-items: flex-start;
-
+        padding:
+            22px
+            15px
+            45px;
     }
 
 
-    .qibla-card {
+    .tasbih-intro {
 
-        margin-top: 4px;
+        padding: 28px;
 
-        padding: 22px 16px 18px;
-
-        border-radius: 25px;
-
+        min-height: 200px;
     }
 
 
-    .brand-icon {
+    .intro-symbol {
 
-        width: 43px;
-
-        height: 43px;
-
-        font-size: 21px;
-
+        width: 105px;
+        height: 105px;
     }
 
 
-    h1 {
+    .intro-symbol span {
 
-        font-size: 26px;
-
-    }
-
-
-    .bismillah {
-
-        font-size: 32px;
-
-    }
-
-
-    .compass {
-
-        width: min(310px, 84vw);
-
-    }
-
-
-    .qibla-arrow {
-
-        height: 114px;
-
-        top: 50%;
-
-    }
-
-
-    .arrow-line {
-
-        height: 89px;
-
+        font-size: 40px;
     }
 
 
     .info-grid {
 
-        grid-template-columns: 1fr;
-
+        grid-template-columns:
+            1fr;
     }
 
 }
 
 
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
+/* =========================================================
+   63. MOBILE
+========================================================= */
 
-@media (max-width: 380px) {
+@media (max-width: 600px) {
 
-    .qibla-card {
+    .tasbih-page {
 
         padding:
-            19px
+            18px
             12px
-            16px;
-
+            35px;
     }
 
 
-    .qibla-header {
+    .tasbih-header {
 
-        gap: 10px;
+        gap: 12px;
 
+        margin-bottom: 18px;
     }
 
 
-    .eyebrow {
+    .header-icon {
 
-        font-size: 8px;
+        width: 50px;
+        height: 50px;
 
-        letter-spacing: 2px;
+        border-radius: 15px;
 
+        font-size: 24px;
     }
 
 
-    h1 {
+    .tasbih-header h1 {
 
-        font-size: 23px;
-
+        font-size: 30px;
     }
 
 
-    .bismillah {
-
-        font-size: 29px;
-
-    }
-
-
-    .subtitle {
+    .header-subtitle {
 
         font-size: 11px;
-
     }
 
 
-    .compass {
+    .tasbih-intro {
 
-        width: 270px;
+        min-height: 180px;
 
+        padding: 24px 20px;
+
+        border-radius: 22px;
     }
 
 
-    .degree-display span {
+    .intro-content h2 {
 
-        font-size: 22px;
+        font-size: 28px;
+    }
 
+
+    .intro-content p {
+
+        font-size: 12px;
+    }
+
+
+    .intro-symbol {
+
+        width: 82px;
+        height: 82px;
+    }
+
+
+    .intro-symbol span {
+
+        font-size: 30px;
+    }
+
+
+    .intro-badge {
+
+        font-size: 9px;
+
+        padding:
+            6px
+            9px;
+    }
+
+
+    .panel {
+
+        padding: 20px 15px;
+
+        border-radius: 22px;
+    }
+
+
+    .counter-panel {
+
+        padding:
+            22px
+            15px;
+    }
+
+
+    .zikr-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .zikr-btn {
+
+        min-height: 82px;
+    }
+
+
+    .counter-top {
+
+        align-items: flex-start;
+    }
+
+
+    .counter-top h2 {
+
+        font-size: 18px;
+    }
+
+
+    .sound-toggle {
+
+        padding:
+            8px
+            10px;
+
+        font-size: 10px;
+    }
+
+
+    .sound-icon {
+
+        font-size: 13px;
+    }
+
+
+    .counter-ring {
+
+        width:
+            min(
+                275px,
+                78vw
+            );
+    }
+
+
+    .target-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .info-grid {
+
+        gap: 9px;
+    }
+
+
+    .info-card {
+
+        padding: 16px;
     }
 
 }
 
 
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
+/* =========================================================
+   64. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .tasbih-page {
+
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+
+    .tasbih-header h1 {
+
+        font-size: 27px;
+    }
+
+
+    .tasbih-intro {
+
+        padding:
+            22px
+            15px;
+    }
+
+
+    .intro-symbol {
+
+        width: 68px;
+        height: 68px;
+    }
+
+
+    .intro-symbol span {
+
+        font-size: 25px;
+    }
+
+
+    .intro-content h2 {
+
+        font-size: 24px;
+    }
+
+
+    .intro-content p {
+
+        font-size: 11px;
+    }
+
+
+    .counter-top {
+
+        gap: 8px;
+    }
+
+
+    .sound-text {
+
+        display: none;
+    }
+
+
+    .sound-toggle {
+
+        width: 38px;
+        height: 38px;
+
+        padding: 0;
+
+        justify-content: center;
+    }
+
+
+    .counter-ring {
+
+        width:
+            min(
+                245px,
+                82vw
+            );
+    }
+
+
+    #countDisplay {
+
+        font-size: 65px;
+    }
+
+
+    .tap-button {
+
+        min-height: 84px;
+
+        border-radius: 18px;
+    }
+
+
+    .tap-title {
+
+        font-size: 12px;
+    }
+
+
+    .tap-subtitle {
+
+        font-size: 9px;
+    }
+
+
+    .custom-target-row {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    #applyCustomTarget {
+
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   65. VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 330px) {
+
+    .tasbih-header {
+
+        align-items: flex-start;
+    }
+
+
+    .header-icon {
+
+        width: 44px;
+        height: 44px;
+
+        font-size: 21px;
+    }
+
+
+    .tasbih-header h1 {
+
+        font-size: 24px;
+    }
+
+
+    .intro-symbol {
+
+        display: none;
+    }
+
+
+    .counter-ring {
+
+        width: 220px;
+    }
+
+
+    #countDisplay {
+
+        font-size: 58px;
+    }
+
+
+    .target-btn {
+
+        min-height: 52px;
+
+        font-size: 13px;
+    }
+
+
+    .action-btn {
+
+        min-height: 44px;
+
+        font-size: 11px;
+    }
+
+}
+
+
+/* =========================================================
+   66. ACCESSIBILITY
+========================================================= */
+
+button:focus-visible,
+input:focus-visible {
+
+    outline:
+        2px solid
+        var(--teal);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   67. REDUCED MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    * {
+    html {
 
-        animation-duration:
-            0.01ms !important;
-
-        transition-duration:
-            0.01ms !important;
-
+        scroll-behavior: auto;
     }
+
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* =========================================================
+   68. SAFE IMAGE RULE
+========================================================= */
+
+.tasbih-page img {
+
+    max-width: 100%;
+
+    height: auto;
+
+    display: block;
+}
+
+
+/* =========================================================
+   69. NO HORIZONTAL OVERFLOW
+========================================================= */
+
+.tasbih-page,
+.tasbih-intro,
+.panel,
+.counter-panel,
+.info-grid {
+
+    max-width: 100%;
+
+    overflow: hidden;
+}
+
+/* =====================================================
+   ACTIVE COMPASS DIRECTION
+===================================================== */
+
+.direction.active {
+
+    color: var(--primary);
+
+    text-shadow:
+        0 0 8px rgba(0,230,195,0.80),
+        0 0 18px rgba(0,230,195,0.45);
+
+    transform: scale(1.12);
 
 }
