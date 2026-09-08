@@ -157,10 +157,8 @@ function updateCompass() {
         smoothHeading;
 
 
-    needle.style.transform =
-
-        `translateX(-50%) rotate(${rotation}deg)`;
-
+   needle.style.transform =
+    `translate(-50%, -50%) rotate(${rotation}deg)`;
 }
 
 
