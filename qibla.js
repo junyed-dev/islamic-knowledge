@@ -9,7 +9,7 @@
 ===================================================== */
 
 const needle =
-    document.querySelector(".needle");
+    document.getElementById("qiblaArrow");
 
 const detectBtn =
     document.getElementById("detectBtn");
@@ -31,9 +31,6 @@ const compassState =
 
 const gpsState =
     document.getElementById("gpsState");
-
-const bearingState =
-    document.getElementById("bearingState");
 
 
 /* =====================================================
@@ -180,9 +177,6 @@ function updateDegree() {
     qiblaDegree.textContent =
         `${degree}°`;
 
-
-    bearingState.textContent =
-        `${degree}°`;
 
 }
 
@@ -434,6 +428,14 @@ function startCompass() {
 
     }
 
+
+    window.addEventListener(
+        "deviceorientationabsolute",
+
+         handleOrientation, 
+         true
+        
+    );
 
     window.addEventListener(
 
