@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -15,20 +13,15 @@
         content="#031719"
     >
 
-    <title>
-        Qibla Finder 3.0 | Islamic Soldier
-    </title>
+    <title>Qibla Finder | Islamic Soldier</title>
 
     <link
         rel="stylesheet"
         href="qibla.css"
     >
-
 </head>
 
-
 <body>
-
 
     <!-- =========================================
          QIBLA PAGE
@@ -36,35 +29,27 @@
 
     <main class="qibla-page">
 
-
-        <!-- Background Glow -->
-
+        <!-- Background Effects -->
         <div class="bg-glow glow-one"></div>
-
         <div class="bg-glow glow-two"></div>
 
 
-
-        <!-- =========================================
+        <!-- =====================================
              MAIN CARD
-        ========================================== -->
+        ====================================== -->
 
         <section class="qibla-card">
 
 
-            <!-- =====================================
+            <!-- =================================
                  HEADER
-            ====================================== -->
+            ================================== -->
 
             <header class="qibla-header">
 
-
                 <div class="brand-icon">
-
-                    🕋
-
+                    🧭
                 </div>
-
 
                 <div class="brand-text">
 
@@ -72,451 +57,472 @@
                         ISLAMIC SOLDIER
                     </p>
 
-
                     <h1>
-
                         Qibla Finder
-
-                        <span>
-                            3.0
-                        </span>
-
+                        <span>COMPASS</span>
                     </h1>
 
                 </div>
 
-
             </header>
 
 
-
+            <!-- Divider -->
             <div class="divider"></div>
 
 
-
-            <!-- =====================================
+            <!-- =================================
                  BISMILLAH
-            ====================================== -->
+            ================================== -->
 
             <div class="bismillah">
-
-                ﷽
-
+                بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
             </div>
 
-
             <p class="subtitle">
-
                 Find the direction of the Holy Kaaba
-
             </p>
 
 
-
-            <!-- =====================================
+            <!-- =================================
                  COMPASS STATUS
-            ====================================== -->
+            ================================== -->
 
             <div class="compass-status">
-
 
                 <span
                     class="status-dot"
                     id="statusDot"
                 ></span>
 
-
-                <span id="statusText">
-
-                    Ready to detect Qibla
-
+                <span id="compassState">
+                    Compass waiting for sensor...
                 </span>
-
 
             </div>
 
 
-
-            <!-- =====================================
+            <!-- =================================
                  COMPASS
-            ====================================== -->
+            ================================== -->
 
             <section class="compass-section">
 
+                <div
+                    class="compass"
+                    id="compass"
+                >
 
-                <div class="compass">
 
-
-                    <!-- Outer Glow -->
-
+                    <!-- Compass Glow -->
                     <div class="compass-glow"></div>
 
 
-
-                    <!-- Outer Rings -->
-
-                    <div class="outer-ring"></div>
-
-                    <div class="outer-ring-two"></div>
-
-                    <div class="degree-ring"></div>
-
-                    <div class="inner-ring"></div>
-
-
-
                     <!-- =================================
-                         COMPASS MARKS
+                         OUTER FIXED BEZEL
                     ================================== -->
 
-                    <div class="compass-mark mark-1"></div>
+                    <div class="compass-bezel">
 
-                    <div class="compass-mark mark-2"></div>
+                        <div class="bezel-ring ring-one"></div>
 
-                    <div class="compass-mark mark-3"></div>
+                        <div class="bezel-ring ring-two"></div>
 
-                    <div class="compass-mark mark-4"></div>
+                        <div class="bezel-ring ring-three"></div>
 
-                    <div class="compass-mark mark-5"></div>
-
-                    <div class="compass-mark mark-6"></div>
-
-                    <div class="compass-mark mark-7"></div>
-
-                    <div class="compass-mark mark-8"></div>
-
+                    </div>
 
 
                     <!-- =================================
-                         DIRECTIONS
-                    ================================== -->
-
-                    <div class="direction north">
-
-                        N
-
-                    </div>
-
-
-                    <div class="direction east">
-
-                        E
-
-                    </div>
-
-
-                    <div class="direction south">
-
-                        S
-
-                    </div>
-
-
-                    <div class="direction west">
-
-                        W
-
-                    </div>
-
-
-
-                    <!-- =================================
-                         QIBLA ARROW
+                         ROTATING COMPASS DIAL
                     ================================== -->
 
                     <div
-                        class="qibla-arrow"
-                        id="qiblaArrow"
+                        class="compass-dial"
+                        id="compassDial"
                     >
 
+                        <!-- 360° ticks generated by JS -->
+                        <div
+                            class="degree-ticks"
+                            id="degreeTicks"
+                        ></div>
 
-                        <div class="arrow-label">
 
-                            QIBLA
+                        <!-- Degree numbers generated by JS -->
+                        <div
+                            class="degree-labels"
+                            id="degreeLabels"
+                        ></div>
 
+
+                        <!-- Cardinal directions -->
+                        <div
+                            class="dial-direction north"
+                            data-direction="N"
+                        >
+                            N
                         </div>
 
+                        <div
+                            class="dial-direction east"
+                            data-direction="E"
+                        >
+                            E
+                        </div>
 
-                        <div class="arrow-head"></div>
+                        <div
+                            class="dial-direction south"
+                            data-direction="S"
+                        >
+                            S
+                        </div>
 
-
-                        <div class="arrow-line"></div>
-
+                        <div
+                            class="dial-direction west"
+                            data-direction="W"
+                        >
+                            W
+                        </div>
 
                     </div>
 
 
+                    <!-- =================================
+                         FIXED TOP HEADING MARKER
+                    ================================== -->
+
+                    <div class="heading-marker">
+
+                        <span class="marker-tip"></span>
+
+                    </div>
+
 
                     <!-- =================================
-                         CENTER KAABA
+                         QIBLA INDICATOR
+                    ================================== -->
+
+                    <div
+                        class="qibla-indicator"
+                        id="qiblaIndicator"
+                    >
+
+                        <div class="qibla-line"></div>
+
+                        <div class="qibla-head">
+
+                            <span class="qibla-arrow-left"></span>
+
+                            <span class="qibla-arrow-main"></span>
+
+                            <span class="qibla-arrow-right"></span>
+
+                        </div>
+
+                        <div class="qibla-tag">
+                            QIBLA
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         COMPASS CENTER
                     ================================== -->
 
                     <div class="compass-center">
 
-
                         <div class="center-glow"></div>
-
 
                         <div class="kaaba">
 
-
                             <img
                                 src="kaabaa.png"
-                                alt="Kaaba"
+                                alt="Holy Kaaba"
                             >
-
-
-                            <div class="kaaba-name">
-
-                                KAABA
-
-                            </div>
-
 
                         </div>
 
+                        <div class="kaaba-name">
+                            KAABA
+                        </div>
 
                     </div>
 
 
+                    <!-- =================================
+                         CENTER PIN
+                    ================================== -->
 
-                    <!-- Glass Reflection -->
+                    <div class="center-pin">
 
-                    <div class="glass"></div>
+                        <span></span>
 
-
-                </div>
-
-
-
-                <!-- =================================
-                     BEARING
-                ================================== -->
-
-                <div class="degree-display">
-
-
-                    <span id="qiblaDegree">
-
-                        --°
-
-                    </span>
-
-
-                    <small>
-
-                        QIBLA BEARING
-
-                    </small>
-
+                    </div>
 
                 </div>
-
 
             </section>
 
 
+            <!-- =================================
+                 LIVE HEADING INFORMATION
+            ================================== -->
 
-            <!-- =====================================
-                 DETECT BUTTON
-            ====================================== -->
+            <section class="heading-panel">
+
+
+                <!-- Current Heading -->
+
+                <div class="heading-box">
+
+                    <span class="heading-label">
+                        CURRENT HEADING
+                    </span>
+
+                    <strong
+                        id="headingDegree"
+                    >
+                        --°
+                    </strong>
+
+                    <small id="headingDirection">
+                        -- 
+                    </small>
+
+                </div>
+
+
+                <!-- Qibla Bearing -->
+
+                <div class="heading-box qibla-box">
+
+                    <span class="heading-label">
+                        QIBLA BEARING
+                    </span>
+
+                    <strong
+                        id="qiblaDegree"
+                    >
+                        --°
+                    </strong>
+
+                    <small>
+                        Mecca
+                    </small>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 LOCATION
+            ================================== -->
+
+            <section class="location-panel">
+
+                <div class="location-icon">
+                    📍
+                </div>
+
+                <div class="location-content">
+
+                    <span>
+                        YOUR LOCATION
+                    </span>
+
+                    <strong id="locationText">
+                        Detecting location...
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 ACTION BUTTON
+            ================================== -->
 
             <button
-                id="detectBtn"
-                class="detect-btn"
                 type="button"
+                class="detect-btn"
+                id="detectBtn"
             >
 
-
                 <span class="btn-icon">
-
-                    🧭
-
+                    ◎
                 </span>
 
-
-                <span id="btnText">
-
-                    Detect Qibla
-
+                <span>
+                    Detect My Location
                 </span>
-
 
             </button>
 
 
+            <!-- =================================
+                 DEVICE INFORMATION
+            ================================== -->
 
-            <!-- =====================================
-                 LOCATION
-            ====================================== -->
-
-            <div class="location-card">
+            <section class="info-grid">
 
 
-                <div class="location-icon">
+                <!-- Compass Sensor -->
 
-                    📍
+                <div class="info-box">
+
+                    <div class="info-icon">
+                        🧭
+                    </div>
+
+                    <div>
+
+                        <span>
+                            COMPASS
+                        </span>
+
+                        <strong id="sensorState">
+                            Waiting
+                        </strong>
+
+                    </div>
 
                 </div>
 
 
-                <div class="location-info">
+                <!-- GPS -->
+
+                <div class="info-box">
+
+                    <div class="info-icon">
+                        📡
+                    </div>
+
+                    <div>
+
+                        <span>
+                            GPS
+                        </span>
+
+                        <strong id="gpsState">
+                            Waiting
+                        </strong>
+
+                    </div>
+
+                </div>
 
 
-                    <span class="location-label">
+                <!-- Accuracy -->
 
-                        YOUR LOCATION
+                <div class="info-box">
 
-                    </span>
+                    <div class="info-icon">
+                        ◉
+                    </div>
+
+                    <div>
+
+                        <span>
+                            ACCURACY
+                        </span>
+
+                        <strong id="accuracyState">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
 
 
-                    <p id="locationText">
+                <!-- Direction -->
 
-                        Location not detected
+                <div class="info-box">
 
+                    <div class="info-icon">
+                        ↑
+                    </div>
+
+                    <div>
+
+                        <span>
+                            DIRECTION
+                        </span>
+
+                        <strong id="directionState">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 CALIBRATION NOTICE
+            ================================== -->
+
+            <div class="calibration-box">
+
+                <div class="calibration-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <strong>
+                        Compass Calibration
+                    </strong>
+
+                    <p>
+                        If the direction seems inaccurate,
+                        move your phone slowly in a figure-8
+                        motion to calibrate the compass.
                     </p>
 
-
                 </div>
-
 
             </div>
 
 
-
-            <!-- =====================================
-                 SYSTEM STATUS
-            ====================================== -->
-
-            <div class="info-grid">
-
-
-                <div class="info-box">
-
-
-                    <span class="info-icon">
-
-                        🧭
-
-                    </span>
-
-
-                    <div>
-
-                        <strong>
-                            Compass
-                        </strong>
-
-
-                        <p id="compassState">
-
-                            Waiting
-
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="info-box">
-
-
-                    <span class="info-icon">
-
-                        📡
-
-                    </span>
-
-
-                    <div>
-
-                        <strong>
-                            GPS
-                        </strong>
-
-
-                        <p id="gpsState">
-
-                            Waiting
-
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-
-            <!-- =====================================
-                 CALIBRATION
-            ====================================== -->
-
-            <div class="calibration">
-
-
-                <span>
-
-                    💡
-
-                </span>
-
-
-                <p>
-
-                    Hold your phone flat for better accuracy.
-                    If the compass seems inaccurate, move your
-                    phone in a figure-8 motion.
-
-                </p>
-
-
-            </div>
-
-
-
-            <!-- =====================================
+            <!-- =================================
                  FOOTER
-            ====================================== -->
+            ================================== -->
 
-            <footer>
-
-
-                <span>
-
-                    🕋
-
-                </span>
-
+            <footer class="qibla-footer">
 
                 <span>
-
-                    May Allah guide us to the straight path
-
+                    Qibla direction is calculated from
+                    your current location.
                 </span>
 
+                <span>
+                    •
+                </span>
+
+                <span>
+                    Islamic Soldier
+                </span>
 
             </footer>
 
 
         </section>
 
-
     </main>
 
 
-
-    <!-- JavaScript -->
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
 
     <script src="qibla.js"></script>
 
-
 </body>
-
 </html>
