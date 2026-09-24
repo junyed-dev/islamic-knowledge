@@ -1,1392 +1,5630 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* =========================================================
+   ISLAMIC SOLDIER
+   ARABIC PREMIUM HOMEPAGE
+   VERSION 4.0
+========================================================= */
 
-    <meta name="theme-color" content="#03090b">
-    <meta name="description"
-        content="Islamic Soldier — Quran, Tilawat, Qibla, Tasbih, Dua, Nasheed and Islamic knowledge.">
 
-    <title>Islamic Soldier — Islamic Knowledge</title>
+/* =========================================================
+   ROOT
+========================================================= */
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+:root {
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
+    --bg: #02090a;
+    --bg-deep: #010506;
+    --bg-soft: #061416;
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
+    --emerald: #00d8b4;
+    --emerald-bright: #20f3d0;
+    --emerald-soft: rgba(0, 216, 180, .12);
 
-<body>
+    --gold: #cda75a;
+    --gold-light: #f0d28c;
+    --gold-soft: rgba(205, 167, 90, .12);
 
-    <!-- =====================================================
-         SCROLL PROGRESS
-    ====================================================== -->
-    <div id="progress-bar"></div>
+    --white: #ffffff;
+    --text: #f5f8f7;
 
+    --muted: rgba(245,248,247,.68);
+    --muted-light: rgba(245,248,247,.46);
 
-    <!-- =====================================================
-         HEADER
-    ====================================================== -->
-    <header class="header" id="header">
+    --border: rgba(0,216,180,.15);
+    --gold-border: rgba(205,167,90,.22);
 
-        <div class="header-inner">
+    --card: rgba(7,25,27,.78);
 
-            <!-- Logo -->
-            <a href="index.html" class="logo">
+    --shadow:
+        0 30px 90px rgba(0,0,0,.48);
 
-                <div class="logo-mark">
-                    <span>IS</span>
-                </div>
+    --radius: 25px;
 
-                <div class="logo-text">
-                    <strong>ISLAMIC</strong>
-                    <span>SOLDIER</span>
-                </div>
+}
 
-            </a>
 
+/* =========================================================
+   LIGHT THEME
+========================================================= */
 
-            <!-- Desktop / Mobile Navigation -->
-            <nav class="main-nav" id="main-nav">
+[data-home-theme="light"] {
 
-                <a href="index.html" class="nav-link active">
-                    <span>Home</span>
-                </a>
+    --bg: #eef7f4;
+    --bg-deep: #e4f0ed;
+    --bg-soft: #dbece8;
 
-                <a href="about/about.html" class="nav-link">
-                    <span>About</span>
-                </a>
+    --white: #082122;
+    --text: #082122;
 
-                <a href="quotes/quotes.html" class="nav-link">
-                    <span>Quotes</span>
-                </a>
+    --muted: rgba(8,33,34,.70);
+    --muted-light: rgba(8,33,34,.50);
 
-                <a href="gallery/gallery.html" class="nav-link">
-                    <span>Gallery</span>
-                </a>
+    --border: rgba(0,130,110,.18);
+    --gold-border: rgba(150,105,35,.25);
 
-            </nav>
+    --card: rgba(255,255,255,.78);
 
+}
 
-            <!-- Header Actions -->
-            <div class="header-actions">
 
-                <button
-                    class="icon-btn"
-                    id="theme-toggle"
-                    type="button"
-                    aria-label="Toggle theme"
-                >
-                    <span class="theme-icon">☾</span>
-                </button>
+/* =========================================================
+   RESET
+========================================================= */
 
-                <button
-                    class="menu-toggle"
-                    id="menu-toggle"
-                    type="button"
-                    aria-label="Open menu"
-                    aria-expanded="false"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+* {
 
-            </div>
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
-        </div>
+}
 
-    </header>
 
+html {
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-    <main>
+    scroll-behavior: smooth;
 
+}
 
-        <!-- =================================================
-             HERO SECTION
-        ================================================== -->
-        <section class="hero" id="home">
 
-            <!-- Background decoration -->
-            <div class="hero-grid"></div>
-            <div class="hero-glow hero-glow-one"></div>
-            <div class="hero-glow hero-glow-two"></div>
+body {
 
-            <div class="hero-stars">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    min-height: 100vh;
 
+    overflow-x: hidden;
 
-            <div class="container hero-container">
+    color: var(--text);
 
-                <div class="hero-grid-layout">
+    background:
 
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(0,216,180,.11),
+            transparent 34%
+        ),
 
-                    <!-- ==============================
-                         HERO TEXT
-                    =============================== -->
-                    <div class="hero-content">
+        radial-gradient(
+            circle at 90% 35%,
+            rgba(205,167,90,.06),
+            transparent 30%
+        ),
 
-                        <div class="hero-bismillah">
-                            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
-                        </div>
+        var(--bg);
 
-                        <div class="hero-label">
-                            <span class="label-line"></span>
-                            <span>ISLAMIC KNOWLEDGE</span>
-                        </div>
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
+}
 
-                        <div class="hero-text">
 
-                            <h1>
-                                Read in the Name of
-                                <span>Allah.</span>
-                            </h1>
+img {
 
-                            <p>
-                                Discover Quran, Tilawat, Islamic knowledge,
-                                Duas, Qibla, Tasbih and more — all in one
-                                peaceful place.
-                            </p>
+    display: block;
+    max-width: 100%;
 
-                        </div>
+}
 
 
-                        <!-- Hero buttons -->
-                        <div class="hero-buttons">
+a {
 
-                            <a
-                                href="quran/quran.html"
-                                class="btn btn-primary"
-                            >
-                                <span class="btn-icon">☰</span>
-                                <span>Explore Quran</span>
-                            </a>
+    color: inherit;
+    text-decoration: none;
 
-                            <a
-                                href="#features"
-                                class="btn btn-secondary"
-                            >
-                                <span>Explore More</span>
-                                <span class="arrow">→</span>
-                            </a>
+}
 
-                        </div>
 
+button,
+a {
 
-                        <!-- Hero statistics -->
-                        <div class="hero-stats">
+    -webkit-tap-highlight-color: transparent;
 
-                            <div class="stat-item">
-                                <strong>114</strong>
-                                <span>Surahs</span>
-                            </div>
+}
 
-                            <div class="stat-divider"></div>
 
-                            <div class="stat-item">
-                                <strong>99</strong>
-                                <span>Names of Allah</span>
-                            </div>
+button {
 
-                            <div class="stat-divider"></div>
+    font: inherit;
 
-                            <div class="stat-item">
-                                <strong>∞</strong>
-                                <span>Knowledge</span>
-                            </div>
+}
 
-                        </div>
 
-                    </div>
+::selection {
 
+    color: #001514;
+    background: var(--emerald);
 
-                    <!-- ==============================
-                         HERO VISUAL
-                    =============================== -->
-                    <div class="hero-visual">
+}
 
-                        <div class="visual-aura"></div>
 
-                        <div class="visual-orbit orbit-one"></div>
-                        <div class="visual-orbit orbit-two"></div>
+/* =========================================================
+   SCROLLBAR
+========================================================= */
 
+::-webkit-scrollbar {
 
-                        <!-- Main portrait composition -->
-                        <div class="portrait-stage">
+    width: 9px;
 
-                            <div class="portrait-disc">
+}
 
-                                <div class="portrait-disc-inner">
 
-                                    <img
-                                        src="jl.jpg"
-                                        alt="Islamic Soldier"
-                                        class="hero-person"
-                                    >
+::-webkit-scrollbar-track {
 
-                                </div>
+    background: var(--bg-deep);
 
-                            </div>
+}
 
-                            <div class="portrait-ring"></div>
-                            <div class="portrait-light"></div>
 
-                        </div>
+::-webkit-scrollbar-thumb {
 
+    background:
+        linear-gradient(
+            var(--emerald),
+            var(--gold)
+        );
 
-                        <!-- Floating Quran badge -->
-                        <div class="floating-badge badge-quran">
+    border-radius: 20px;
 
-                            <div class="badge-icon">
-                                📖
-                            </div>
+}
 
-                            <div>
-                                <strong>Quran</strong>
-                                <span>Read & Learn</span>
-                            </div>
 
-                        </div>
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
 
+#progress-bar {
 
-                        <!-- Floating Tilawat badge -->
-                        <div class="floating-badge badge-tilawat">
+    position: fixed;
 
-                            <div class="badge-icon">
-                                🎙
-                            </div>
+    top: 0;
+    left: 0;
 
-                            <div>
-                                <strong>Tilawat</strong>
-                                <span>Listen & Recite</span>
-                            </div>
+    width: 0;
 
-                        </div>
+    height: 3px;
 
+    background:
+        linear-gradient(
+            90deg,
+            var(--emerald),
+            var(--gold-light)
+        );
 
-                        <!-- Decorative dots -->
-                        <span class="floating-dot dot-one"></span>
-                        <span class="floating-dot dot-two"></span>
-                        <span class="floating-dot dot-three"></span>
+    box-shadow:
+        0 0 18px rgba(0,216,180,.70);
 
-                    </div>
+    z-index: 99999;
 
-                </div>
+}
 
-            </div>
 
-        </section>
+/* =========================================================
+   HEADER
+========================================================= */
 
+.header {
 
+    position: fixed;
 
-        <!-- =================================================
-             NASHEED PLAYER
-        ================================================== -->
-        <section class="nasheed-section" id="nasheed">
+    top: 17px;
+    left: 2.5%;
 
-            <div class="container">
+    width: 95%;
 
-                <div class="section-heading nasheed-heading">
+    height: 70px;
 
-                    <div class="section-kicker">
-                        <span></span>
-                        SOULFUL LISTENING
-                        <span></span>
-                    </div>
+    padding:
+        0 22px;
 
-                    <h2>
-                        Listen to <span>Nasheed</span>
-                    </h2>
+    display: flex;
 
-                    <p>
-                        Take a moment, slow down and let beautiful Islamic
-                        reminders reach your heart.
-                    </p>
+    align-items: center;
 
-                </div>
+    justify-content: space-between;
 
+    gap: 20px;
 
-                <div class="nasheed-wrapper">
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7,27,29,.91),
+            rgba(2,13,15,.78)
+        );
 
-                    <!-- Player -->
-                    <div class="nasheed-player">
+    border:
+        1px solid rgba(0,216,180,.17);
 
-                        <div class="player-top">
+    border-radius: 22px;
 
-                            <div class="player-art">
+    backdrop-filter:
+        blur(25px);
 
-                                <div class="art-glow"></div>
+    -webkit-backdrop-filter:
+        blur(25px);
 
-                                <div class="art-symbol">
-                                    ♪
-                                </div>
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.32);
 
-                            </div>
+    z-index: 1000;
 
+}
 
-                            <div class="player-info">
 
-                                <span class="player-label">
-                                    NOW PLAYING
-                                </span>
+[data-home-theme="light"] .header {
 
-                                <h3 id="current-song">
-                                    Select a Nasheed
-                                </h3>
+    background:
+        rgba(247,252,250,.82);
 
-                                <p id="current-artist">
-                                    Islamic Soldier
-                                </p>
+}
 
-                            </div>
 
-                        </div>
+/* =========================================================
+   LOGO
+========================================================= */
 
+.logo {
 
-                        <!-- Audio -->
-                        <audio id="nasheed-audio" preload="metadata">
-                            <source src="nasheed.mp3" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
+    display: flex;
 
+    align-items: center;
 
-                        <!-- Progress -->
-                        <div class="audio-progress-area">
+    gap: 10px;
 
-                            <span id="current-time">
-                                0:00
-                            </span>
+    font-size: 20px;
 
-                            <input
-                                type="range"
-                                id="progress"
-                                min="0"
-                                max="100"
-                                value="0"
-                                step="0.1"
-                            >
+    font-weight: 700;
 
-                            <span id="duration">
-                                0:00
-                            </span>
+    white-space: nowrap;
 
-                        </div>
+}
 
 
-                        <!-- Controls -->
-                        <div class="player-controls">
+.logo-mark {
 
-                            <button
-                                type="button"
-                                id="prev-btn"
-                                class="player-control"
-                                aria-label="Previous"
-                            >
-                                ⏮
-                            </button>
+    width: 38px;
+    height: 38px;
 
-                            <button
-                                type="button"
-                                id="play-btn"
-                                class="player-control play-main"
-                                aria-label="Play"
-                            >
-                                ▶
-                            </button>
+    display: grid;
 
-                            <button
-                                type="button"
-                                id="next-btn"
-                                class="player-control"
-                                aria-label="Next"
-                            >
-                                ⏭
-                            </button>
+    place-items: center;
 
-                        </div>
+    color: var(--gold-light);
 
-                    </div>
+    background:
+        linear-gradient(
+            145deg,
+            rgba(205,167,90,.16),
+            rgba(0,216,180,.08)
+        );
 
+    border:
+        1px solid var(--gold-border);
 
-                    <!-- Playlist -->
-                    <div class="nasheed-playlist">
+    border-radius: 12px;
 
-                        <div class="playlist-header">
+    font-size: 22px;
 
-                            <div>
-                                <span class="playlist-kicker">
-                                    NASHEED COLLECTION
-                                </span>
+    box-shadow:
+        inset 0 0 18px rgba(255,255,255,.02);
 
-                                <h3>Playlist</h3>
-                            </div>
+}
 
-                            <span class="playlist-count">
-                                10 Tracks
-                            </span>
 
-                        </div>
+.logo-name b {
 
+    color: var(--emerald);
 
-                        <!-- JS will populate tracks here -->
-                        <div id="playlist">
-                        </div>
+}
 
-                    </div>
 
-                </div>
+/* =========================================================
+   NAV
+========================================================= */
 
-            </div>
+.nav {
 
-        </section>
+    display: flex;
 
+    align-items: center;
 
+    gap: 30px;
 
-        <!-- =================================================
-             ISLAMIC FEATURES
-        ================================================== -->
-        <section
-            class="features-section"
-            id="features"
-        >
+}
 
-            <div class="container">
 
-                <div class="section-heading">
+.nav a {
 
-                    <div class="section-kicker">
-                        <span></span>
-                        EXPLORE
-                        <span></span>
-                    </div>
+    position: relative;
 
-                    <h2>
-                        Islamic <span>Tools</span>
-                    </h2>
+    color:
+        rgba(255,255,255,.74);
 
-                    <p>
-                        Everything you need for your daily Islamic journey,
-                        gathered in one place.
-                    </p>
+    font-family:
+        Arial,
+        sans-serif;
 
-                </div>
+    font-size: 12px;
 
+    font-weight: 600;
 
-                <div class="features-grid">
+    transition:
+        color .25s ease;
 
+}
 
-                    <!-- Quran -->
-                    <a
-                        href="quran.html"
-                        class="feature-card"
-                    >
 
-                        <div class="card-image">
+[data-home-theme="light"] .nav a {
 
-                            <img
-                                src="quran2.jpg"
-                                alt="Quran"
-                                loading="lazy"
-                            >
+    color:
+        rgba(8,33,34,.68);
 
-                            <div class="feature-overlay"></div>
+}
 
-                            <span class="feature-number">
-                                01
-                            </span>
 
-                        </div>
+.nav a:hover,
+.nav a.active {
 
-                        <div class="feature-content">
+    color: var(--emerald);
 
-                            <span class="feature-small">
-                                READ
-                            </span>
+}
 
-                            <h3>Quran</h3>
 
-                            <p>
-                                Read and explore the Holy Quran.
-                            </p>
+.nav a.active::after {
 
-                            <span class="feature-link">
-                                Open Quran →
-                            </span>
+    content: "";
 
-                        </div>
+    position: absolute;
 
-                    </a>
+    left: 0;
+    right: 0;
 
+    bottom: -10px;
 
-                    <!-- Tilawat -->
-                    <a
-                        href="tilawat/tilawat.html"
-                        class="feature-card"
-                    >
+    height: 2px;
 
-                        <div class="card-image">
+    border-radius: 10px;
 
-                            <img
-                                src="celli.jpg"
-                                alt="Tilawat"
-                                loading="lazy"
-                            >
+    background:
+        linear-gradient(
+            90deg,
+            var(--emerald),
+            var(--gold)
+        );
 
-                            <div class="feature-overlay"></div>
+    box-shadow:
+        0 0 12px rgba(0,216,180,.45);
 
-                            <span class="feature-number">
-                                02
-                            </span>
+}
 
-                        </div>
 
-                        <div class="feature-content">
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
 
-                            <span class="feature-small">
-                                RECITE
-                            </span>
+.header-actions {
 
-                            <h3>Tilawat</h3>
+    display: flex;
 
-                            <p>
-                                Learn, listen and improve your recitation.
-                            </p>
+    align-items: center;
 
-                            <span class="feature-link">
-                                Start Tilawat →
-                            </span>
+    gap: 9px;
 
-                        </div>
+}
 
-                    </a>
 
+#theme-toggle {
 
-                    <!-- Qibla -->
-                    <a
-                        href="qibla/qibla.html"
-                        class="feature-card"
-                    >
+    min-height: 38px;
 
-                        <div class="card-image">
+    padding:
+        0 13px;
 
-                            <img
-                                src="pic4.jpg"
-                                alt="Qibla"
-                                loading="lazy"
-                            >
+    color: var(--white);
 
-                            <div class="feature-overlay"></div>
+    background:
+        rgba(0,216,180,.06);
 
-                            <span class="feature-number">
-                                03
-                            </span>
+    border:
+        1px solid rgba(0,216,180,.30);
 
-                        </div>
+    border-radius: 999px;
 
-                        <div class="feature-content">
+    cursor: pointer;
 
-                            <span class="feature-small">
-                                DIRECTION
-                            </span>
+    font-family:
+        Arial,
+        sans-serif;
 
-                            <h3>Qibla</h3>
+    font-size: 11px;
 
-                            <p>
-                                Find the direction of the Kaaba.
-                            </p>
+    font-weight: 700;
 
-                            <span class="feature-link">
-                                Find Qibla →
-                            </span>
+    transition:
+        .25s ease;
 
-                        </div>
+}
 
-                    </a>
 
+#theme-toggle:hover {
 
-                    <!-- Tasbih -->
-                    <a
-                        href="tasbih/tasbih.html"
-                        class="feature-card"
-                    >
+    color: #001514;
 
-                        <div class="card-image">
+    background:
+        var(--emerald);
 
-                            <img
-                                src="lo1.avif"
-                                alt="Tasbih"
-                                loading="lazy"
-                            >
+    box-shadow:
+        0 0 28px rgba(0,216,180,.30);
 
-                            <div class="feature-overlay"></div>
+}
 
-                            <span class="feature-number">
-                                04
-                            </span>
 
-                        </div>
+/* =========================================================
+   HAMBURGER
+========================================================= */
 
-                        <div class="feature-content">
+.menu-toggle {
 
-                            <span class="feature-small">
-                                DHIKR
-                            </span>
+    width: 40px;
+    height: 40px;
 
-                            <h3>Tasbih</h3>
+    display: none;
 
-                            <p>
-                                Keep your daily dhikr count with ease.
-                            </p>
+    flex-direction: column;
 
-                            <span class="feature-link">
-                                Open Tasbih →
-                            </span>
+    align-items: center;
+    justify-content: center;
 
-                        </div>
+    gap: 5px;
 
-                    </a>
+    border:
+        1px solid rgba(0,216,180,.24);
 
+    border-radius: 12px;
 
-                    <!-- Dua -->
-                    <a
-                        href="dua/dua.html"
-                        class="feature-card"
-                    >
+    background:
+        rgba(0,216,180,.05);
 
-                        <div class="card-image">
+    cursor: pointer;
 
-                            <img
-                                src="pic5.jpg"
-                                alt="Dua"
-                                loading="lazy"
-                            >
+}
 
-                            <div class="feature-overlay"></div>
 
-                            <span class="feature-number">
-                                05
-                            </span>
+.menu-toggle span {
 
-                        </div>
+    width: 18px;
+    height: 2px;
 
-                        <div class="feature-content">
+    background:
+        var(--emerald);
 
-                            <span class="feature-small">
-                                SUPPLICATION
-                            </span>
+    border-radius: 10px;
 
-                            <h3>Dua</h3>
+    transition:
+        .25s ease;
 
-                            <p>
-                                Discover useful daily Islamic duas.
-                            </p>
+}
 
-                            <span class="feature-link">
-                                Explore Dua →
-                            </span>
 
-                        </div>
+.menu-toggle.open span:nth-child(1) {
 
-                    </a>
+    transform:
+        translateY(7px)
+        rotate(45deg);
 
-                </div>
+}
 
-            </div>
 
-        </section>
+.menu-toggle.open span:nth-child(2) {
 
+    opacity: 0;
 
+}
 
-        <!-- =================================================
-             QURAN FEATURE
-        ================================================== -->
-        <section class="quran-feature">
 
-            <div class="container">
+.menu-toggle.open span:nth-child(3) {
 
-                <div class="quran-feature-box">
+    transform:
+        translateY(-7px)
+        rotate(-45deg);
 
+}
 
-                    <!-- Image -->
-                    <div class="quran-image">
 
-                        <div class="quran-image-glow"></div>
+/* =========================================================
+   HERO
+========================================================= */
 
-                        <img
-                            src="quran2.jpg"
-                            alt="Holy Quran"
-                            loading="lazy"
-                        >
+.hero {
 
-                        <div class="quran-image-caption">
-                            <span>الْقُرْآنُ</span>
-                            <small>The Noble Quran</small>
-                        </div>
+    position: relative;
 
-                    </div>
+    min-height: 850px;
 
+    overflow: hidden;
 
-                    <!-- Content -->
-                    <div class="quran-content">
+    display: flex;
 
-                        <span class="content-kicker">
-                            THE WORD OF ALLAH
-                        </span>
+    align-items: center;
 
-                        <h2>
-                            Let the Quran
-                            <span>guide your heart.</span>
-                        </h2>
+    padding:
+        145px 7% 85px;
 
-                        <p>
-                            Read the Quran, explore Surahs and verses,
-                            listen to recitation and build a stronger
-                            connection with the Book of Allah.
-                        </p>
+    background:
+        linear-gradient(
+            90deg,
+            rgba(1,7,8,.98) 0%,
+            rgba(2,14,16,.90) 45%,
+            rgba(2,8,10,.55) 100%
+        );
 
+}
 
-                        <div class="quran-points">
 
-                            <div class="quran-point">
-                                <span>✓</span>
-                                <p>114 Surahs</p>
-                            </div>
+.hero-bg {
 
-                            <div class="quran-point">
-                                <span>✓</span>
-                                <p>Arabic Text</p>
-                            </div>
+    position: absolute;
 
-                            <div class="quran-point">
-                                <span>✓</span>
-                                <p>Recitation</p>
-                            </div>
+    inset: 0;
 
-                            <div class="quran-point">
-                                <span>✓</span>
-                                <p>Bangla Translation</p>
-                            </div>
+    background:
+        url("mosque2.jfif")
+        center /
+        cover
+        no-repeat;
 
-                        </div>
+    opacity: .48;
 
+    filter:
+        saturate(.78)
+        contrast(1.08);
 
-                        <a
-                            href="quran/quran.html"
-                            class="btn btn-primary"
-                        >
-                            Open Quran
-                            <span>→</span>
-                        </a>
+}
 
-                    </div>
 
-                </div>
+.hero::before {
 
-            </div>
+    content: "";
 
-        </section>
+    position: absolute;
 
+    inset: 0;
 
+    background:
 
-        <!-- =================================================
-             QUOTES
-        ================================================== -->
-        <section class="quotes-section">
+        radial-gradient(
+            circle at 70% 40%,
+            rgba(0,216,180,.17),
+            transparent 25%
+        ),
 
-            <div class="container">
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.12),
+            var(--bg) 100%
+        );
 
-                <div class="section-heading">
+    z-index: 1;
 
-                    <div class="section-kicker">
-                        <span></span>
-                        DAILY REMINDER
-                        <span></span>
-                    </div>
+}
 
-                    <h2>
-                        Words that <span>inspire</span>
-                    </h2>
 
-                    <p>
-                        Small reminders can make a big difference in our
-                        daily lives.
-                    </p>
+.hero-pattern {
 
-                </div>
+    position: absolute;
 
+    inset: 0;
 
-                <div class="quotes-grid">
+    z-index: 2;
 
+    opacity: .13;
 
-                    <!-- Quote 01 -->
-                    <article class="quote-card">
+    background:
 
-                        <div class="quote-mark">
-                            “
-                        </div>
+        linear-gradient(
+            30deg,
+            transparent 46%,
+            rgba(205,167,90,.28) 47%,
+            transparent 48%
+        ),
 
-                        <p>
-                            Indeed, in the remembrance of Allah do hearts
-                            find rest.
-                        </p>
+        linear-gradient(
+            150deg,
+            transparent 46%,
+            rgba(0,216,180,.20) 47%,
+            transparent 48%
+        );
 
-                        <div class="quote-source">
-                            <span></span>
-                            Quran — 13:28
-                        </div>
+    background-size:
+        90px 90px;
 
-                    </article>
+    mask-image:
+        linear-gradient(
+            to right,
+            transparent,
+            black 45%,
+            transparent
+        );
 
+}
 
-                    <!-- Quote 02 -->
-                    <article class="quote-card">
 
-                        <div class="quote-mark">
-                            “
-                        </div>
+.hero-stars {
 
-                        <p>
-                            So remember Me; I will remember you.
-                        </p>
+    position: absolute;
 
-                        <div class="quote-source">
-                            <span></span>
-                            Quran — 2:152
-                        </div>
+    inset: 0;
 
-                    </article>
+    z-index: 2;
 
+    opacity: .35;
 
-                    <!-- Quote 03 -->
-                    <article class="quote-card">
+    background-image:
 
-                        <div class="quote-mark">
-                            “
-                        </div>
+        radial-gradient(
+            circle at 12% 25%,
+            white 0 1px,
+            transparent 2px
+        ),
 
-                        <p>
-                            And whoever relies upon Allah — then He is
-                            sufficient for him.
-                        </p>
+        radial-gradient(
+            circle at 28% 14%,
+            white 0 1px,
+            transparent 2px
+        ),
 
-                        <div class="quote-source">
-                            <span></span>
-                            Quran — 65:3
-                        </div>
+        radial-gradient(
+            circle at 46% 29%,
+            white 0 1px,
+            transparent 2px
+        ),
 
-                    </article>
+        radial-gradient(
+            circle at 76% 16%,
+            white 0 1px,
+            transparent 2px
+        ),
 
-                </div>
+        radial-gradient(
+            circle at 89% 36%,
+            white 0 1px,
+            transparent 2px
+        ),
 
-            </div>
+        radial-gradient(
+            circle at 68% 70%,
+            white 0 1px,
+            transparent 2px
+        );
 
-        </section>
+}
 
 
+.hero-glow {
 
-        <!-- =================================================
-             GALLERY
-        ================================================== -->
-        <section class="gallery-section">
+    position: absolute;
 
-            <div class="container">
+    border-radius: 50%;
 
-                <div class="section-heading">
+    filter: blur(80px);
 
-                    <div class="section-kicker">
-                        <span></span>
-                        VISUAL JOURNEY
-                        <span></span>
-                    </div>
+    z-index: 1;
 
-                    <h2>
-                        Islamic <span>Gallery</span>
-                    </h2>
+}
 
-                    <p>
-                        A peaceful collection of Islamic-inspired moments.
-                    </p>
 
-                </div>
+.hero-glow-one {
 
+    width: 430px;
+    height: 430px;
 
-                <div class="gallery-grid">
+    right: 8%;
+    top: 25%;
 
+    background:
+        rgba(0,216,180,.14);
 
-                    <div class="gallery-item gallery-large">
+}
 
-                        <img
-                            src="mosque2.jpg"
-                            alt="Mosque"
-                            loading="lazy"
-                        >
 
-                        <div class="gallery-overlay">
-                            <span>01</span>
-                            <strong>Peace</strong>
-                        </div>
+.hero-glow-two {
 
-                    </div>
+    width: 260px;
+    height: 260px;
 
+    left: 10%;
+    bottom: 8%;
 
-                    <div class="gallery-item">
+    background:
+        rgba(205,167,90,.08);
 
-                        <img
-                            src="pic7.jpg"
-                            alt="Islamic pattern"
-                            loading="lazy"
-                        >
+}
 
-                        <div class="gallery-overlay">
-                            <span>02</span>
-                            <strong>Beauty</strong>
-                        </div>
 
-                    </div>
+.hero-mosque {
 
+    position: absolute;
 
-                    <div class="gallery-item">
+    left: 0;
+    right: 0;
 
-                        <img
-                            src="celli.jpg"
-                            alt="Arabic calligraphy"
-                            loading="lazy"
-                        >
+    bottom: -35px;
 
-                        <div class="gallery-overlay">
-                            <span>03</span>
-                            <strong>Calligraphy</strong>
-                        </div>
+    height: 220px;
 
-                    </div>
+    z-index: 3;
 
+    opacity: .28;
 
-                    <div class="gallery-item gallery-wide">
+    background:
 
-                        <img
-                            src="quran2.jpg"
-                            alt="Holy Quran"
-                            loading="lazy"
-                        >
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.98),
+            transparent
+        ),
 
-                        <div class="gallery-overlay">
-                            <span>04</span>
-                            <strong>The Quran</strong>
-                        </div>
+        url("mosque2.jfif")
+        center bottom /
+        cover
+        no-repeat;
 
-                    </div>
+    filter:
+        saturate(.65)
+        blur(.5px);
 
-                </div>
+}
 
 
-                <div class="gallery-button">
+/* =========================================================
+   HERO CONTENT
+========================================================= */
 
-                    <a
-                        href="gallery/gallery.html"
-                        class="btn btn-secondary"
-                    >
-                        View Full Gallery
-                        <span>→</span>
-                    </a>
+.hero-content {
 
-                </div>
+    position: relative;
 
-            </div>
+    z-index: 10;
 
-        </section>
+    width:
+        min(
+            1220px,
+            100%
+        );
 
+    margin:
+        0 auto;
 
+    display: grid;
 
-        <!-- =================================================
-             FINAL CTA
-        ================================================== -->
-        <section class="final-cta">
+    grid-template-columns:
+        1fr
+        .95fr;
 
-            <div class="container">
+    align-items: center;
 
-                <div class="cta-box">
+    gap: 45px;
 
-                    <div class="cta-decoration"></div>
+}
 
-                    <span class="content-kicker">
-                        BEGIN YOUR JOURNEY
-                    </span>
 
-                    <h2>
-                        Walk with the light
-                        <span>of knowledge.</span>
-                    </h2>
+/* =========================================================
+   HERO TEXT
+========================================================= */
 
-                    <p>
-                        Learn. Remember. Recite. Reflect.
-                    </p>
+.hero-text {
 
-                    <a
-                        href="quran/quran.html"
-                        class="btn btn-primary"
-                    >
-                        Start Learning
-                        <span>→</span>
-                    </a>
+    position: relative;
 
-                </div>
+    z-index: 20;
 
-            </div>
+}
 
-        </section>
 
+.arabic-intro {
 
-    </main>
+    display: flex;
 
+    align-items: center;
 
+    gap: 13px;
 
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-    <footer class="footer">
+    width: fit-content;
 
-        <div class="container">
+    margin-bottom: 17px;
 
-            <div class="footer-top">
+}
 
 
-                <!-- Brand -->
-                <div class="footer-brand">
+.arabic-intro p {
 
-                    <a href="index.html" class="logo">
+    color:
+        var(--gold-light);
 
-                        <div class="logo-mark">
-                            <span>IS</span>
-                        </div>
+    font-size: 22px;
 
-                        <div class="logo-text">
-                            <strong>ISLAMIC</strong>
-                            <span>SOLDIER</span>
-                        </div>
+    direction: rtl;
 
-                    </a>
+    text-shadow:
+        0 0 20px rgba(205,167,90,.28);
 
-                    <p>
-                        A place for Quran, knowledge, reflection and
-                        remembrance.
-                    </p>
+}
 
-                </div>
 
+.arabic-intro span {
 
-                <!-- Quick links -->
-                <div class="footer-column">
+    width: 32px;
 
-                    <h3>Explore</h3>
+    height: 1px;
 
-                    <a href="quran/quran.html">Quran</a>
-                    <a href="tilawat/tilawat.html">Tilawat</a>
-                    <a href="qibla/qibla.html">Qibla</a>
-                    <a href="tasbih/tasbih.html">Tasbih</a>
-                    <a href="dua/dua.html">Dua</a>
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold)
+        );
 
-                </div>
+}
 
 
-                <!-- Website -->
-                <div class="footer-column">
+.arabic-intro span:last-child {
 
-                    <h3>Website</h3>
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
 
-                    <a href="index.html">Home</a>
-                    <a href="about/about.html">About</a>
-                    <a href="quotes/quotes.html">Quotes</a>
-                    <a href="gallery/gallery.html">Gallery</a>
+}
 
-                </div>
 
+.hero-kicker {
 
-                <!-- Social -->
-                <div class="footer-column footer-social">
+    display: flex;
 
-                    <h3>Connect</h3>
+    align-items: center;
 
-                    <div class="social-links">
+    gap: 9px;
 
-                        <a
-                            href="#"
-                            aria-label="Facebook"
-                            title="Facebook"
-                        >
-                            f
-                        </a>
+    margin-bottom: 19px;
 
-                        <a
-                            href="#"
-                            aria-label="Instagram"
-                            title="Instagram"
-                        >
-                            ◎
-                        </a>
+    color:
+        var(--emerald);
 
-                        <a
-                            href="#"
-                            aria-label="YouTube"
-                            title="YouTube"
-                        >
-                            ▶
-                        </a>
+    font-family:
+        Arial,
+        sans-serif;
 
-                        <a
-                            href="#"
-                            aria-label="Messenger"
-                            title="Messenger"
-                        >
-                            ◆
-                        </a>
+    font-size: 8px;
 
-                    </div>
+    letter-spacing:
+        2px;
 
-                </div>
+    font-weight: 800;
 
-            </div>
+}
 
 
-            <div class="footer-bottom">
+.kicker-line {
 
-                <p>
-                    © 2026 Islamic Soldier. All rights reserved.
-                </p>
+    width: 25px;
+    height: 1px;
 
-                <p>
-                    Made with
-                    <span>♥</span>
-                    for Islamic knowledge.
-                </p>
+    background:
+        var(--emerald);
 
-            </div>
+    box-shadow:
+        0 0 12px
+        rgba(0,216,180,.55);
 
-        </div>
+}
 
-    </footer>
 
+.hero h1 {
 
+    max-width: 700px;
 
-    <!-- =====================================================
-         MAIN JAVASCRIPT
-    ====================================================== -->
-    <script src="script.js"></script>
+    font-size:
+        clamp(
+            50px,
+            6vw,
+            82px
+        );
 
+    line-height:
+        .97;
 
-    <!-- =====================================================
-         BASIC HEADER / THEME SCRIPT
-    ====================================================== -->
-    <script>
+    letter-spacing:
+        -2.8px;
 
-        /* =========================================
-           THEME TOGGLE
-        ========================================== */
+    font-weight:
+        700;
 
-        const themeToggle = document.getElementById("theme-toggle");
-        const themeIcon = document.querySelector(".theme-icon");
+    text-shadow:
+        0 18px 45px
+        rgba(0,0,0,.55);
 
-        const savedTheme = localStorage.getItem("islamic-theme");
+}
 
-        if (savedTheme === "light") {
-            document.body.classList.add("light");
-            themeIcon.textContent = "☀";
-        }
 
+.hero h1 strong {
 
-        if (themeToggle) {
+    color:
+        var(--emerald);
 
-            themeToggle.addEventListener("click", () => {
+    text-shadow:
+        0 0 28px
+        rgba(0,216,180,.38);
 
-                document.body.classList.toggle("light");
+}
 
-                const isLight =
-                    document.body.classList.contains("light");
 
-                localStorage.setItem(
-                    "islamic-theme",
-                    isLight ? "light" : "dark"
-                );
+.hero-description {
 
-                themeIcon.textContent =
-                    isLight ? "☀" : "☾";
+    max-width: 590px;
 
-            });
+    margin:
+        29px 0 31px;
 
-        }
+    color:
+        var(--muted);
 
+    font-family:
+        Arial,
+        sans-serif;
 
+    font-size:
+        15px;
 
-        /* =========================================
-           MOBILE MENU
-        ========================================== */
+    line-height:
+        1.85;
 
-        const menuToggle =
-            document.getElementById("menu-toggle");
+}
 
-        const mainNav =
-            document.getElementById("main-nav");
 
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
-        if (menuToggle && mainNav) {
+.hero-buttons {
 
-            menuToggle.addEventListener("click", () => {
+    display: flex;
 
-                const isOpen =
-                    mainNav.classList.toggle("open");
+    align-items: center;
 
-                menuToggle.classList.toggle("active", isOpen);
+    flex-wrap: wrap;
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    isOpen ? "true" : "false"
-                );
+    gap: 12px;
 
-            });
+}
 
 
-            /* Close menu after clicking a link */
+.primary-btn,
+.secondary-btn {
 
-            mainNav
-                .querySelectorAll("a")
-                .forEach(link => {
+    min-height: 53px;
 
-                    link.addEventListener("click", () => {
+    padding:
+        0 19px;
 
-                        mainNav.classList.remove("open");
+    display: inline-flex;
 
-                        menuToggle.classList.remove("active");
+    align-items: center;
 
-                        menuToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
+    justify-content: center;
 
-                    });
+    gap: 10px;
 
-                });
+    border-radius:
+        999px;
 
-        }
+    font-family:
+        Arial,
+        sans-serif;
 
+    font-size:
+        11px;
 
+    font-weight:
+        800;
 
-        /* =========================================
-           SCROLL PROGRESS
-        ========================================== */
+    transition:
+        .28s ease;
 
-        const progressBar =
-            document.getElementById("progress-bar");
+}
 
 
-        window.addEventListener("scroll", () => {
+.primary-btn {
 
-            if (!progressBar) return;
+    color:
+        #001514;
 
-            const scrollTop =
-                window.scrollY;
+    background:
+        linear-gradient(
+            135deg,
+            var(--emerald-bright),
+            var(--emerald)
+        );
 
-            const documentHeight =
-                document.documentElement.scrollHeight -
-                window.innerHeight;
+    box-shadow:
+        0 13px 35px
+        rgba(0,216,180,.22);
 
-            const progress =
-                documentHeight > 0
-                    ? (scrollTop / documentHeight) * 100
-                    : 0;
+}
 
-            progressBar.style.width =
-                progress + "%";
 
-        });
+.primary-btn b,
+.secondary-btn b {
 
+    font-size:
+        16px;
 
+}
 
-        /* =========================================
-           ACTIVE HEADER EFFECT
-        ========================================== */
 
-        const header =
-            document.getElementById("header");
+.primary-btn:hover {
 
+    transform:
+        translateY(-4px);
 
-        window.addEventListener("scroll", () => {
+    box-shadow:
+        0 18px 45px
+        rgba(0,216,180,.38);
 
-            if (!header) return;
+}
 
-            if (window.scrollY > 30) {
 
-                header.classList.add("scrolled");
+.secondary-btn {
 
-            } else {
+    color:
+        var(--white);
 
-                header.classList.remove("scrolled");
+    background:
+        rgba(0,216,180,.04);
 
-            }
+    border:
+        1px solid
+        rgba(0,216,180,.34);
 
-        });
+}
 
 
+.secondary-btn:hover {
 
-        /* =========================================
-           SIMPLE REVEAL ANIMATION
-        ========================================== */
+    color:
+        #001514;
 
-        const revealElements =
-            document.querySelectorAll(
-                ".feature-card, .quote-card, .gallery-item, .quran-feature-box, .final-cta"
+    background:
+        var(--emerald);
+
+    transform:
+        translateY(-4px);
+
+}
+
+
+/* =========================================================
+   HERO STATS
+========================================================= */
+
+.hero-stats {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin-top:
+        34px;
+
+}
+
+
+.hero-stat {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.hero-stat strong {
+
+    color:
+        var(--gold-light);
+
+    font-size:
+        19px;
+
+}
+
+
+.hero-stat span {
+
+    color:
+        var(--muted-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        1.5px;
+
+}
+
+
+.stat-divider {
+
+    width: 1px;
+
+    height: 29px;
+
+    background:
+        rgba(255,255,255,.12);
+
+}
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.hero-visual {
+
+    position: relative;
+
+    min-height:
+        550px;
+
+    display: grid;
+
+    place-items:
+        center;
+
+}
+
+
+.visual-aura {
+
+    position: absolute;
+
+    width:
+        450px;
+
+    height:
+        450px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(0,216,180,.15);
+
+    filter:
+        blur(80px);
+
+}
+
+
+.visual-orbit {
+
+    position: absolute;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid
+        rgba(0,216,180,.22);
+
+}
+
+
+.orbit-one {
+
+    width:
+        520px;
+
+    height:
+        315px;
+
+    transform:
+        rotate(-18deg);
+
+}
+
+
+.orbit-two {
+
+    width:
+        570px;
+
+    height:
+        355px;
+
+    border-color:
+        rgba(205,167,90,.19);
+
+    transform:
+        rotate(26deg);
+
+}
+
+
+/* =========================================================
+   CRESCENT
+========================================================= */
+
+.crescent {
+
+    position: absolute;
+
+    right:
+        12%;
+
+    top:
+        5%;
+
+    width:
+        67px;
+
+    height:
+        67px;
+
+    border-radius:
+        50%;
+
+    border:
+        2px solid
+        var(--gold);
+
+    box-shadow:
+        0 0 30px
+        rgba(205,167,90,.16);
+
+}
+
+
+.crescent::after {
+
+    content: "";
+
+    position: absolute;
+
+    width:
+        67px;
+
+    height:
+        67px;
+
+    left:
+        18px;
+
+    top:
+        -8px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(2,9,10,.96);
+
+}
+
+
+/* =========================================================
+   PORTRAIT
+========================================================= */
+
+.portrait-frame {
+
+    position: relative;
+
+    width:
+        min(
+            430px,
+            72vw
+        );
+
+    aspect-ratio:
+        1;
+
+    z-index: 5;
+
+}
+
+
+.portrait-glow {
+
+    position: absolute;
+
+    inset:
+        12%;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(0,216,180,.22);
+
+    filter:
+        blur(45px);
+
+}
+
+
+.portrait-inner {
+
+    position: absolute;
+
+    inset:
+        26px;
+
+    overflow: hidden;
+
+    border-radius:
+        50%;
+
+    background:
+        #082d2d;
+
+    border:
+        5px solid
+        rgba(0,216,180,.85);
+
+    box-shadow:
+
+        0 0 0 9px
+        rgba(0,216,180,.045),
+
+        0 0 0 20px
+        rgba(205,167,90,.035),
+
+        0 0 55px
+        rgba(0,216,180,.42),
+
+        0 30px 80px
+        rgba(0,0,0,.58);
+
+}
+
+
+.hero-person {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    object-position:
+        center;
+
+    border-radius:
+        50%;
+
+    filter:
+        saturate(.92)
+        contrast(1.08);
+
+}
+
+
+.portrait-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            circle at 40% 25%,
+            transparent,
+            rgba(0,0,0,.25)
+        ),
+
+        linear-gradient(
+            to bottom,
+            transparent 55%,
+            rgba(0,0,0,.30)
+        );
+
+}
+
+
+.portrait-border {
+
+    position: absolute;
+
+    inset:
+        12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius:
+        50%;
+
+}
+
+
+.gold-ring {
+
+    position: absolute;
+
+    inset:
+        5px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px dashed
+        rgba(205,167,90,.52);
+
+    transform:
+        rotate(8deg);
+
+    pointer-events:
+        none;
+
+}
+
+
+/* =========================================================
+   FLOATING CARDS
+========================================================= */
+
+.floating-card {
+
+    position: absolute;
+
+    z-index: 10;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        10px 13px;
+
+    background:
+        rgba(4,19,21,.88);
+
+    border:
+        1px solid
+        rgba(0,216,180,.22);
+
+    border-radius:
+        15px;
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 18px 45px
+        rgba(0,0,0,.38);
+
+}
+
+
+.floating-icon {
+
+    width:
+        36px;
+
+    height:
+        36px;
+
+    display: grid;
+
+    place-items:
+        center;
+
+    background:
+        rgba(0,216,180,.10);
+
+    border:
+        1px solid
+        rgba(0,216,180,.13);
+
+    border-radius:
+        11px;
+
+}
+
+
+.floating-icon.gold {
+
+    background:
+        rgba(205,167,90,.10);
+
+    border-color:
+        rgba(205,167,90,.18);
+
+}
+
+
+.floating-card small {
+
+    display: block;
+
+    color:
+        var(--muted-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        1.2px;
+
+}
+
+
+.floating-card strong {
+
+    display: block;
+
+    margin-top:
+        2px;
+
+    color:
+        var(--white);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+}
+
+
+.floating-quran {
+
+    left:
+        0;
+
+    bottom:
+        18%;
+
+}
+
+
+.floating-tilawat {
+
+    right:
+        -1%;
+
+    top:
+        17%;
+
+}
+
+
+/* =========================================================
+   VISUAL DOTS
+========================================================= */
+
+.visual-dot {
+
+    position:
+        absolute;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--emerald);
+
+    box-shadow:
+        0 0 18px
+        rgba(0,216,180,.80);
+
+    z-index:
+        12;
+
+}
+
+
+.dot-one {
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    left:
+        7%;
+
+    top:
+        20%;
+
+}
+
+
+.dot-two {
+
+    width:
+        4px;
+
+    height:
+        4px;
+
+    right:
+        10%;
+
+    bottom:
+        17%;
+
+}
+
+
+.dot-three {
+
+    width:
+        10px;
+
+    height:
+        10px;
+
+    right:
+        18%;
+
+    top:
+        7%;
+
+}
+
+
+/* =========================================================
+   HERO BOTTOM ORNAMENT
+========================================================= */
+
+.hero-bottom-ornament {
+
+    position:
+        absolute;
+
+    bottom:
+        30px;
+
+    left:
+        50%;
+
+    transform:
+        translateX(-50%);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        13px;
+
+    z-index:
+        10;
+
+}
+
+
+.hero-bottom-ornament span {
+
+    width:
+        55px;
+
+    height:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold)
+        );
+
+}
+
+
+.hero-bottom-ornament span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
+
+}
+
+
+.hero-bottom-ornament i {
+
+    color:
+        var(--gold);
+
+    font-style:
+        normal;
+
+    font-size:
+        11px;
+
+}
+
+
+/* =========================================================
+   NASHEED
+========================================================= */
+
+.nasheed-section {
+
+    width:
+        min(
+            1080px,
+            92%
+        );
+
+    margin:
+        -26px auto 0;
+
+    position:
+        relative;
+
+    z-index:
+        50;
+
+}
+
+
+.nasheed-player {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.25fr
+        auto
+        1.35fr;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+
+    padding:
+        18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(10,40,41,.96),
+            rgba(3,17,19,.96)
+        );
+
+    border:
+        1px solid
+        rgba(0,216,180,.17);
+
+    border-radius:
+        24px;
+
+    box-shadow:
+        var(--shadow);
+
+    backdrop-filter:
+        blur(20px);
+
+}
+
+
+.nasheed-info {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    min-width:
+        0;
+
+}
+
+
+.nasheed-icon {
+
+    width:
+        46px;
+
+    height:
+        46px;
+
+    flex:
+        0 0 46px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    color:
+        var(--gold-light);
+
+    background:
+        rgba(205,167,90,.09);
+
+    border:
+        1px solid
+        rgba(205,167,90,.18);
+
+    border-radius:
+        14px;
+
+    font-size:
+        23px;
+
+}
+
+
+.player-label {
+
+    color:
+        var(--emerald);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1.5px;
+
+}
+
+
+.nasheed-text h3 {
+
+    margin-top:
+        3px;
+
+    font-size:
+        15px;
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+}
+
+
+.nasheed-text p {
+
+    margin-top:
+        3px;
+
+    color:
+        var(--muted-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        9px;
+
+}
+
+
+/* =========================================================
+   NASHEED CONTROLS
+========================================================= */
+
+.nasheed-controls {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+}
+
+
+.control-btn,
+.play-btn {
+
+    border:
+        0;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s ease;
+
+}
+
+
+.control-btn {
+
+    width:
+        34px;
+
+    height:
+        34px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    color:
+        rgba(255,255,255,.70);
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:
+        50%;
+
+}
+
+
+.play-btn {
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    color:
+        #001514;
+
+    background:
+        var(--emerald);
+
+    border-radius:
+        50%;
+
+    box-shadow:
+        0 0 25px
+        rgba(0,216,180,.25);
+
+}
+
+
+.control-btn:hover {
+
+    color:
+        var(--emerald);
+
+    border-color:
+        rgba(0,216,180,.30);
+
+}
+
+
+.play-btn:hover {
+
+    transform:
+        scale(1.07);
+
+    box-shadow:
+        0 0 35px
+        rgba(0,216,180,.42);
+
+}
+
+
+/* =========================================================
+   NASHEED PROGRESS
+========================================================= */
+
+.nasheed-progress {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    color:
+        var(--muted-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+}
+
+
+#progress {
+
+    width:
+        100%;
+
+    accent-color:
+        var(--emerald);
+
+}
+
+
+/* =========================================================
+   PLAYLIST
+========================================================= */
+
+.nasheed-playlist {
+
+    grid-column:
+        1 / -1;
+
+    max-height:
+        0;
+
+    overflow:
+        hidden;
+
+}
+
+
+.playlist-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        var(--muted-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.features-section,
+.reminder-section,
+.quotes-section,
+.gallery-section {
+
+    width:
+        min(
+            1180px,
+            92%
+        );
+
+    margin:
+        0 auto;
+
+    padding:
+        105px 0 25px;
+
+}
+
+
+.section-heading {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        18px;
+
+    text-align:
+        center;
+
+    margin-bottom:
+        40px;
+
+}
+
+
+.section-heading > div:nth-child(2) {
+
+    min-width:
+        180px;
+
+}
+
+
+.section-heading span {
+
+    display:
+        block;
+
+    color:
+        var(--emerald);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2px;
+
+}
+
+
+.section-heading h2 {
+
+    margin-top:
+        7px;
+
+    font-size:
+        clamp(
+            29px,
+            4vw,
+            43px
+        );
+
+}
+
+
+.heading-ornament {
+
+    color:
+        var(--gold);
+
+    font-size:
+        17px;
+
+    text-shadow:
+        0 0 15px
+        rgba(205,167,90,.25);
+
+}
+
+
+/* =========================================================
+   FEATURES GRID
+========================================================= */
+
+.features-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap:
+        14px;
+
+}
+
+
+.feature-card {
+
+    position:
+        relative;
+
+    min-height:
+        335px;
+
+    overflow:
+        hidden;
+
+    padding:
+        22px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        flex-end;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(9,39,40,.88),
+            rgba(2,14,16,.97)
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        0 20px 55px
+        rgba(0,0,0,.20);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+}
+
+
+.feature-card:hover {
+
+    transform:
+        translateY(-9px);
+
+    border-color:
+        rgba(0,216,180,.44);
+
+    box-shadow:
+        0 28px 70px
+        rgba(0,0,0,.38),
+
+        0 0 35px
+        rgba(0,216,180,.07);
+
+}
+
+
+.card-image {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+}
+
+
+.card-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    opacity:
+        .45;
+
+    transition:
+        transform .65s ease,
+        opacity .4s ease;
+
+}
+
+
+.feature-card:hover
+.card-image img {
+
+    transform:
+        scale(1.08);
+
+    opacity:
+        .61;
+
+}
+
+
+.feature-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+
+        linear-gradient(
+            to top,
+            rgba(1,8,9,.99) 5%,
+            rgba(1,8,9,.80) 45%,
+            rgba(1,8,9,.12) 100%
+        );
+
+}
+
+
+.arabic-card-pattern {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    opacity:
+        .07;
+
+    background:
+        linear-gradient(
+            45deg,
+            transparent 45%,
+            var(--gold) 46%,
+            transparent 47%
+        );
+
+    background-size:
+        50px 50px;
+
+}
+
+
+.feature-content {
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+}
+
+
+.feature-icon {
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    margin-bottom:
+        14px;
+
+    background:
+        rgba(0,216,180,.09);
+
+    border:
+        1px solid
+        rgba(0,216,180,.16);
+
+    border-radius:
+        14px;
+
+    font-size:
+        20px;
+
+}
+
+
+.gold-icon {
+
+    background:
+        rgba(205,167,90,.09);
+
+    border-color:
+        rgba(205,167,90,.18);
+
+}
+
+
+.feature-kicker {
+
+    color:
+        var(--emerald);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        7px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1.2px;
+
+}
+
+
+.feature-card h3 {
+
+    margin:
+        6px 0 7px;
+
+    font-size:
+        24px;
+
+}
+
+
+.feature-card p {
+
+    color:
+        var(--muted);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.65;
+
+}
+
+
+.feature-link {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    margin-top:
+        14px;
+
+    color:
+        var(--white);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        9px;
+
+    font-weight:
+        800;
+
+}
+
+
+.feature-link b {
+
+    color:
+        var(--emerald);
+
+    font-size:
+        15px;
+
+}
+
+
+/* =========================================================
+   QURAN FEATURE
+========================================================= */
+
+.quran-feature {
+
+    width:
+        min(
+            1120px,
+            92%
+        );
+
+    min-height:
+        550px;
+
+    margin:
+        105px auto 20px;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    align-items:
+        center;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(3,14,15,.40),
+            rgba(3,14,15,.97)
+        ),
+
+        url("pic7.jfif")
+        center /
+        cover
+        no-repeat;
+
+    border:
+        1px solid
+        var(--gold-border);
+
+    border-radius:
+        34px;
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.quran-feature::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(205,167,90,.13),
+            transparent 30%
+        );
+
+    pointer-events:
+        none;
+
+}
+
+
+.quran-feature-art {
+
+    position:
+        relative;
+
+    min-height:
+        550px;
+
+    padding:
+        35px;
+
+    z-index:
+        2;
+
+}
+
+
+.quran-frame-glow {
+
+    position:
+        absolute;
+
+    width:
+        60%;
+
+    height:
+        60%;
+
+    left:
+        20%;
+
+    top:
+        20%;
+
+    background:
+        rgba(205,167,90,.16);
+
+    filter:
+        blur(65px);
+
+}
+
+
+.quran-image-frame {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        27px;
+
+    border:
+        1px solid
+        rgba(205,167,90,.26);
+
+    box-shadow:
+        0 30px 65px
+        rgba(0,0,0,.50);
+
+}
+
+
+.quran-image-frame img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+}
+
+
+.quran-image-shade {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.52),
+            transparent 60%
+        );
+
+}
+
+
+.quran-decoration {
+
+    position:
+        absolute;
+
+    right:
+        48px;
+
+    bottom:
+        45px;
+
+    width:
+        74px;
+
+    height:
+        74px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    color:
+        var(--gold-light);
+
+    background:
+        rgba(3,14,15,.78);
+
+    border:
+        1px solid
+        var(--gold-border);
+
+    border-radius:
+        50%;
+
+    backdrop-filter:
+        blur(10px);
+
+    z-index:
+        5;
+
+}
+
+
+.quran-decoration span {
+
+    font-size:
+        27px;
+
+}
+
+
+.quran-feature-content {
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    padding:
+        55px;
+
+}
+
+
+.section-kicker {
+
+    color:
+        var(--emerald);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        2px;
+
+}
+
+
+.quran-feature-content h2 {
+
+    max-width:
+        480px;
+
+    margin:
+        15px 0 18px;
+
+    font-size:
+        clamp(
+            38px,
+            5vw,
+            58px
+        );
+
+    line-height:
+        1.03;
+
+}
+
+
+.quran-feature-content h2 span {
+
+    display:
+        block;
+
+    color:
+        var(--gold-light);
+
+}
+
+
+.quran-feature-content > p {
+
+    max-width:
+        470px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.8;
+
+}
+
+
+.quran-feature-points {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:
+        12px 20px;
+
+    margin:
+        25px 0 30px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+}
+
+
+.quran-feature-points span {
+
+    color:
+        var(--emerald);
+
+    margin-right:
+        5px;
+
+}
+
+
+.gold-btn {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    min-height:
+        46px;
+
+    padding:
+        0 20px;
+
+    color:
+        #171105;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
+
+    border-radius:
+        999px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        800;
+
+    box-shadow:
+        0 12px 35px
+        rgba(205,167,90,.18);
+
+    transition:
+        .25s ease;
+
+}
+
+
+.gold-btn:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 17px 42px
+        rgba(205,167,90,.30);
+
+}
+
+
+/* =========================================================
+   ARABIC BAND
+========================================================= */
+
+.arabic-band {
+
+    position:
+        relative;
+
+    width:
+        min(
+            1180px,
+            92%
+        );
+
+    min-height:
+        260px;
+
+    margin:
+        100px auto 0;
+
+    overflow:
+        hidden;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        var(--gold-border);
+
+    border-radius:
+        30px;
+
+    background:
+        #071719;
+
+}
+
+
+.arabic-band-image {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        url("calligraphy.jpg")
+        center /
+        cover
+        no-repeat;
+
+    opacity:
+        .30;
+
+    filter:
+        saturate(.65);
+
+}
+
+
+.arabic-band::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(1,10,11,.80),
+            rgba(1,10,11,.35),
+            rgba(1,10,11,.80)
+        );
+
+}
+
+
+.arabic-band-content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+.arabic-band-content span {
+
+    display:
+        block;
+
+    color:
+        var(--gold-light);
+
+    font-size:
+        31px;
+
+    direction:
+        rtl;
+
+}
+
+
+.arabic-band-content h2 {
+
+    margin-top:
+        8px;
+
+    font-size:
+        34px;
+
+}
+
+
+.arabic-band-content p {
+
+    margin-top:
+        8px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+}
+
+
+/* =========================================================
+   REMINDER CARDS
+========================================================= */
+
+.reminder-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        16px;
+
+}
+
+
+.reminder-card {
+
+    position:
+        relative;
+
+    min-height:
+        280px;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        25px;
+
+    background:
+        var(--card);
+
+    transition:
+        .3s ease;
+
+}
+
+
+.reminder-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(0,216,180,.35);
+
+}
+
+
+.reminder-image {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+}
+
+
+.reminder-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    opacity:
+        .48;
+
+    transition:
+        .5s ease;
+
+}
+
+
+.reminder-card:hover
+.reminder-image img {
+
+    transform:
+        scale(1.06);
+
+    opacity:
+        .60;
+
+}
+
+
+.reminder-card::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(1,8,9,.96),
+            rgba(1,8,9,.25)
+        );
+
+}
+
+
+.reminder-content {
+
+    position:
+        absolute;
+
+    left:
+        22px;
+
+    right:
+        22px;
+
+    bottom:
+        20px;
+
+    z-index:
+        4;
+
+}
+
+
+.reminder-icon {
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    width:
+        43px;
+
+    height:
+        43px;
+
+    margin-bottom:
+        12px;
+
+    background:
+        rgba(0,216,180,.10);
+
+    border:
+        1px solid
+        rgba(0,216,180,.16);
+
+    border-radius:
+        13px;
+
+}
+
+
+.reminder-icon.gold {
+
+    background:
+        rgba(205,167,90,.10);
+
+    border-color:
+        rgba(205,167,90,.17);
+
+}
+
+
+.reminder-content h3 {
+
+    font-size:
+        22px;
+
+}
+
+
+.reminder-content p {
+
+    margin-top:
+        5px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.6;
+
+}
+
+
+/* =========================================================
+   QUOTES
+========================================================= */
+
+.quote-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:
+        15px;
+
+}
+
+
+.quote-card {
+
+    min-height:
+        270px;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    padding:
+        24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,34,35,.90),
+            rgba(2,13,15,.96)
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        25px;
+
+    transition:
+        .3s ease;
+
+}
+
+
+.quote-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        150px;
+
+    height:
+        150px;
+
+    right:
+        -60px;
+
+    top:
+        -60px;
+
+    border:
+        1px solid
+        rgba(205,167,90,.14);
+
+    border-radius:
+        50%;
+
+}
+
+
+.quote-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(205,167,90,.30);
+
+}
+
+
+.quote-top {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+}
+
+
+.quote-top span {
+
+    color:
+        var(--gold-light);
+
+    font-size:
+        21px;
+
+}
+
+
+.quote-top b {
+
+    color:
+        var(--muted-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+}
+
+
+.quote-mark {
+
+    margin-top:
+        30px;
+
+    color:
+        var(--emerald);
+
+    font-size:
+        50px;
+
+    line-height:
+        .5;
+
+}
+
+
+.quote-card p {
+
+    margin-top:
+        17px;
+
+    color:
+        var(--white);
+
+    font-size:
+        19px;
+
+    line-height:
+        1.45;
+
+}
+
+
+.quote-card small {
+
+    position:
+        absolute;
+
+    left:
+        24px;
+
+    bottom:
+        22px;
+
+    color:
+        var(--gold-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        9px;
+
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.25fr
+        .75fr
+        .75fr;
+
+    grid-template-rows:
+        245px
+        245px;
+
+    gap:
+        14px;
+
+}
+
+
+.gallery-card {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    min-height:
+        220px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        23px;
+
+    background:
+        #071718;
+
+}
+
+
+.gallery-card.gallery-large {
+
+    grid-row:
+        1 / 3;
+
+}
+
+
+.gallery-card.gallery-wide {
+
+    grid-column:
+        2 / 4;
+
+}
+
+
+.gallery-card img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    transition:
+        transform .65s ease;
+
+}
+
+
+.gallery-card:hover img {
+
+    transform:
+        scale(1.08);
+
+}
+
+
+.gallery-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.88),
+            transparent 60%
+        );
+
+}
+
+
+.gallery-card figcaption {
+
+    position:
+        absolute;
+
+    left:
+        18px;
+
+    right:
+        18px;
+
+    bottom:
+        17px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    z-index:
+        3;
+
+}
+
+
+.gallery-card figcaption > span {
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    color:
+        var(--gold-light);
+
+    background:
+        rgba(2,11,12,.75);
+
+    border:
+        1px solid
+        var(--gold-border);
+
+    border-radius:
+        10px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+}
+
+
+.gallery-card figcaption small {
+
+    display:
+        block;
+
+    color:
+        var(--emerald);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        7px;
+
+    letter-spacing:
+        1.3px;
+
+}
+
+
+.gallery-card figcaption strong {
+
+    display:
+        block;
+
+    margin-top:
+        3px;
+
+    color:
+        white;
+
+    font-size:
+        15px;
+
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.final-cta {
+
+    position:
+        relative;
+
+    width:
+        min(
+            1180px,
+            92%
+        );
+
+    min-height:
+        350px;
+
+    margin:
+        110px auto 0;
+
+    overflow:
+        hidden;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    text-align:
+        center;
+
+    border:
+        1px solid
+        var(--gold-border);
+
+    border-radius:
+        32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #061d1d,
+            #071212
+        );
+
+}
+
+
+.cta-pattern {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    opacity:
+        .12;
+
+    background:
+        linear-gradient(
+            45deg,
+            transparent 45%,
+            var(--gold) 46%,
+            transparent 47%
+        );
+
+    background-size:
+        70px 70px;
+
+}
+
+
+.cta-content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+.cta-arabic {
+
+    display:
+        block;
+
+    color:
+        var(--gold-light);
+
+    font-size:
+        27px;
+
+    margin-bottom:
+        12px;
+
+    direction:
+        rtl;
+
+}
+
+
+.cta-content h2 {
+
+    margin:
+        13px 0;
+
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            55px
+        );
+
+}
+
+
+.cta-content h2 span {
+
+    color:
+        var(--emerald);
+
+}
+
+
+.cta-content p {
+
+    max-width:
+        540px;
+
+    margin:
+        0 auto 22px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    margin-top:
+        110px;
+
+    padding:
+        65px 7% 25px;
+
+    background:
+        #02090a;
+
+    border-top:
+        1px solid
+        rgba(0,216,180,.10);
+
+}
+
+
+.footer-pattern {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    opacity:
+        .04;
+
+    background:
+        linear-gradient(
+            30deg,
+            transparent 45%,
+            var(--gold) 46%,
+            transparent 47%
+        );
+
+    background-size:
+        80px 80px;
+
+}
+
+
+.footer-top {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        min(
+            1180px,
+            100%
+        );
+
+    margin:
+        0 auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.7fr
+        .8fr
+        .8fr;
+
+    gap:
+        60px;
+
+    padding-bottom:
+        40px;
+
+}
+
+
+.footer-logo {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    font-size:
+        23px;
+
+    font-weight:
+        700;
+
+}
+
+
+.footer-logo span {
+
+    color:
+        var(--gold-light);
+
+}
+
+
+.footer-logo b {
+
+    color:
+        var(--emerald);
+
+}
+
+
+.footer-brand p {
+
+    max-width:
+        350px;
+
+    margin-top:
+        14px;
+
+    color:
+        var(--muted-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.8;
+
+}
+
+
+.footer-social {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        8px;
+
+    margin-top:
+        19px;
+
+}
+
+
+.footer-social a {
+
+    padding:
+        8px 11px;
+
+    color:
+        var(--muted);
+
+    border:
+        1px solid
+        rgba(0,216,180,.13);
+
+    border-radius:
+        999px;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+    transition:
+        .2s ease;
+
+}
+
+
+.footer-social a:hover {
+
+    color:
+        #001514;
+
+    background:
+        var(--emerald);
+
+}
+
+
+.footer-links {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        10px;
+
+}
+
+
+.footer-links h4 {
+
+    margin-bottom:
+        7px;
+
+    color:
+        var(--gold-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        1.7px;
+
+}
+
+
+.footer-links a {
+
+    width:
+        fit-content;
+
+    color:
+        var(--muted-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    transition:
+        .2s ease;
+
+}
+
+
+.footer-links a:hover {
+
+    color:
+        var(--emerald);
+
+    transform:
+        translateX(3px);
+
+}
+
+
+.footer-bottom {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        min(
+            1180px,
+            100%
+        );
+
+    margin:
+        0 auto;
+
+    padding-top:
+        20px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+    color:
+        var(--muted-light);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size:
+        8px;
+
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.feature-card,
+.quran-feature,
+.reminder-card,
+.quote-card,
+.gallery-card,
+.final-cta {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity .65s ease,
+        transform .65s ease;
+
+}
+
+
+.feature-card.visible,
+.quran-feature.visible,
+.reminder-card.visible,
+.quote-card.visible,
+.gallery-card.visible,
+.final-cta.visible {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   LIGHT MODE COMPONENTS
+========================================================= */
+
+[data-home-theme="light"] .feature-card,
+[data-home-theme="light"] .quote-card,
+[data-home-theme="light"] .nasheed-player {
+
+    background:
+        rgba(255,255,255,.72);
+
+}
+
+
+[data-home-theme="light"] .feature-overlay {
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(3,20,21,.90),
+            rgba(3,20,21,.20)
+        );
+
+}
+
+
+[data-home-theme="light"] .hero {
+
+    background:
+        var(--bg-soft);
+
+}
+
+
+[data-home-theme="light"] .hero-bg {
+
+    opacity:
+        .22;
+
+}
+
+
+[data-home-theme="light"] .hero::before {
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--bg)
+        );
+
+}
+
+
+[data-home-theme="light"] .footer {
+
+    background:
+        #dcece8;
+
+}
+
+
+[data-home-theme="light"] .floating-card {
+
+    background:
+        rgba(255,255,255,.84);
+
+    color:
+        #082122;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+
+    .header {
+
+        left:
+            3%;
+
+        width:
+            94%;
+
+    }
+
+
+    .nav {
+
+        gap:
+            20px;
+
+    }
+
+
+    .hero {
+
+        padding-left:
+            5%;
+
+        padding-right:
+            5%;
+
+    }
+
+
+    .hero-content {
+
+        grid-template-columns:
+            1fr
+            .9fr;
+
+        gap:
+            25px;
+
+    }
+
+
+    .features-grid {
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+    }
+
+
+    .quran-feature {
+
+        width:
+            92%;
+
+    }
+
+
+    .footer {
+
+        padding-left:
+            5%;
+
+        padding-right:
+            5%;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 850px) {
+
+
+    .header {
+
+        height:
+            64px;
+
+        padding:
+            0 13px;
+
+        top:
+            10px;
+
+    }
+
+
+    .logo {
+
+        font-size:
+            17px;
+
+    }
+
+
+    .logo-mark {
+
+        width:
+            32px;
+
+        height:
+            32px;
+
+    }
+
+
+    .nav {
+
+        display:
+            none;
+
+        position:
+            absolute;
+
+        left:
+            0;
+
+        right:
+            0;
+
+        top:
+            calc(100% + 10px);
+
+        padding:
+            13px;
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+        gap:
+            5px;
+
+        background:
+            rgba(4,18,20,.96);
+
+        border:
+            1px solid
+            rgba(0,216,180,.18);
+
+        border-radius:
+            18px;
+
+        backdrop-filter:
+            blur(20px);
+
+    }
+
+
+    .nav.mobile-open {
+
+        display:
+            flex;
+
+    }
+
+
+    .nav a {
+
+        padding:
+            13px 14px;
+
+        border-radius:
+            11px;
+
+    }
+
+
+    .nav a:hover,
+    .nav a.active {
+
+        background:
+            rgba(0,216,180,.08);
+
+    }
+
+
+    .nav a.active::after {
+
+        display:
+            none;
+
+    }
+
+
+    .menu-toggle {
+
+        display:
+            flex;
+
+    }
+
+
+    .hero {
+
+        min-height:
+            auto;
+
+        padding:
+            125px 5% 70px;
+
+    }
+
+
+    .hero-content {
+
+        grid-template-columns:
+            1fr;
+
+        text-align:
+            center;
+
+    }
+
+
+    .hero-text {
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+    }
+
+
+    .hero-kicker {
+
+        justify-content:
+            center;
+
+    }
+
+
+    .hero-description {
+
+        max-width:
+            600px;
+
+    }
+
+
+    .hero-buttons {
+
+        justify-content:
+            center;
+
+    }
+
+
+    .hero-stats {
+
+        justify-content:
+            center;
+
+    }
+
+
+    .hero-visual {
+
+        min-height:
+            490px;
+
+        margin-top:
+            5px;
+
+    }
+
+
+    .floating-quran {
+
+        left:
+            7%;
+
+    }
+
+
+    .floating-tilawat {
+
+        right:
+            5%;
+
+    }
+
+
+    .features-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+
+    .quran-feature {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .quran-feature-art {
+
+        min-height:
+            390px;
+
+    }
+
+
+    .quran-feature-content {
+
+        padding:
+            10px 35px 40px;
+
+    }
+
+
+    .reminder-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .reminder-card:last-child {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+
+    .quote-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .quote-card:last-child {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+
+    .gallery-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        grid-template-rows:
+            230px 230px;
+
+    }
+
+
+    .gallery-card.gallery-large {
+
+        grid-row:
+            auto;
+
+    }
+
+
+    .gallery-card.gallery-wide {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+
+    .footer-top {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .footer-brand {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+@media (max-width: 600px) {
+
+
+    .header {
+
+        width:
+            94%;
+
+        left:
+            3%;
+
+    }
+
+
+    #theme-toggle {
+
+        padding:
+            0 10px;
+
+        font-size:
+            10px;
+
+    }
+
+
+    .hero {
+
+        padding:
+            120px 18px 60px;
+
+    }
+
+
+    .arabic-intro p {
+
+        font-size:
+            18px;
+
+    }
+
+
+    .hero-kicker {
+
+        font-size:
+            7px;
+
+        letter-spacing:
+            1.3px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            clamp(
+                42px,
+                13vw,
+                57px
             );
 
+        letter-spacing:
+            -1.5px;
 
-        const revealObserver =
-            new IntersectionObserver(
-                (entries, observer) => {
-
-                    entries.forEach(entry => {
-
-                        if (!entry.isIntersecting) {
-                            return;
-                        }
-
-                        entry.target.classList.add("show");
-
-                        observer.unobserve(entry.target);
-
-                    });
-
-                },
-                {
-                    threshold: 0.12
-                }
-            );
+    }
 
 
-        revealElements.forEach(element => {
+    .hero-description {
 
-            element.classList.add("fade-in");
+        font-size:
+            12px;
 
-            revealObserver.observe(element);
+        line-height:
+            1.75;
 
-        });
+    }
 
-    </script>
 
-</body>
-</html>
+    .hero-buttons {
+
+        width:
+            100%;
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .primary-btn,
+    .secondary-btn {
+
+        width:
+            100%;
+
+    }
+
+
+    .hero-stats {
+
+        width:
+            100%;
+
+        justify-content:
+            space-around;
+
+        gap:
+            5px;
+
+    }
+
+
+    .stat-divider {
+
+        height:
+            24px;
+
+    }
+
+
+    .hero-visual {
+
+        min-height:
+            390px;
+
+    }
+
+
+    .visual-orbit.orbit-one {
+
+        width:
+            330px;
+
+        height:
+            210px;
+
+    }
+
+
+    .visual-orbit.orbit-two {
+
+        width:
+            360px;
+
+        height:
+            225px;
+
+    }
+
+
+    .portrait-frame {
+
+        width:
+            285px;
+
+    }
+
+
+    .portrait-inner {
+
+        inset:
+            18px;
+
+        border-width:
+            4px;
+
+    }
+
+
+    .floating-card {
+
+        padding:
+            7px 9px;
+
+        border-radius:
+            12px;
+
+    }
+
+
+    .floating-icon {
+
+        width:
+            30px;
+
+        height:
+            30px;
+
+        font-size:
+            14px;
+
+    }
+
+
+    .floating-card small {
+
+        font-size:
+            6px;
+
+    }
+
+
+    .floating-card strong {
+
+        font-size:
+            9px;
+
+    }
+
+
+    .floating-quran {
+
+        left:
+            -2%;
+
+        bottom:
+            12%;
+
+    }
+
+
+    .floating-tilawat {
+
+        right:
+            -2%;
+
+        top:
+            9%;
+
+    }
+
+
+    .crescent {
+
+        width:
+            48px;
+
+        height:
+            48px;
+
+        right:
+            4%;
+
+    }
+
+
+    .crescent::after {
+
+        width:
+            48px;
+
+        height:
+            48px;
+
+    }
+
+
+    .nasheed-section {
+
+        width:
+            94%;
+
+    }
+
+
+    .nasheed-player {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            15px;
+
+        padding:
+            17px;
+
+    }
+
+
+    .nasheed-controls {
+
+        justify-content:
+            center;
+
+    }
+
+
+    .nasheed-progress {
+
+        width:
+            100%;
+
+    }
+
+
+    .features-section,
+    .reminder-section,
+    .quotes-section,
+    .gallery-section {
+
+        width:
+            92%;
+
+        padding-top:
+            78px;
+
+    }
+
+
+    .section-heading {
+
+        margin-bottom:
+            30px;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size:
+            28px;
+
+    }
+
+
+    .features-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap:
+            10px;
+
+    }
+
+
+    .feature-card {
+
+        min-height:
+            255px;
+
+        padding:
+            16px;
+
+        border-radius:
+            20px;
+
+    }
+
+
+    .feature-icon {
+
+        width:
+            39px;
+
+        height:
+            39px;
+
+        margin-bottom:
+            11px;
+
+        font-size:
+            17px;
+
+    }
+
+
+    .feature-card h3 {
+
+        font-size:
+            19px;
+
+    }
+
+
+    .feature-card p {
+
+        font-size:
+            9px;
+
+        line-height:
+            1.5;
+
+    }
+
+
+    .feature-link {
+
+        margin-top:
+            10px;
+
+        font-size:
+            8px;
+
+    }
+
+
+    .quran-feature {
+
+        width:
+            92%;
+
+        margin-top:
+            75px;
+
+        border-radius:
+            25px;
+
+    }
+
+
+    .quran-feature-art {
+
+        min-height:
+            290px;
+
+        padding:
+            18px;
+
+    }
+
+
+    .quran-decoration {
+
+        right:
+            30px;
+
+        bottom:
+            30px;
+
+        width:
+            55px;
+
+        height:
+            55px;
+
+    }
+
+
+    .quran-decoration span {
+
+        font-size:
+            20px;
+
+    }
+
+
+    .quran-feature-content {
+
+        padding:
+            8px 22px 28px;
+
+    }
+
+
+    .quran-feature-content h2 {
+
+        font-size:
+            37px;
+
+    }
+
+
+    .quran-feature-points {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .arabic-band {
+
+        width:
+            92%;
+
+        min-height:
+            220px;
+
+        margin-top:
+            75px;
+
+    }
+
+
+    .arabic-band-content span {
+
+        font-size:
+            24px;
+
+    }
+
+
+    .arabic-band-content h2 {
+
+        font-size:
+            28px;
+
+    }
+
+
+    .reminder-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .reminder-card:last-child {
+
+        grid-column:
+            auto;
+
+    }
+
+
+    .quote-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .quote-card:last-child {
+
+        grid-column:
+            auto;
+
+    }
+
+
+    .quote-card {
+
+        min-height:
+            240px;
+
+    }
+
+
+    .gallery-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        grid-template-rows:
+            160px 160px 160px;
+
+        gap:
+            9px;
+
+    }
+
+
+    .gallery-card.gallery-large {
+
+        grid-column:
+            1 / -1;
+
+        grid-row:
+            auto;
+
+    }
+
+
+    .gallery-card.gallery-wide {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+
+    .gallery-card figcaption {
+
+        left:
+            10px;
+
+        right:
+            10px;
+
+        bottom:
+            10px;
+
+        gap:
+            7px;
+
+    }
+
+
+    .gallery-card figcaption > span {
+
+        width:
+            25px;
+
+        height:
+            25px;
+
+        font-size:
+            7px;
+
+    }
+
+
+    .gallery-card figcaption strong {
+
+        font-size:
+            10px;
+
+    }
+
+
+    .gallery-card figcaption small {
+
+        font-size:
+            5px;
+
+    }
+
+
+    .final-cta {
+
+        width:
+            92%;
+
+        min-height:
+            300px;
+
+        margin-top:
+            75px;
+
+        border-radius:
+            25px;
+
+    }
+
+
+    .cta-arabic {
+
+        font-size:
+            21px;
+
+    }
+
+
+    .cta-content {
+
+        padding:
+            20px;
+
+    }
+
+
+    .cta-content h2 {
+
+        font-size:
+            34px;
+
+    }
+
+
+    .footer {
+
+        margin-top:
+            75px;
+
+        padding:
+            50px 7% 20px;
+
+    }
+
+
+    .footer-top {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            32px;
+
+    }
+
+
+    .footer-brand {
+
+        grid-column:
+            auto;
+
+    }
+
+
+    .footer-bottom {
+
+        flex-direction:
+            column;
+
+        text-align:
+            center;
+
+        gap:
+            8px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+========================================================= */
+
+@media (max-width: 390px) {
+
+
+    .logo-name {
+
+        font-size:
+            15px;
+
+    }
+
+
+    .logo-mark {
+
+        width:
+            30px;
+
+        height:
+            30px;
+
+    }
+
+
+    #theme-toggle {
+
+        display:
+            none;
+
+    }
+
+
+    .hero {
+
+        padding-left:
+            14px;
+
+        padding-right:
+            14px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            40px;
+
+    }
+
+
+    .features-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .feature-card {
+
+        min-height:
+            285px;
+
+    }
+
+
+    .portrait-frame {
+
+        width:
+            250px;
+
+    }
+
+
+    .hero-visual {
+
+        min-height:
+            340px;
+
+    }
+
+
+    .floating-quran {
+
+        left:
+            -4%;
+
+    }
+
+
+    .floating-tilawat {
+
+        right:
+            -4%;
+
+    }
+
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior:
+            auto;
+
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            .01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .01ms !important;
+
+    }
+
+}
