@@ -2,381 +2,456 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
-
-    <meta
-        name="description"
-        content="Islamic Soldier — Quran, Tilawat, Qibla, Tasbih, Dua and Islamic resources."
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="theme-color" content="#03090b">
+    <meta name="description"
+        content="Islamic Soldier — Quran, Tilawat, Qibla, Tasbih, Dua, Nasheed and Islamic knowledge.">
 
     <title>Islamic Soldier — Islamic Knowledge</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        rel="preload"
-        as="image"
-        href="mosque2.jfif"
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
     >
-</head>
 
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
 
-    <!-- =========================================
+    <!-- =====================================================
          SCROLL PROGRESS
-    ========================================== -->
-
-    <div
-        id="progress-bar"
-        aria-hidden="true"
-    ></div>
+    ====================================================== -->
+    <div id="progress-bar"></div>
 
 
-    <!-- =========================================
-         PREMIUM HEADER
-    ========================================== -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+    <header class="header" id="header">
 
-    <header class="header">
+        <div class="header-inner">
 
-        <a
-            href="index.html"
-            class="logo"
-            aria-label="Islamic Soldier Home"
-        >
-            <span class="logo-mark">☾</span>
+            <!-- Logo -->
+            <a href="index.html" class="logo">
 
-            <span>
-                Islamic <b>Soldier</b>
-            </span>
-        </a>
+                <div class="logo-mark">
+                    <span>IS</span>
+                </div>
 
+                <div class="logo-text">
+                    <strong>ISLAMIC</strong>
+                    <span>SOLDIER</span>
+                </div>
 
-        <nav
-            class="nav"
-            aria-label="Main navigation"
-        >
-
-            <a
-                class="active"
-                href="index.html"
-            >
-                Home
             </a>
 
-            <a href="about/about.html">
-                About
-            </a>
 
-            <a href="quotes/quotes.html">
-                Quotes
-            </a>
+            <!-- Desktop / Mobile Navigation -->
+            <nav class="main-nav" id="main-nav">
 
-            <a href="gallery/gallery.html">
-                Gallery
-            </a>
+                <a href="index.html" class="nav-link active">
+                    <span>Home</span>
+                </a>
 
-        </nav>
+                <a href="about/about.html" class="nav-link">
+                    <span>About</span>
+                </a>
+
+                <a href="quotes/quotes.html" class="nav-link">
+                    <span>Quotes</span>
+                </a>
+
+                <a href="gallery/gallery.html" class="nav-link">
+                    <span>Gallery</span>
+                </a>
+
+            </nav>
 
 
-        <button
-            id="theme-toggle"
-            class="theme-toggle"
-            type="button"
-            aria-label="Toggle light and dark theme"
-        >
-            🌙 Dark
-        </button>
+            <!-- Header Actions -->
+            <div class="header-actions">
+
+                <button
+                    class="icon-btn"
+                    id="theme-toggle"
+                    type="button"
+                    aria-label="Toggle theme"
+                >
+                    <span class="theme-icon">☾</span>
+                </button>
+
+                <button
+                    class="menu-toggle"
+                    id="menu-toggle"
+                    type="button"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
+
+        </div>
 
     </header>
 
 
-
-    <!-- =========================================
-         MAIN CONTENT
-    ========================================== -->
-
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
     <main>
 
 
-        <!-- =========================================
-             HERO
-        ========================================== -->
+        <!-- =================================================
+             HERO SECTION
+        ================================================== -->
+        <section class="hero" id="home">
 
-        <section
-            class="hero"
-            aria-labelledby="hero-title"
-        >
+            <!-- Background decoration -->
+            <div class="hero-grid"></div>
+            <div class="hero-glow hero-glow-one"></div>
+            <div class="hero-glow hero-glow-two"></div>
 
-            <div
-                class="hero-pattern"
-                aria-hidden="true"
-            ></div>
-
-            <div
-                class="hero-stars"
-                aria-hidden="true"
-            ></div>
-
-            <div
-                class="hero-mosque"
-                aria-hidden="true"
-            ></div>
+            <div class="hero-stars">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
 
-            <div class="hero-content">
+            <div class="container hero-container">
+
+                <div class="hero-grid-layout">
 
 
-                <!-- HERO TEXT -->
+                    <!-- ==============================
+                         HERO TEXT
+                    =============================== -->
+                    <div class="hero-content">
 
-                <div class="hero-text">
-
-                    <div class="eyebrow">
-
-                        <span aria-hidden="true"></span>
-
-                        <span>
+                        <div class="hero-bismillah">
                             بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
-                        </span>
+                        </div>
 
-                        <span aria-hidden="true"></span>
+                        <div class="hero-label">
+                            <span class="label-line"></span>
+                            <span>ISLAMIC KNOWLEDGE</span>
+                        </div>
+
+
+                        <div class="hero-text">
+
+                            <h1>
+                                Read in the Name of
+                                <span>Allah.</span>
+                            </h1>
+
+                            <p>
+                                Discover Quran, Tilawat, Islamic knowledge,
+                                Duas, Qibla, Tasbih and more — all in one
+                                peaceful place.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Hero buttons -->
+                        <div class="hero-buttons">
+
+                            <a
+                                href="quran/quran.html"
+                                class="btn btn-primary"
+                            >
+                                <span class="btn-icon">☰</span>
+                                <span>Explore Quran</span>
+                            </a>
+
+                            <a
+                                href="#features"
+                                class="btn btn-secondary"
+                            >
+                                <span>Explore More</span>
+                                <span class="arrow">→</span>
+                            </a>
+
+                        </div>
+
+
+                        <!-- Hero statistics -->
+                        <div class="hero-stats">
+
+                            <div class="stat-item">
+                                <strong>114</strong>
+                                <span>Surahs</span>
+                            </div>
+
+                            <div class="stat-divider"></div>
+
+                            <div class="stat-item">
+                                <strong>99</strong>
+                                <span>Names of Allah</span>
+                            </div>
+
+                            <div class="stat-divider"></div>
+
+                            <div class="stat-item">
+                                <strong>∞</strong>
+                                <span>Knowledge</span>
+                            </div>
+
+                        </div>
 
                     </div>
 
 
-                    <h1 id="hero-title">
+                    <!-- ==============================
+                         HERO VISUAL
+                    =============================== -->
+                    <div class="hero-visual">
 
-                        Read in the
+                        <div class="visual-aura"></div>
 
-                        <br>
-
-                        Name of
-                        <strong>Allah</strong>
-
-                    </h1>
+                        <div class="visual-orbit orbit-one"></div>
+                        <div class="visual-orbit orbit-two"></div>
 
 
-                    <p class="hero-description">
+                        <!-- Main portrait composition -->
+                        <div class="portrait-stage">
 
-                        Explore the Quran, learn Tilawat, find the Qibla,
-                        make Dhikr and discover beneficial Islamic resources
-                        in one beautiful place.
+                            <div class="portrait-disc">
 
+                                <div class="portrait-disc-inner">
+
+                                    <img
+                                        src="jl.jpg"
+                                        alt="Islamic Soldier"
+                                        class="hero-person"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <div class="portrait-ring"></div>
+                            <div class="portrait-light"></div>
+
+                        </div>
+
+
+                        <!-- Floating Quran badge -->
+                        <div class="floating-badge badge-quran">
+
+                            <div class="badge-icon">
+                                📖
+                            </div>
+
+                            <div>
+                                <strong>Quran</strong>
+                                <span>Read & Learn</span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Floating Tilawat badge -->
+                        <div class="floating-badge badge-tilawat">
+
+                            <div class="badge-icon">
+                                🎙
+                            </div>
+
+                            <div>
+                                <strong>Tilawat</strong>
+                                <span>Listen & Recite</span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Decorative dots -->
+                        <span class="floating-dot dot-one"></span>
+                        <span class="floating-dot dot-two"></span>
+                        <span class="floating-dot dot-three"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NASHEED PLAYER
+        ================================================== -->
+        <section class="nasheed-section" id="nasheed">
+
+            <div class="container">
+
+                <div class="section-heading nasheed-heading">
+
+                    <div class="section-kicker">
+                        <span></span>
+                        SOULFUL LISTENING
+                        <span></span>
+                    </div>
+
+                    <h2>
+                        Listen to <span>Nasheed</span>
+                    </h2>
+
+                    <p>
+                        Take a moment, slow down and let beautiful Islamic
+                        reminders reach your heart.
                     </p>
 
-
-                    <!-- HERO BUTTONS -->
-
-                    <div class="hero-buttons">
-
-                        <a
-                            href="#features"
-                            class="primary-btn"
-                        >
-
-                            <span aria-hidden="true">
-                                📖
-                            </span>
-
-                            <span>
-                                Explore Islamic Tools
-                            </span>
-
-                            <i aria-hidden="true">
-                                →
-                            </i>
-
-                        </a>
-
-
-                        <a
-                            href="tilawat/tilawat.html"
-                            class="secondary-btn"
-                        >
-
-                            <span>
-                                Start Learning
-                            </span>
-
-                            <i aria-hidden="true">
-                                →
-                            </i>
-
-                        </a>
-
-                    </div>
-
-
-                    <!-- HERO STATS -->
-
-                    <div class="hero-mini-stats">
-
-                        <div>
-
-                            <strong>
-                                114
-                            </strong>
-
-                            <span>
-                                Surahs
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                99
-                            </strong>
-
-                            <span>
-                                Names of Allah
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                ∞
-                            </strong>
-
-                            <span>
-                                Dhikr
-                            </span>
-
-                        </div>
-
-                    </div>
-
                 </div>
 
 
+                <div class="nasheed-wrapper">
 
-                <!-- =================================
-                     HERO VISUAL
-                ================================== -->
+                    <!-- Player -->
+                    <div class="nasheed-player">
 
-                <div
-                    class="hero-visual"
-                    aria-label="Islamic Soldier portrait"
-                >
+                        <div class="player-top">
 
-                    <div
-                        class="visual-aura"
-                        aria-hidden="true"
-                    ></div>
+                            <div class="player-art">
 
+                                <div class="art-glow"></div>
 
-                    <div
-                        class="visual-orbit orbit-one"
-                        aria-hidden="true"
-                    ></div>
+                                <div class="art-symbol">
+                                    ♪
+                                </div>
+
+                            </div>
 
 
-                    <div
-                        class="visual-orbit orbit-two"
-                        aria-hidden="true"
-                    ></div>
+                            <div class="player-info">
+
+                                <span class="player-label">
+                                    NOW PLAYING
+                                </span>
+
+                                <h3 id="current-song">
+                                    Select a Nasheed
+                                </h3>
+
+                                <p id="current-artist">
+                                    Islamic Soldier
+                                </p>
+
+                            </div>
+
+                        </div>
 
 
-                    <!-- PORTRAIT -->
-
-                    <div class="portrait-disc">
-
-                        <div
-                            class="portrait-disc-inner"
-                            aria-hidden="true"
-                        ></div>
+                        <!-- Audio -->
+                        <audio id="nasheed-audio" preload="metadata">
+                            <source src="nasheed.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
 
 
-                        <img
-                            src="jl.jpg"
-                            class="hero-person"
-                            alt="Islamic Soldier portrait"
-                            loading="eager"
-                            decoding="async"
-                        >
+                        <!-- Progress -->
+                        <div class="audio-progress-area">
+
+                            <span id="current-time">
+                                0:00
+                            </span>
+
+                            <input
+                                type="range"
+                                id="progress"
+                                min="0"
+                                max="100"
+                                value="0"
+                                step="0.1"
+                            >
+
+                            <span id="duration">
+                                0:00
+                            </span>
+
+                        </div>
 
 
-                        <div
-                            class="portrait-ring"
-                            aria-hidden="true"
-                        ></div>
+                        <!-- Controls -->
+                        <div class="player-controls">
 
-                    </div>
+                            <button
+                                type="button"
+                                id="prev-btn"
+                                class="player-control"
+                                aria-label="Previous"
+                            >
+                                ⏮
+                            </button>
 
+                            <button
+                                type="button"
+                                id="play-btn"
+                                class="player-control play-main"
+                                aria-label="Play"
+                            >
+                                ▶
+                            </button>
 
-                    <!-- FLOATING QURAN BADGE -->
-
-                    <div class="floating-badge badge-quran">
-
-                        <span aria-hidden="true">
-                            📖
-                        </span>
-
-                        <div>
-
-                            <small>
-                                READ
-                            </small>
-
-                            <b>
-                                Quran
-                            </b>
+                            <button
+                                type="button"
+                                id="next-btn"
+                                class="player-control"
+                                aria-label="Next"
+                            >
+                                ⏭
+                            </button>
 
                         </div>
 
                     </div>
 
 
-                    <!-- FLOATING TILAWAT BADGE -->
+                    <!-- Playlist -->
+                    <div class="nasheed-playlist">
 
-                    <div class="floating-badge badge-tilawat">
+                        <div class="playlist-header">
 
-                        <span aria-hidden="true">
-                            🎙️
-                        </span>
+                            <div>
+                                <span class="playlist-kicker">
+                                    NASHEED COLLECTION
+                                </span>
 
-                        <div>
+                                <h3>Playlist</h3>
+                            </div>
 
-                            <small>
-                                LEARN
-                            </small>
-
-                            <b>
-                                Tilawat
-                            </b>
+                            <span class="playlist-count">
+                                10 Tracks
+                            </span>
 
                         </div>
 
+
+                        <!-- JS will populate tracks here -->
+                        <div id="playlist">
+                        </div>
+
                     </div>
-
-
-                    <!-- DECORATIVE DOTS -->
-
-                    <div
-                        class="floating-dot dot-one"
-                        aria-hidden="true"
-                    ></div>
-
-                    <div
-                        class="floating-dot dot-two"
-                        aria-hidden="true"
-                    ></div>
-
-                    <div
-                        class="floating-dot dot-three"
-                        aria-hidden="true"
-                    ></div>
 
                 </div>
 
@@ -386,1133 +461,828 @@
 
 
 
-        <!-- =========================================
-             NASHEED PLAYER
-        ========================================== -->
-
-        <section
-            class="nasheed-section"
-            aria-label="Nasheed Player"
-        >
-
-            <div
-                class="nasheed-player"
-                id="nasheed-player"
-            >
-
-
-                <!-- PLAYER INFORMATION -->
-
-                <div class="nasheed-info">
-
-                    <div
-                        class="nasheed-icon"
-                        aria-hidden="true"
-                    >
-                        🎧
-                    </div>
-
-
-                    <div class="nasheed-text">
-
-                        <span class="player-label">
-                            NOW PLAYING
-                        </span>
-
-                        <h3 id="nasheed-title">
-                            Daily Nasheed
-                        </h3>
-
-                        <p id="nasheed-artist">
-                            A peaceful reminder
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- PLAYER CONTROLS -->
-
-                <div class="nasheed-controls">
-
-                    <button
-                        class="control-btn"
-                        id="prev-btn"
-                        type="button"
-                        aria-label="Previous Nasheed"
-                    >
-                        ⏮
-                    </button>
-
-
-                    <button
-                        class="play-btn"
-                        id="play-btn"
-                        type="button"
-                        aria-label="Play Nasheed"
-                    >
-                        ▶
-                    </button>
-
-
-                    <button
-                        class="control-btn"
-                        id="next-btn"
-                        type="button"
-                        aria-label="Next Nasheed"
-                    >
-                        ⏭
-                    </button>
-
-                </div>
-
-
-
-                <!-- PLAYER PROGRESS -->
-
-                <div class="nasheed-progress">
-
-                    <span id="current-time">
-                        0:00
-                    </span>
-
-
-                    <input
-                        type="range"
-                        id="progress"
-                        value="0"
-                        min="0"
-                        max="100"
-                        step="0.1"
-                        aria-label="Nasheed progress"
-                    >
-
-
-                    <span id="duration">
-                        0:00
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <!--
-                Audio source is loaded by script.js
-                from the Nasheed API.
-            -->
-
-            <audio
-                id="nasheed-audio"
-                preload="metadata"
-            ></audio>
-
-        </section>
-
-
-
-        <!-- =========================================
+        <!-- =================================================
              ISLAMIC FEATURES
-        ========================================== -->
-
+        ================================================== -->
         <section
             class="features-section"
             id="features"
-            aria-labelledby="features-title"
         >
 
-            <div class="section-heading">
+            <div class="container">
 
-                <div
-                    class="heading-ornament"
-                    aria-hidden="true"
-                >
-                    ✦
-                </div>
+                <div class="section-heading">
 
-
-                <div>
-
-                    <span>
+                    <div class="section-kicker">
+                        <span></span>
                         EXPLORE
-                    </span>
+                        <span></span>
+                    </div>
 
-                    <h2 id="features-title">
-                        Islamic Tools
+                    <h2>
+                        Islamic <span>Tools</span>
                     </h2>
 
+                    <p>
+                        Everything you need for your daily Islamic journey,
+                        gathered in one place.
+                    </p>
+
                 </div>
 
 
-                <div
-                    class="heading-ornament"
-                    aria-hidden="true"
-                >
-                    ✦
+                <div class="features-grid">
+
+
+                    <!-- Quran -->
+                    <a
+                        href="quran/quran.html"
+                        class="feature-card"
+                    >
+
+                        <div class="card-image">
+
+                            <img
+                                src="quran2.jpg"
+                                alt="Quran"
+                                loading="lazy"
+                            >
+
+                            <div class="feature-overlay"></div>
+
+                            <span class="feature-number">
+                                01
+                            </span>
+
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span class="feature-small">
+                                READ
+                            </span>
+
+                            <h3>Quran</h3>
+
+                            <p>
+                                Read and explore the Holy Quran.
+                            </p>
+
+                            <span class="feature-link">
+                                Open Quran →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- Tilawat -->
+                    <a
+                        href="tilawat/tilawat.html"
+                        class="feature-card"
+                    >
+
+                        <div class="card-image">
+
+                            <img
+                                src="celli.jpg"
+                                alt="Tilawat"
+                                loading="lazy"
+                            >
+
+                            <div class="feature-overlay"></div>
+
+                            <span class="feature-number">
+                                02
+                            </span>
+
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span class="feature-small">
+                                RECITE
+                            </span>
+
+                            <h3>Tilawat</h3>
+
+                            <p>
+                                Learn, listen and improve your recitation.
+                            </p>
+
+                            <span class="feature-link">
+                                Start Tilawat →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- Qibla -->
+                    <a
+                        href="qibla/qibla.html"
+                        class="feature-card"
+                    >
+
+                        <div class="card-image">
+
+                            <img
+                                src="qibla.jpg"
+                                alt="Qibla"
+                                loading="lazy"
+                            >
+
+                            <div class="feature-overlay"></div>
+
+                            <span class="feature-number">
+                                03
+                            </span>
+
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span class="feature-small">
+                                DIRECTION
+                            </span>
+
+                            <h3>Qibla</h3>
+
+                            <p>
+                                Find the direction of the Kaaba.
+                            </p>
+
+                            <span class="feature-link">
+                                Find Qibla →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- Tasbih -->
+                    <a
+                        href="tasbih/tasbih.html"
+                        class="feature-card"
+                    >
+
+                        <div class="card-image">
+
+                            <img
+                                src="pic6.jpg"
+                                alt="Tasbih"
+                                loading="lazy"
+                            >
+
+                            <div class="feature-overlay"></div>
+
+                            <span class="feature-number">
+                                04
+                            </span>
+
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span class="feature-small">
+                                DHIKR
+                            </span>
+
+                            <h3>Tasbih</h3>
+
+                            <p>
+                                Keep your daily dhikr count with ease.
+                            </p>
+
+                            <span class="feature-link">
+                                Open Tasbih →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- Dua -->
+                    <a
+                        href="dua/dua.html"
+                        class="feature-card"
+                    >
+
+                        <div class="card-image">
+
+                            <img
+                                src="pic5.jpg"
+                                alt="Dua"
+                                loading="lazy"
+                            >
+
+                            <div class="feature-overlay"></div>
+
+                            <span class="feature-number">
+                                05
+                            </span>
+
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span class="feature-small">
+                                SUPPLICATION
+                            </span>
+
+                            <h3>Dua</h3>
+
+                            <p>
+                                Discover useful daily Islamic duas.
+                            </p>
+
+                            <span class="feature-link">
+                                Explore Dua →
+                            </span>
+
+                        </div>
+
+                    </a>
+
                 </div>
 
             </div>
 
+        </section>
 
 
-            <div class="features-grid">
+
+        <!-- =================================================
+             QURAN FEATURE
+        ================================================== -->
+        <section class="quran-feature">
+
+            <div class="container">
+
+                <div class="quran-feature-box">
 
 
-                <!-- QURAN -->
+                    <!-- Image -->
+                    <div class="quran-image">
 
-                <a
-                    href="quran/quran.html"
-                    class="feature-card feature-quran"
-                >
-
-                    <div class="card-image">
+                        <div class="quran-image-glow"></div>
 
                         <img
                             src="quran2.jpg"
-                            alt="Open Quran"
+                            alt="Holy Quran"
                             loading="lazy"
-                            decoding="async"
                         >
+
+                        <div class="quran-image-caption">
+                            <span>الْقُرْآنُ</span>
+                            <small>The Noble Quran</small>
+                        </div>
 
                     </div>
 
 
-                    <div
-                        class="feature-overlay"
-                        aria-hidden="true"
-                    ></div>
+                    <!-- Content -->
+                    <div class="quran-content">
 
-
-                    <div class="feature-content">
-
-                        <div
-                            class="feature-icon"
-                            aria-hidden="true"
-                        >
-                            📖
-                        </div>
-
-
-                        <span class="feature-kicker">
-                            READ • LISTEN • SEARCH
+                        <span class="content-kicker">
+                            THE WORD OF ALLAH
                         </span>
 
-
-                        <h3>
-                            Quran
-                        </h3>
-
+                        <h2>
+                            Let the Quran
+                            <span>guide your heart.</span>
+                        </h2>
 
                         <p>
-                            Read and explore the Holy Quran
-                            with a peaceful reading experience.
+                            Read the Quran, explore Surahs and verses,
+                            listen to recitation and build a stronger
+                            connection with the Book of Allah.
                         </p>
 
 
-                        <span class="feature-link">
+                        <div class="quran-points">
+
+                            <div class="quran-point">
+                                <span>✓</span>
+                                <p>114 Surahs</p>
+                            </div>
+
+                            <div class="quran-point">
+                                <span>✓</span>
+                                <p>Arabic Text</p>
+                            </div>
+
+                            <div class="quran-point">
+                                <span>✓</span>
+                                <p>Recitation</p>
+                            </div>
+
+                            <div class="quran-point">
+                                <span>✓</span>
+                                <p>Bangla Translation</p>
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="quran/quran.html"
+                            class="btn btn-primary"
+                        >
                             Open Quran
-                            <b aria-hidden="true">
-                                →
-                            </b>
-                        </span>
+                            <span>→</span>
+                        </a>
 
                     </div>
 
-                </a>
+                </div>
+
+            </div>
+
+        </section>
 
 
 
-                <!-- TILAWAT -->
+        <!-- =================================================
+             QUOTES
+        ================================================== -->
+        <section class="quotes-section">
 
-                <a
-                    href="tilawat/tilawat.html"
-                    class="feature-card feature-tilawat"
-                >
+            <div class="container">
 
-                    <div class="card-image">
+                <div class="section-heading">
+
+                    <div class="section-kicker">
+                        <span></span>
+                        DAILY REMINDER
+                        <span></span>
+                    </div>
+
+                    <h2>
+                        Words that <span>inspire</span>
+                    </h2>
+
+                    <p>
+                        Small reminders can make a big difference in our
+                        daily lives.
+                    </p>
+
+                </div>
+
+
+                <div class="quotes-grid">
+
+
+                    <!-- Quote 01 -->
+                    <article class="quote-card">
+
+                        <div class="quote-mark">
+                            “
+                        </div>
+
+                        <p>
+                            Indeed, in the remembrance of Allah do hearts
+                            find rest.
+                        </p>
+
+                        <div class="quote-source">
+                            <span></span>
+                            Quran — 13:28
+                        </div>
+
+                    </article>
+
+
+                    <!-- Quote 02 -->
+                    <article class="quote-card">
+
+                        <div class="quote-mark">
+                            “
+                        </div>
+
+                        <p>
+                            So remember Me; I will remember you.
+                        </p>
+
+                        <div class="quote-source">
+                            <span></span>
+                            Quran — 2:152
+                        </div>
+
+                    </article>
+
+
+                    <!-- Quote 03 -->
+                    <article class="quote-card">
+
+                        <div class="quote-mark">
+                            “
+                        </div>
+
+                        <p>
+                            And whoever relies upon Allah — then He is
+                            sufficient for him.
+                        </p>
+
+                        <div class="quote-source">
+                            <span></span>
+                            Quran — 65:3
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             GALLERY
+        ================================================== -->
+        <section class="gallery-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div class="section-kicker">
+                        <span></span>
+                        VISUAL JOURNEY
+                        <span></span>
+                    </div>
+
+                    <h2>
+                        Islamic <span>Gallery</span>
+                    </h2>
+
+                    <p>
+                        A peaceful collection of Islamic-inspired moments.
+                    </p>
+
+                </div>
+
+
+                <div class="gallery-grid">
+
+
+                    <div class="gallery-item gallery-large">
+
+                        <img
+                            src="mosque2.jpg"
+                            alt="Mosque"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+                            <span>01</span>
+                            <strong>Peace</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="gallery-item">
+
+                        <img
+                            src="pic7.jpg"
+                            alt="Islamic pattern"
+                            loading="lazy"
+                        >
+
+                        <div class="gallery-overlay">
+                            <span>02</span>
+                            <strong>Beauty</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="gallery-item">
 
                         <img
                             src="celli.jpg"
-                            alt="Islamic calligraphy"
+                            alt="Arabic calligraphy"
                             loading="lazy"
-                            decoding="async"
                         >
 
-                    </div>
-
-
-                    <div
-                        class="feature-overlay"
-                        aria-hidden="true"
-                    ></div>
-
-
-                    <div class="feature-content">
-
-                        <div
-                            class="feature-icon"
-                            aria-hidden="true"
-                        >
-                            🎙️
+                        <div class="gallery-overlay">
+                            <span>03</span>
+                            <strong>Calligraphy</strong>
                         </div>
 
-
-                        <span class="feature-kicker">
-                            LEARN • PRACTICE • GROW
-                        </span>
-
-
-                        <h3>
-                            Tilawat
-                        </h3>
-
-
-                        <p>
-                            Build Quran reading skills step by step,
-                            from letters to recitation.
-                        </p>
-
-
-                        <span class="feature-link">
-                            Start Tilawat
-                            <b aria-hidden="true">
-                                →
-                            </b>
-                        </span>
-
                     </div>
 
-                </a>
 
-
-
-                <!-- QIBLA -->
-
-                <a
-                    href="qibla/qibla.html"
-                    class="feature-card"
-                >
-
-                    <div class="card-image">
+                    <div class="gallery-item gallery-wide">
 
                         <img
-                            src="co1.webp"
-                            alt="Islamic calligraphy"
+                            src="quran2.jpg"
+                            alt="Holy Quran"
                             loading="lazy"
-                            decoding="async"
                         >
 
-                    </div>
+                        <div class="gallery-overlay">
+                            <span>04</span>
+                            <strong>The Quran</strong>
+                        </div>
 
-
-                    <div
-                        class="card-icon-large"
-                        aria-hidden="true"
-                    >
-                        🧭
-                    </div>
-
-
-                    <span class="feature-kicker">
-                        DIRECTION
-                    </span>
-
-
-                    <h3>
-                        Qibla
-                    </h3>
-
-
-                    <p>
-                        Find the direction of the Kaaba
-                        with a simple tool.
-                    </p>
-
-
-                    <span class="feature-link">
-                        Find Qibla
-                        <b aria-hidden="true">
-                            →
-                        </b>
-                    </span>
-
-                </a>
-
-
-
-                <!-- TASBIH -->
-
-                <a
-                    href="tasbih/tasbih.html"
-                    class="feature-card"
-                >
-
-                    <div
-                        class="card-icon-large"
-                        aria-hidden="true"
-                    >
-                        📿
-                    </div>
-
-
-                    <span class="feature-kicker">
-                        DHIKR
-                    </span>
-
-
-                    <h3>
-                        Tasbih
-                    </h3>
-
-
-                    <p>
-                        Keep track of your daily remembrance
-                        and Dhikr.
-                    </p>
-
-
-                    <span class="feature-link">
-                        Open Tasbih
-                        <b aria-hidden="true">
-                            →
-                        </b>
-                    </span>
-
-                </a>
-
-
-
-                <!-- DUA -->
-
-                <a
-                    href="dua/dua.html"
-                    class="feature-card"
-                >
-
-                    <div
-                        class="card-icon-large"
-                        aria-hidden="true"
-                    >
-                        🤲
-                    </div>
-
-
-                    <span class="feature-kicker">
-                        REMEMBRANCE
-                    </span>
-
-
-                    <h3>
-                        Dua
-                    </h3>
-
-
-                    <p>
-                        Discover beneficial daily Duas
-                        for different moments.
-                    </p>
-
-
-                    <span class="feature-link">
-                        Explore Dua
-                        <b aria-hidden="true">
-                            →
-                        </b>
-                    </span>
-
-                </a>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             FEATURED QURAN
-        ========================================== -->
-
-        <section class="quran-feature">
-
-
-            <div class="quran-feature-image">
-
-                <img
-                    src="quran2.jpg"
-                    alt="Open Holy Quran"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-
-                <div
-                    class="image-glow"
-                    aria-hidden="true"
-                ></div>
-
-            </div>
-
-
-
-            <div class="quran-feature-content">
-
-                <span class="section-kicker">
-                    THE HEART OF THE JOURNEY
-                </span>
-
-
-                <h2>
-
-                    Keep the Quran
-
-                    <span>
-                        close to your heart.
-                    </span>
-
-                </h2>
-
-
-                <p>
-
-                    A calm space to read, reflect and continue
-                    your journey with the Book of Allah.
-
-                </p>
-
-
-                <div class="quran-feature-points">
-
-                    <div>
-                        <span>✓</span>
-                        Arabic reading
-                    </div>
-
-
-                    <div>
-                        <span>✓</span>
-                        Translation
-                    </div>
-
-
-                    <div>
-                        <span>✓</span>
-                        Audio recitation
-                    </div>
-
-
-                    <div>
-                        <span>✓</span>
-                        Personal progress
                     </div>
 
                 </div>
 
 
-                <a
-                    href="quran/quran.html"
-                    class="gold-btn"
-                >
-
-                    Enter Quran
-
-                    <b aria-hidden="true">
-                        →
-                    </b>
-
-                </a>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             DAILY REMINDER
-        ========================================== -->
-
-        <section class="reminder-section">
-
-            <div class="section-heading">
-
-                <div
-                    class="heading-ornament"
-                    aria-hidden="true"
-                >
-                    ☾
-                </div>
-
-
-                <div>
-
-                    <span>
-                        DAILY REMINDER
-                    </span>
-
-                    <h2>
-                        Walk With Faith
-                    </h2>
-
-                </div>
-
-
-                <div
-                    class="heading-ornament"
-                    aria-hidden="true"
-                >
-                    ☽
-                </div>
-
-            </div>
-
-
-
-            <div class="reminder-grid">
-
-
-                <article class="reminder-card">
-
-                    <span
-                        class="reminder-icon"
-                        aria-hidden="true"
-                    >
-                        📖
-                    </span>
-
-                    <h3>
-                        Quran
-                    </h3>
-
-                    <p>
-                        Make the Quran a part
-                        of your daily life.
-                    </p>
-
-                </article>
-
-
-
-                <article class="reminder-card">
-
-                    <span
-                        class="reminder-icon gold"
-                        aria-hidden="true"
-                    >
-                        🤲
-                    </span>
-
-                    <h3>
-                        Dua
-                    </h3>
-
-                    <p>
-                        Remember Allah in every
-                        moment of your life.
-                    </p>
-
-                </article>
-
-
-
-                <article class="reminder-card">
-
-                    <span
-                        class="reminder-icon"
-                        aria-hidden="true"
-                    >
-                        🕌
-                    </span>
-
-                    <h3>
-                        Salah
-                    </h3>
-
-                    <p>
-                        Establish prayer and
-                        strengthen your faith.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             ISLAMIC QUOTES
-        ========================================== -->
-
-        <section class="quotes-section">
-
-            <div class="section-heading">
-
-                <div
-                    class="heading-ornament"
-                    aria-hidden="true"
-                >
-                    ✦
-                </div>
-
-
-                <div>
-
-                    <span>
-                        INSPIRATION
-                    </span>
-
-                    <h2>
-                        Islamic Quotes
-                    </h2>
-
-                </div>
-
-
-                <div
-                    class="heading-ornament"
-                    aria-hidden="true"
-                >
-                    ✦
-                </div>
-
-            </div>
-
-
-
-            <div class="quote-grid">
-
-
-                <article class="quote-card">
-
-                    <span
-                        class="quote-mark"
-                        aria-hidden="true"
-                    >
-                        “
-                    </span>
-
-                    <p>
-                        Indeed, Allah is with the patient.
-                    </p>
-
-                    <small>
-                        — Quran 8:46
-                    </small>
-
-                </article>
-
-
-
-                <article class="quote-card">
-
-                    <span
-                        class="quote-mark"
-                        aria-hidden="true"
-                    >
-                        “
-                    </span>
-
-                    <p>
-                        So remember Me; I will remember you.
-                    </p>
-
-                    <small>
-                        — Quran 2:152
-                    </small>
-
-                </article>
-
-
-
-                <article class="quote-card">
-
-                    <span
-                        class="quote-mark"
-                        aria-hidden="true"
-                    >
-                        “
-                    </span>
-
-                    <p>
-                        And whoever puts his trust in Allah,
-                        He is sufficient for him.
-                    </p>
-
-                    <small>
-                        — Quran 65:3
-                    </small>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             ISLAMIC GALLERY
-        ========================================== -->
-
-        <section class="gallery-section">
-
-            <div class="section-heading">
-
-                <div
-                    class="heading-ornament"
-                    aria-hidden="true"
-                >
-                    ✦
-                </div>
-
-
-                <div>
-
-                    <span>
-                        VISUAL JOURNEY
-                    </span>
-
-                    <h2>
-                        Islamic Gallery
-                    </h2>
-
-                </div>
-
-
-                <div
-                    class="heading-ornament"
-                    aria-hidden="true"
-                >
-                    ✦
-                </div>
-
-            </div>
-
-
-
-            <div class="gallery-grid">
-
-
-                <figure class="gallery-card large">
-
-                    <img
-                        src="mosque2.jpg"
-                        alt="Mosque under moon and stars"
-                        loading="lazy"
-                        decoding="async"
-                    >
-
-
-                    <figcaption>
-
-                        <span>
-                            01
-                        </span>
-
-                        Night of Reflection
-
-                    </figcaption>
-
-                </figure>
-
-
-
-                <figure class="gallery-card">
-
-                    <img
-                        src="pic7.jpg"
-                        alt="Islamic geometric pattern"
-                        loading="lazy"
-                        decoding="async"
-                    >
-
-
-                    <figcaption>
-
-                        <span>
-                            02
-                        </span>
-
-                        Islamic Geometry
-
-                    </figcaption>
-
-                </figure>
-
-
-
-                <figure class="gallery-card">
-
-                    <img
-                        src="celli.jpg"
-                        alt="Golden Arabic calligraphy"
-                        loading="lazy"
-                        decoding="async"
-                    >
-
-
-                    <figcaption>
-
-                        <span>
-                            03
-                        </span>
-
-                        Sacred Calligraphy
-
-                    </figcaption>
-
-                </figure>
-
-
-
-                <figure class="gallery-card wide">
-
-                    <img
-                        src="quran2.jpg"
-                        alt="Open Quran"
-                        loading="lazy"
-                        decoding="async"
-                    >
-
-
-                    <figcaption>
-
-                        <span>
-                            04
-                        </span>
-
-                        The Quran
-
-                    </figcaption>
-
-                </figure>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================================
-             FOOTER
-        ========================================== -->
-
-        <footer class="footer">
-
-            <div
-                class="footer-pattern"
-                aria-hidden="true"
-            ></div>
-
-
-            <div class="footer-top">
-
-
-                <!-- FOOTER BRAND -->
-
-                <div class="footer-brand">
+                <div class="gallery-button">
 
                     <a
-                        href="index.html"
-                        class="footer-logo"
+                        href="gallery/gallery.html"
+                        class="btn btn-secondary"
                     >
-                        ☾ Islamic <b>Soldier</b>
+                        View Full Gallery
+                        <span>→</span>
                     </a>
 
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FINAL CTA
+        ================================================== -->
+        <section class="final-cta">
+
+            <div class="container">
+
+                <div class="cta-box">
+
+                    <div class="cta-decoration"></div>
+
+                    <span class="content-kicker">
+                        BEGIN YOUR JOURNEY
+                    </span>
+
+                    <h2>
+                        Walk with the light
+                        <span>of knowledge.</span>
+                    </h2>
 
                     <p>
-
-                        A digital space for Islamic knowledge,
-                        remembrance and reflection.
-
+                        Learn. Remember. Recite. Reflect.
                     </p>
 
-                </div>
-
-
-
-                <!-- QUICK LINKS -->
-
-                <div class="footer-links">
-
-                    <h4>
-                        QUICK LINKS
-                    </h4>
-
-
-                    <a href="index/index.html">
-                        Home
-                    </a>
-
-
-                    <a href="quran/quran.html">
-                        Quran
-                    </a>
-
-
-                    <a href="tilawat/tilawat.html">
-                        Tilawat
-                    </a>
-
-
-                    <a href="about/about.html">
-                        About
-                    </a>
-
-                </div>
-
-
-
-                <!-- TOOLS -->
-
-                <div class="footer-links">
-
-                    <h4>
-                        TOOLS
-                    </h4>
-
-
-                    <a href="qibla/qibla.html">
-                        Qibla
-                    </a>
-
-
-                    <a href="tasbih/tasbih.html">
-                        Tasbih
-                    </a>
-
-
-                    <a href="dua/dua.html">
-                        Dua
-                    </a>
-
-
-                    <a href="quotes/quotes.html">
-                        Quotes
+                    <a
+                        href="quran/quran.html"
+                        class="btn btn-primary"
+                    >
+                        Start Learning
+                        <span>→</span>
                     </a>
 
                 </div>
 
             </div>
 
+        </section>
 
-
-            <!-- FOOTER BOTTOM -->
-
-            <div class="footer-bottom">
-
-                <span>
-                    © 2026 Islamic Soldier
-                </span>
-
-
-                <span>
-                    Built for knowledge • remembrance • reflection
-                </span>
-
-            </div>
-
-        </footer>
 
     </main>
 
 
 
-    <!-- =========================================
-         MAIN JAVASCRIPT
-    ========================================== -->
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+    <footer class="footer">
 
+        <div class="container">
+
+            <div class="footer-top">
+
+
+                <!-- Brand -->
+                <div class="footer-brand">
+
+                    <a href="index.html" class="logo">
+
+                        <div class="logo-mark">
+                            <span>IS</span>
+                        </div>
+
+                        <div class="logo-text">
+                            <strong>ISLAMIC</strong>
+                            <span>SOLDIER</span>
+                        </div>
+
+                    </a>
+
+                    <p>
+                        A place for Quran, knowledge, reflection and
+                        remembrance.
+                    </p>
+
+                </div>
+
+
+                <!-- Quick links -->
+                <div class="footer-column">
+
+                    <h3>Explore</h3>
+
+                    <a href="quran/quran.html">Quran</a>
+                    <a href="tilawat/tilawat.html">Tilawat</a>
+                    <a href="qibla/qibla.html">Qibla</a>
+                    <a href="tasbih/tasbih.html">Tasbih</a>
+                    <a href="dua/dua.html">Dua</a>
+
+                </div>
+
+
+                <!-- Website -->
+                <div class="footer-column">
+
+                    <h3>Website</h3>
+
+                    <a href="index.html">Home</a>
+                    <a href="about/about.html">About</a>
+                    <a href="quotes/quotes.html">Quotes</a>
+                    <a href="gallery/gallery.html">Gallery</a>
+
+                </div>
+
+
+                <!-- Social -->
+                <div class="footer-column footer-social">
+
+                    <h3>Connect</h3>
+
+                    <div class="social-links">
+
+                        <a
+                            href="#"
+                            aria-label="Facebook"
+                            title="Facebook"
+                        >
+                            f
+                        </a>
+
+                        <a
+                            href="#"
+                            aria-label="Instagram"
+                            title="Instagram"
+                        >
+                            ◎
+                        </a>
+
+                        <a
+                            href="#"
+                            aria-label="YouTube"
+                            title="YouTube"
+                        >
+                            ▶
+                        </a>
+
+                        <a
+                            href="#"
+                            aria-label="Messenger"
+                            title="Messenger"
+                        >
+                            ◆
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 Islamic Soldier. All rights reserved.
+                </p>
+
+                <p>
+                    Made with
+                    <span>♥</span>
+                    for Islamic knowledge.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         MAIN JAVASCRIPT
+    ====================================================== -->
     <script src="script.js"></script>
 
 
-
-    <!-- =========================================
-         HOME THEME + SCROLL PROGRESS
-    ========================================== -->
-
+    <!-- =====================================================
+         BASIC HEADER / THEME SCRIPT
+    ====================================================== -->
     <script>
 
         /* =========================================
-           THEME
+           THEME TOGGLE
         ========================================== */
 
-        const themeButton =
-            document.getElementById("theme-toggle");
+        const themeToggle = document.getElementById("theme-toggle");
+        const themeIcon = document.querySelector(".theme-icon");
+
+        const savedTheme = localStorage.getItem("islamic-theme");
+
+        if (savedTheme === "light") {
+            document.body.classList.add("light");
+            themeIcon.textContent = "☀";
+        }
 
 
-        if (themeButton) {
+        if (themeToggle) {
 
-            const savedTheme =
-                localStorage.getItem(
-                    "islamicSoldierHomeTheme"
-                ) || "dark";
+            themeToggle.addEventListener("click", () => {
 
+                document.body.classList.toggle("light");
 
-            if (savedTheme === "light") {
+                const isLight =
+                    document.body.classList.contains("light");
 
-                document.documentElement.setAttribute(
-                    "data-home-theme",
-                    "light"
+                localStorage.setItem(
+                    "islamic-theme",
+                    isLight ? "light" : "dark"
                 );
 
-                themeButton.textContent =
-                    "☀️ Light";
+                themeIcon.textContent =
+                    isLight ? "☀" : "☾";
 
-            }
+            });
 
-
-            themeButton.addEventListener(
-                "click",
-                function () {
-
-                    const current =
-                        document.documentElement
-                            .getAttribute(
-                                "data-home-theme"
-                            ) || "dark";
+        }
 
 
-                    const next =
-                        current === "dark"
-                            ? "light"
-                            : "dark";
+
+        /* =========================================
+           MOBILE MENU
+        ========================================== */
+
+        const menuToggle =
+            document.getElementById("menu-toggle");
+
+        const mainNav =
+            document.getElementById("main-nav");
 
 
-                    if (next === "light") {
+        if (menuToggle && mainNav) {
 
-                        document.documentElement.setAttribute(
-                            "data-home-theme",
-                            "light"
+            menuToggle.addEventListener("click", () => {
+
+                const isOpen =
+                    mainNav.classList.toggle("open");
+
+                menuToggle.classList.toggle("active", isOpen);
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    isOpen ? "true" : "false"
+                );
+
+            });
+
+
+            /* Close menu after clicking a link */
+
+            mainNav
+                .querySelectorAll("a")
+                .forEach(link => {
+
+                    link.addEventListener("click", () => {
+
+                        mainNav.classList.remove("open");
+
+                        menuToggle.classList.remove("active");
+
+                        menuToggle.setAttribute(
+                            "aria-expanded",
+                            "false"
                         );
 
-                        themeButton.textContent =
-                            "☀️ Light";
+                    });
 
-                    }
-
-                    else {
-
-                        document.documentElement
-                            .removeAttribute(
-                                "data-home-theme"
-                            );
-
-                        themeButton.textContent =
-                            "🌙 Dark";
-
-                    }
-
-
-                    localStorage.setItem(
-                        "islamicSoldierHomeTheme",
-                        next
-                    );
-
-                }
-            );
+                });
 
         }
 
@@ -1526,59 +1296,95 @@
             document.getElementById("progress-bar");
 
 
-        function updateScrollProgress() {
+        window.addEventListener("scroll", () => {
 
-            if (!progressBar) {
-                return;
-            }
-
+            if (!progressBar) return;
 
             const scrollTop =
-                window.scrollY || window.pageYOffset;
+                window.scrollY;
 
+            const documentHeight =
+                document.documentElement.scrollHeight -
+                window.innerHeight;
 
-            const pageHeight =
-                document.documentElement.scrollHeight
-                - window.innerHeight;
-
-
-            const percent =
-                pageHeight > 0
-                    ? (scrollTop / pageHeight) * 100
+            const progress =
+                documentHeight > 0
+                    ? (scrollTop / documentHeight) * 100
                     : 0;
 
-
             progressBar.style.width =
-                Math.min(
-                    100,
-                    Math.max(
-                        0,
-                        percent
-                    )
-                ) + "%";
+                progress + "%";
 
-        }
+        });
 
 
-        window.addEventListener(
-            "scroll",
-            updateScrollProgress,
-            {
-                passive: true
+
+        /* =========================================
+           ACTIVE HEADER EFFECT
+        ========================================== */
+
+        const header =
+            document.getElementById("header");
+
+
+        window.addEventListener("scroll", () => {
+
+            if (!header) return;
+
+            if (window.scrollY > 30) {
+
+                header.classList.add("scrolled");
+
+            } else {
+
+                header.classList.remove("scrolled");
+
             }
-        );
+
+        });
 
 
-        window.addEventListener(
-            "resize",
-            updateScrollProgress,
-            {
-                passive: true
-            }
-        );
+
+        /* =========================================
+           SIMPLE REVEAL ANIMATION
+        ========================================== */
+
+        const revealElements =
+            document.querySelectorAll(
+                ".feature-card, .quote-card, .gallery-item, .quran-feature-box, .final-cta"
+            );
 
 
-        updateScrollProgress();
+        const revealObserver =
+            new IntersectionObserver(
+                (entries, observer) => {
+
+                    entries.forEach(entry => {
+
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+                        entry.target.classList.add("show");
+
+                        observer.unobserve(entry.target);
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        revealElements.forEach(element => {
+
+            element.classList.add("fade-in");
+
+            revealObserver.observe(element);
+
+        });
 
     </script>
 
