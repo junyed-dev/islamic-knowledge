@@ -87,12 +87,20 @@
 
 
             <button
+                id="auth-open-btn"
+                class="auth-open-btn"
+                type="button">
+                <span aria-hidden="true">♙</span>
+                <span>Login</span>
+           </button>
+
+
+           <button
                 id="menu-toggle"
                 class="menu-toggle"
                 type="button"
                 aria-label="Open navigation"
-                aria-expanded="false"
-            >
+                aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -204,7 +212,7 @@
 
 
                         <a
-                            href="quran/quran.html"
+                            href="quran.html"
                             class="secondary-btn"
                         >
 
@@ -608,7 +616,7 @@
                 <!-- QURAN -->
 
                 <a
-                    href="quran.html"
+                    href="quran/quran.html"
                     class="feature-card feature-quran"
                 >
 
@@ -667,7 +675,7 @@
                 <!-- TILAWAT -->
 
                 <a
-                    href="tilawat.html"
+                    href="tilawat/tilawat.html"
                     class="feature-card feature-tilawat"
                 >
 
@@ -723,7 +731,7 @@
                 <!-- QIBLA -->
 
                 <a
-                    href="qibla.html"
+                    href="qibla/qibla.html"
                     class="feature-card feature-qibla"
                 >
 
@@ -779,7 +787,7 @@
                 <!-- TASBIH -->
 
                 <a
-                    href="tasbih.html"
+                    href="tasbih/tasbih.html"
                     class="feature-card feature-tasbih"
                 >
 
@@ -835,7 +843,7 @@
                 <!-- DUA -->
 
                 <a
-                    href="dua.html"
+                    href="dua/dua.html"
                     class="feature-card feature-dua"
                 >
 
@@ -1986,6 +1994,453 @@
 
     </script>
 
+    
+<!-- LOGIN / SIGNUP MODAL -->
+<div id="auth-modal" class="auth-modal" aria-hidden="true">
+    <div class="auth-backdrop" data-auth-close></div>
+
+    <section
+        class="auth-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="auth-title">
+
+        <button
+            class="auth-close"
+            type="button"
+            aria-label="Close login window"
+            data-auth-close>
+            &times;
+        </button>
+
+        <div class="auth-brand">ISLAMIC SOLDIER</div>
+
+        <h2 id="auth-title">Welcome Back</h2>
+        <p class="auth-subtitle">
+            Sign in to your Islamic Soldier account
+        </p>
+
+        <div class="auth-tabs">
+            <button
+                type="button"
+                class="auth-tab active"
+                data-auth-tab="login">
+                Login
+            </button>
+
+            <button
+                type="button"
+                class="auth-tab"
+                data-auth-tab="signup">
+                Sign Up
+            </button>
+        </div>
+
+        <form id="auth-form">
+            <label for="auth-name" id="auth-name-label" hidden>
+                Full Name
+            </label>
+            <input
+                id="auth-name"
+                type="text"
+                placeholder="Full name"
+                autocomplete="name"
+                hidden>
+
+            <label for="auth-email">Email Address</label>
+            <input
+                id="auth-email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required>
+
+            
+            <label for="auth-password">Password</label>
+
+            <button
+
+            type="button"
+            id="forgot-password-btn"
+            class="forgot-password-btn"
+            >
+            Forgot Password?
+           </button>
+
+            <div class="auth-password-wrap">
+                <input
+                id="auth-password"
+                type="password"
+                placeholder="Enter password"
+                autocomplete="current-password"
+                minlength="8"
+                required
+                >
+
+            <button
+            type="button"
+            id="toggle-password"
+            class="toggle-password"
+            aria-label="Show password"
+            aria-pressed="false"
+            >
+            Show
+        </button>
+</div>
+
+
+            <button class="auth-submit" type="submit">
+                Login
+            </button>
+
+            <p
+                id="auth-message"
+                class="auth-message"
+                role="status"
+                aria-live="polite">
+            </p>
+        </form>
+
+        <p class="auth-guest">
+            You can continue exploring public features without logging in.
+        </p>
+    </section>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+/* =========================================
+   ISLAMIC SOLDIER — AUTH MODAL CONTROLS
+========================================= */
+ <script>
+(() => {
+    const supabaseClient = window.supabase.createClient(
+        "https://lwidsqqsepqnvvmpyqmc.supabase.co",
+        "sb_publishable_P0kab9AICj5rgx3nzc2g4g_XVLf2WRv"
+    );
+
+    const openBtn = document.getElementById("auth-open-btn");
+    const modal = document.getElementById("auth-modal");
+
+    const closeItems = modal
+        ? modal.querySelectorAll("[data-auth-close]")
+        : [];
+
+    const tabs = modal
+        ? modal.querySelectorAll("[data-auth-tab]")
+        : [];
+
+    const title = document.getElementById("auth-title");
+    const subtitle = modal
+        ? modal.querySelector(".auth-subtitle")
+        : null;
+
+    const form = document.getElementById("auth-form");
+    const nameInput = document.getElementById("auth-name");
+    const nameLabel = document.getElementById("auth-name-label");
+    const passwordInput = document.getElementById("auth-password");
+
+    const togglePassword = document.getElementById("toggle-password");
+    const forgotPasswordBtn =
+        document.getElementById("forgot-password-btn");
+
+    const submitBtn = modal
+        ? modal.querySelector(".auth-submit")
+        : null;
+
+    const message = document.getElementById("auth-message");
+    const emailInput = document.getElementById("auth-email");
+
+    if (
+        !openBtn || !modal || !form ||
+        !passwordInput || !emailInput
+    ) {
+        console.error("Auth Modal: required elements were not found.");
+        return;
+    }
+
+    let currentMode = "login";
+
+    function showMessage(text) {
+        if (message) message.textContent = text;
+    }
+
+    function openModal() {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        emailInput.focus();
+    }
+
+    function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        openBtn.focus();
+    }
+
+    // SHOW / HIDE PASSWORD
+    if (togglePassword) {
+        togglePassword.addEventListener("click", () => {
+            const isHidden = passwordInput.type === "password";
+
+            passwordInput.type = isHidden ? "text" : "password";
+            togglePassword.textContent = isHidden ? "Hide" : "Show";
+
+            togglePassword.setAttribute(
+                "aria-label",
+                isHidden ? "Hide password" : "Show password"
+            );
+
+            togglePassword.setAttribute(
+                "aria-pressed",
+                String(isHidden)
+            );
+        });
+    }
+
+    function setMode(mode) {
+        currentMode = mode;
+
+        const isSignup = mode === "signup";
+        const isRecovery = mode === "recovery";
+
+        if (title) {
+            title.textContent = isRecovery
+                ? "Set New Password"
+                : isSignup
+                    ? "Create Your Account"
+                    : "Welcome Back";
+        }
+
+        if (subtitle) {
+            subtitle.textContent = isRecovery
+                ? "Create a new password for your account"
+                : isSignup
+                    ? "Join the Islamic Soldier community"
+                    : "Sign in to your Islamic Soldier account";
+        }
+
+        if (nameInput) {
+            nameInput.hidden = !isSignup;
+            nameInput.required = isSignup;
+            nameInput.value = "";
+        }
+
+        if (nameLabel) {
+            nameLabel.hidden = !isSignup;
+        }
+
+        passwordInput.value = "";
+        passwordInput.type = "password";
+        passwordInput.placeholder = isRecovery
+            ? "Enter your new password"
+            : "Enter password";
+
+        passwordInput.autocomplete = isRecovery || isSignup
+            ? "new-password"
+            : "current-password";
+
+        passwordInput.required = true;
+        passwordInput.minLength = 8;
+
+        if (togglePassword) {
+            togglePassword.textContent = "Show";
+            togglePassword.setAttribute("aria-label", "Show password");
+            togglePassword.setAttribute("aria-pressed", "false");
+        }
+
+        if (submitBtn) {
+            submitBtn.textContent = isRecovery
+                ? "Update Password"
+                : isSignup
+                    ? "Create Account"
+                    : "Login";
+        }
+
+        tabs.forEach((tab) => {
+            const active = tab.dataset.authTab === mode;
+
+            tab.hidden = isRecovery;
+            tab.classList.toggle("active", active);
+            tab.setAttribute("aria-pressed", String(active));
+        });
+
+        if (forgotPasswordBtn) {
+            forgotPasswordBtn.hidden = isRecovery || isSignup;
+        }
+
+        showMessage("");
+    }
+
+    // OPEN AND CLOSE MODAL
+    openBtn.addEventListener("click", () => {
+        setMode("login");
+        openModal();
+    });
+
+    closeItems.forEach((item) => {
+        item.addEventListener("click", closeModal);
+    });
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            setMode(tab.dataset.authTab);
+        });
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (
+            event.key === "Escape" &&
+            modal.classList.contains("is-open")
+        ) {
+            closeModal();
+        }
+    });
+
+    // FORGOT PASSWORD
+    if (forgotPasswordBtn) {
+        forgotPasswordBtn.addEventListener("click", async () => {
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                showMessage("Please enter your email address first.");
+                emailInput.focus();
+                return;
+            }
+
+            forgotPasswordBtn.disabled = true;
+            showMessage("Sending reset link...");
+
+            try {
+                const { error } =
+                    await supabaseClient.auth.resetPasswordForEmail(
+                        email,
+                        {
+                            redirectTo:
+                                window.location.origin +
+                                window.location.pathname
+                        }
+                    );
+
+                if (error) throw error;
+
+                showMessage(
+                    "Password reset link requested. Check your email."
+                );
+            } catch (error) {
+                showMessage(
+                    error.message || "Unable to send reset link."
+                );
+            } finally {
+                forgotPasswordBtn.disabled = false;
+            }
+        });
+    }
+
+    // LOGIN / SIGNUP / UPDATE PASSWORD
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+        const fullName = nameInput
+            ? nameInput.value.trim()
+            : "";
+
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Please wait...";
+        }
+
+        try {
+            if (currentMode === "recovery") {
+                const { error } =
+                    await supabaseClient.auth.updateUser({
+                        password: password
+                    });
+
+                if (error) throw error;
+
+                setMode("login");
+                showMessage(
+                    "Password updated successfully! You can now log in."
+                );
+
+                passwordInput.value = "";
+
+            } else if (currentMode === "signup") {
+                const { data, error } =
+                    await supabaseClient.auth.signUp({
+                        email,
+                        password,
+                        options: {
+                            data: {
+                                full_name: fullName
+                            }
+                        }
+                    });
+
+                if (error) throw error;
+
+                showMessage(
+                    data.session
+                        ? "Account created successfully!"
+                        : "Account created. Check your email to confirm your account."
+                );
+
+            } else {
+                const { data, error } =
+                    await supabaseClient.auth.signInWithPassword({
+                        email,
+                        password
+                    });
+
+                if (error) throw error;
+
+                showMessage("Login successful! Welcome back.");
+
+                console.log(
+                    "Signed-in user ID:",
+                    data.user.id
+                );
+            }
+
+        } catch (error) {
+            showMessage(
+                error.message || "Something went wrong. Please try again."
+            );
+
+        } finally {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent =
+                    currentMode === "recovery"
+                        ? "Update Password"
+                        : currentMode === "signup"
+                            ? "Create Account"
+                            : "Login";
+            }
+        }
+    });
+
+    // SUPABASE PASSWORD RECOVERY EVENT
+    supabaseClient.auth.onAuthStateChange((event) => {
+        if (event === "PASSWORD_RECOVERY") {
+            openModal();
+            setMode("recovery");
+            passwordInput.focus();
+        }
+    });
+
+    setMode("login");
+
+})();
+
+</script>
 
 </body>
 </html>
