@@ -5938,3 +5938,117 @@ transition-duration:
     color: var(--emerald-bright);
     text-decoration: underline;
 }
+
+/* ===== Luxury Emerald Glass Login Button ===== */
+
+.auth-open-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 11px 22px;
+    overflow: hidden;
+
+    color: #d9fff6;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(0, 230, 195, 0.16),
+        rgba(0, 100, 85, 0.12)
+    );
+
+    border: 1px solid rgba(0, 230, 195, 0.48);
+    border-radius: 12px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 230, 195, 0.08),
+        0 5px 18px rgba(0, 230, 195, 0.10);
+
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+/* Glass Highlight */
+.auth-open-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255, 255, 255, 0.16),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+}
+
+.auth-open-btn:hover::before {
+    left: 150%;
+}
+
+.auth-open-btn:hover {
+    color: #ffffff;
+
+    background: linear-gradient(
+        135deg,
+        rgba(0, 230, 195, 0.28),
+        rgba(0, 120, 100, 0.22)
+    );
+
+    border-color: #00e6c3;
+
+    box-shadow:
+        0 0 10px rgba(0, 230, 195, 0.30),
+        0 0 25px rgba(0, 230, 195, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    transform: translateY(-2px);
+}
+
+/* Professional Login User Icon */
+
+.login-user-icon {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 23px;
+    height: 23px;
+
+    color: #00e6c3;
+    transition: all 0.3s ease;
+}
+
+.login-user-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+}
+
+.auth-open-btn:hover .login-user-icon {
+    color: #ffffff;
+    filter: drop-shadow(0 0 5px rgba(0, 230, 195, 0.8));
+}
+
+.auth-open-btn span:last-child {
+    position: relative;
+    z-index: 1;
+}
