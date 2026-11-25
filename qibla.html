@@ -2,628 +2,464 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#020b0d">
 
-    <title>Qibla Finder | Islamic Soldier</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="qibla.css">
+    <meta name="description"
+          content="Islamic Soldier Quran — Read, Listen and Explore the Holy Quran">
+
+    <title>Quran | Islamic Soldier</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Quran CSS -->
+    <link rel="stylesheet" href="quran.css">
 </head>
 
 <body>
 
-    <!-- =========================================
-         QIBLA COMPASS APP
-    ========================================== -->
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
 
-    <main class="qibla-app">
+<div class="quran-bg">
+    <div class="bg-pattern"></div>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+</div>
 
-        <!-- Background -->
-        <div class="background-glow glow-left"></div>
-        <div class="background-glow glow-right"></div>
-        <div class="islamic-pattern"></div>
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-        <!-- =====================================
-             HEADER
-        ====================================== -->
+<header class="quran-header">
 
-        <header class="app-header">
+    <div class="header-inner">
 
-            <div class="brand">
+        <a href="../index.html" class="brand">
 
-                <div class="brand-kaaba">
-                    <img src="kaabaa.png" alt="Kaaba">
-                </div>
-
-                <div class="brand-info">
-
-                    <span class="brand-small">
-                        ISLAMIC SOLDIER
-                    </span>
-
-                    <h1>
-                        Qibla Finder
-                    </h1>
-
-                    <span class="brand-tag">
-                        REAL COMPASS
-                    </span>
-
-                </div>
-
+            <div class="brand-icon">
+                ☾
             </div>
 
+            <div>
+                <strong>Islamic Soldier</strong>
+                <span>Quran</span>
+            </div>
+
+        </a>
+
+
+        <div class="header-actions">
 
             <button
-                type="button"
-                class="settings-btn"
-                id="settingsBtn"
-                aria-label="Compass settings"
-            >
-                ⚙
+                class="icon-btn"
+                id="themeBtn"
+                title="Change Theme">
+                🌙
             </button>
 
-        </header>
+            <button
+                class="icon-btn"
+                id="bookmarkBtn"
+                title="Bookmarks">
+                🔖
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
 
 
 
-        <!-- =====================================
-             TOP STATUS
-        ====================================== -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
-        <section class="heading-cards">
+<main class="quran-container">
 
-            <!-- Current Heading -->
 
-            <div class="heading-card">
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-                <div class="heading-card-icon compass-icon">
-                    🧭
-                </div>
+<section class="quran-hero">
 
-                <div class="heading-card-content">
+    <div class="hero-content">
 
-                    <span class="card-label">
-                        CURRENT HEADING
-                    </span>
+        <div class="hero-badge">
+            ﷽
+        </div>
 
-                    <div class="heading-value">
+        <p class="arabic-subtitle">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+        </p>
 
-                        <strong id="headingDegree">
-                            --°
-                        </strong>
+        <h1>
+            Read the
+            <span>Holy Quran</span>
+        </h1>
 
-                        <span id="headingDirection">
-                            --
-                        </span>
+        <p class="hero-description">
+            Read, listen and understand the Quran
+            in a peaceful and beautiful experience.
+        </p>
 
-                    </div>
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                id="continueReadingBtn">
+                📖 Continue Reading
+            </button>
+
+            <button
+                class="secondary-btn"
+                id="randomSurahBtn">
+                ✨ Discover a Surah
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-decoration">
+
+        <div class="quran-orbit orbit-one"></div>
+        <div class="quran-orbit orbit-two"></div>
+
+        <div class="hero-quran-symbol">
+            ﷲ
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<section class="search-section">
+
+    <div class="search-box">
+
+        <span class="search-icon">
+            🔎
+        </span>
+
+        <input
+            type="search"
+            id="surahSearch"
+            placeholder="Search Surah by name or number..."
+            autocomplete="off">
+
+        <button
+            id="clearSearch"
+            class="clear-search">
+            ×
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUICK FILTERS
+===================================================== -->
+
+<section class="quick-section">
+
+    <button
+        class="filter-btn active"
+        data-filter="all">
+        All Surahs
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="meccan">
+        Meccan
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="medinan">
+        Medinan
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="favorite">
+        ❤️ Favorites
+    </button>
+
+</section>
+
+
+
+<!-- =====================================================
+     SURAH AREA
+===================================================== -->
+
+<section class="surah-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">
+                HOLY QURAN
+            </span>
+
+            <h2>
+                Surah Collection
+            </h2>
+        </div>
+
+        <span
+            id="surahCount"
+            class="surah-count">
+            114 Surahs
+        </span>
+
+    </div>
+
+
+    <div
+        id="surahGrid"
+        class="surah-grid">
+
+        <!-- Surahs generated by JavaScript -->
+
+    </div>
+
+
+    <div
+        id="emptyState"
+        class="empty-state hidden">
+
+        <div class="empty-icon">
+            🔎
+        </div>
+
+        <h3>
+            No Surah Found
+        </h3>
+
+        <p>
+            Try another Surah name or number.
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =====================================================
+     READING MODAL
+===================================================== -->
+
+<div
+    id="readingModal"
+    class="reading-modal hidden">
+
+    <div class="reading-panel">
+
+
+        <!-- Reading Header -->
+
+        <div class="reading-header">
+
+            <button
+                id="closeReading"
+                class="close-btn">
+                ×
+            </button>
+
+
+            <div class="reading-title">
+
+                <span id="readingSurahNumber">
+                    1
+                </span>
+
+                <div>
+
+                    <h2 id="readingSurahName">
+                        Al-Fatihah
+                    </h2>
+
+                    <p id="readingSurahInfo">
+                        The Opening • 7 Ayahs
+                    </p>
 
                 </div>
 
             </div>
 
 
-            <!-- Qibla Bearing -->
+            <div class="reading-actions">
 
-            <div class="heading-card qibla-heading-card">
+                <button
+                    id="fontDecrease"
+                    class="small-action">
+                    A-
+                </button>
 
-                <div class="heading-card-icon kaaba-icon">
-                    <img src="kaabaa.png" alt="Kaaba">
-                </div>
+                <button
+                    id="fontIncrease"
+                    class="small-action">
+                    A+
+                </button>
 
-                <div class="heading-card-content">
-
-                    <span class="card-label">
-                        QIBLA BEARING
-                    </span>
-
-                    <div class="heading-value qibla-value">
-
-                        <strong id="qiblaDegree">
-                            --°
-                        </strong>
-
-                        <span id="qiblaDirection">
-                            --
-                        </span>
-
-                    </div>
-
-                </div>
+                <button
+                    id="translationToggle"
+                    class="small-action active">
+                    বাংলা
+                </button>
 
             </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             COMPASS STATUS
-        ====================================== -->
-
-        <div class="compass-status">
-
-            <span class="status-indicator" id="statusIndicator"></span>
-
-            <span id="compassState">
-                Compass waiting...
-            </span>
-
-            <span class="status-separator">
-                |
-            </span>
-
-            <span id="gpsStateTop">
-                GPS waiting...
-            </span>
 
         </div>
 
 
 
-        <!-- =====================================
-             REAL COMPASS
-        ====================================== -->
+        <!-- Bismillah -->
 
-        <section class="compass-area">
+        <div
+            id="bismillah"
+            class="bismillah">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+        </div>
 
-            <div class="compass-wrapper">
 
 
-                <!-- Fixed top direction marker -->
+        <!-- Loading -->
 
-                <div class="fixed-direction-marker">
+        <div
+            id="ayahLoading"
+            class="ayah-loading">
 
-                    <span class="marker-arrow"></span>
+            <div class="loader"></div>
 
-                </div>
+            <p>
+                Loading Quran...
+            </p>
 
+        </div>
 
 
-                <!-- Outer Compass -->
 
-                <div
-                    class="real-compass"
-                    id="compass"
-                >
+        <!-- Ayah Container -->
 
+        <div
+            id="ayahContainer"
+            class="ayah-container">
 
-                    <!-- Outer glow -->
+        </div>
 
-                    <div class="compass-outer-glow"></div>
 
 
-                    <!-- Metallic outer ring -->
+        <!-- Reading Footer -->
 
-                    <div class="compass-metal-ring">
-
-                        <div class="metal-ring-inner"></div>
-
-                    </div>
-
-
-
-                    <!-- =================================
-                         ROTATING COMPASS DIAL
-                    ================================== -->
-
-                    <div
-                        class="compass-dial"
-                        id="compassDial"
-                    >
-
-
-                        <!-- Degree ticks -->
-
-                        <div
-                            class="degree-ticks"
-                            id="degreeTicks"
-                        ></div>
-
-
-                        <!-- Degree numbers -->
-
-                        <div
-                            class="degree-numbers"
-                            id="degreeNumbers"
-                        ></div>
-
-
-                        <!-- Cardinal directions -->
-
-                        <div
-                            class="cardinal-direction north"
-                            data-direction="N"
-                        >
-                            N
-                        </div>
-
-                        <div
-                            class="cardinal-direction north-east"
-                            data-direction="NE"
-                        >
-                            NE
-                        </div>
-
-                        <div
-                            class="cardinal-direction east"
-                            data-direction="E"
-                        >
-                            E
-                        </div>
-
-                        <div
-                            class="cardinal-direction south-east"
-                            data-direction="SE"
-                        >
-                            SE
-                        </div>
-
-                        <div
-                            class="cardinal-direction south"
-                            data-direction="S"
-                        >
-                            S
-                        </div>
-
-                        <div
-                            class="cardinal-direction south-west"
-                            data-direction="SW"
-                        >
-                            SW
-                        </div>
-
-                        <div
-                            class="cardinal-direction west"
-                            data-direction="W"
-                        >
-                            W
-                        </div>
-
-                        <div
-                            class="cardinal-direction north-west"
-                            data-direction="NW"
-                        >
-                            NW
-                        </div>
-
-
-
-                        <!-- Compass face -->
-
-                        <div class="compass-face">
-
-                            <div class="compass-star"></div>
-
-                            <div class="inner-compass-ring"></div>
-
-                            <div class="inner-compass-ring second"></div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- =================================
-                         QIBLA INDICATOR
-                    ================================== -->
-
-                    <div
-                        class="qibla-indicator"
-                        id="qiblaIndicator"
-                    >
-
-                        <div class="qibla-line"></div>
-
-                        <div class="qibla-marker">
-
-                            <div class="qibla-marker-icon">
-                                <img
-                                    src="kaabaa.png"
-                                    alt="Qibla"
-                                >
-                            </div>
-
-                            <span>
-                                QIBLA
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- =================================
-                         COMPASS NEEDLE
-                    ================================== -->
-
-                    <div
-                        class="compass-needle"
-                        id="compassNeedle"
-                    >
-
-                        <div class="needle-north">
-                            <span></span>
-                        </div>
-
-                        <div class="needle-south">
-                            <span></span>
-                        </div>
-
-                        <div class="needle-center">
-
-                            <div class="needle-center-inner"></div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Center -->
-
-                    <div class="compass-center">
-
-                        <div class="center-glow"></div>
-
-                        <div class="center-kaaba">
-
-                            <img
-                                src="kaabaa.png"
-                                alt="Holy Kaaba"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-            <!-- =================================
-                 CURRENT DIRECTION
-            ================================== -->
-
-            <div class="direction-readout">
-
-                <strong id="largeHeading">
-                    --°
-                </strong>
-
-                <span id="largeDirection">
-                    Waiting
-                </span>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             QIBLA MESSAGE
-        ====================================== -->
-
-        <section class="qibla-message">
-
-            <div class="qibla-message-icon">
-
-                <img
-                    src="kaabaa.png"
-                    alt="Kaaba"
-                >
-
-            </div>
-
-            <div class="qibla-message-content">
-
-                <span>
-                    QIBLA DIRECTION
-                </span>
-
-                <strong id="qiblaInstruction">
-                    Detecting Qibla direction...
-                </strong>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             DEVICE / GPS STATUS
-        ====================================== -->
-
-        <section class="device-info">
-
-            <!-- Location -->
-
-            <div class="info-card location-card">
-
-                <div class="info-icon">
-                    📍
-                </div>
-
-                <div class="info-content">
-
-                    <span>
-                        YOUR LOCATION
-                    </span>
-
-                    <strong id="locationText">
-                        Detecting location...
-                    </strong>
-
-                    <small id="coordinatesText">
-                        --° N, --° E
-                    </small>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Accuracy -->
-
-            <div class="info-card">
-
-                <div class="info-icon">
-                    ◎
-                </div>
-
-                <div class="info-content">
-
-                    <span>
-                        ACCURACY
-                    </span>
-
-                    <strong id="accuracyState">
-                        --
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- GPS -->
-
-            <div class="info-card">
-
-                <div class="info-icon">
-                    📡
-                </div>
-
-                <div class="info-content">
-
-                    <span>
-                        GPS SIGNAL
-                    </span>
-
-                    <strong id="gpsSignal">
-                        Waiting
-                    </strong>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             ACTION BUTTONS
-        ====================================== -->
-
-        <section class="compass-actions">
+        <div class="reading-footer">
 
             <button
-                type="button"
-                class="action-btn primary-btn"
-                id="detectBtn"
-            >
-
-                <span class="action-icon">
-                    📍
-                </span>
-
-                <span>
-                    Detect My Location
-                </span>
-
+                id="previousSurah"
+                class="nav-surah-btn">
+                ← Previous
             </button>
 
+            <div
+                id="readingProgress"
+                class="reading-progress">
+                0%
+            </div>
 
             <button
-                type="button"
-                class="action-btn secondary-btn"
-                id="calibrateBtn"
-            >
-
-                <span class="action-icon">
-                    🧭
-                </span>
-
-                <span>
-                    Calibrate Compass
-                </span>
-
+                id="nextSurah"
+                class="nav-surah-btn">
+                Next →
             </button>
 
-        </section>
+        </div>
+
+    </div>
+
+</div>
 
 
 
-        <!-- =====================================
-             SENSOR MESSAGE
-        ====================================== -->
+<!-- =====================================================
+     BOOKMARK PANEL
+===================================================== -->
 
-        <section
-            class="sensor-message"
-            id="sensorMessage"
-        >
+<div
+    id="bookmarkPanel"
+    class="bookmark-panel hidden">
 
-            <div class="sensor-message-icon">
-                ✦
-            </div>
+    <div class="bookmark-box">
 
-            <div>
+        <div class="bookmark-header">
 
-                <strong>
-                    Compass Calibration
-                </strong>
+            <h3>
+                🔖 Your Bookmarks
+            </h3>
 
-                <p>
-                    If the compass direction seems inaccurate,
-                    slowly move your phone in a figure-8 motion.
-                </p>
+            <button
+                id="closeBookmark"
+                class="close-btn">
+                ×
+            </button>
 
-            </div>
+        </div>
 
-        </section>
+        <div
+            id="bookmarkList"
+            class="bookmark-list">
 
+        </div>
 
+    </div>
 
-        <!-- =====================================
-             FOOTER
-        ====================================== -->
-
-        <footer class="app-footer">
-
-            <span>
-                Qibla direction is calculated from your current location.
-            </span>
-
-            <span class="footer-dot">
-                •
-            </span>
-
-            <strong>
-                Islamic Soldier
-            </strong>
-
-        </footer>
+</div>
 
 
-    </main>
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    id="toast"
+    class="toast">
+    Saved
+</div>
 
 
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================== -->
 
-    <script src="qibla.js"></script>
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="quran.js"></script>
 
 </body>
 </html>
