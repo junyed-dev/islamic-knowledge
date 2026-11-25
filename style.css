@@ -1,6054 +1,1404 @@
-/* =========================================================
-ISLAMIC SOLDIER
-ARABIC PREMIUM HOMEPAGE
-VERSION 4.0
-========================================================= */
+/* =========================================
+   🎵 NASHEED PLAYER
+   API + PLAYLIST + ANIMATION
+========================================= */
 
 
-/* =========================================================
-ROOT
-========================================================= */
+/* =========================================
+   01. ELEMENTS
+========================================= */
 
-:root {
+const nasheedPlayer =
+    document.getElementById("nasheed-player");
 
---bg: #02090a;
---bg-deep: #010506;
---bg-soft: #061416;
+const nasheedAudio =
+    document.getElementById("nasheed-audio");
 
---emerald: #00d8b4;
---emerald-bright: #20f3d0;
---emerald-soft: rgba(0, 216, 180, .12);
+const playButton =
+    document.getElementById("play-btn");
 
---gold: #cda75a;
---gold-light: #f0d28c;
---gold-soft: rgba(205, 167, 90, .12);
+const previousButton =
+    document.getElementById("prev-btn");
 
---white: #ffffff;
---text: #f5f8f7;
+const nextButton =
+    document.getElementById("next-btn");
 
---muted: rgba(245,248,247,.68);
---muted-light: rgba(245,248,247,.46);
+const titleElement =
+    document.getElementById("nasheed-title");
 
---border: rgba(0,216,180,.15);
---gold-border: rgba(205,167,90,.22);
+const artistElement =
+    document.getElementById("nasheed-artist");
 
---card: rgba(7,25,27,.78);
+const currentTimeElement =
+    document.getElementById("current-time");
 
---shadow:
-0 30px 90px rgba(0,0,0,.48);
+const durationElement =
+    document.getElementById("duration");
 
---radius: 25px;
+const progress =
+    document.getElementById("progress");
 
-}
-
-
-/* =========================================================
-LIGHT THEME
-========================================================= */
-
-[data-home-theme="light"] {
-
---bg: #eef7f4;
---bg-deep: #e4f0ed;
---bg-soft: #dbece8;
-
---white: #082122;
---text: #082122;
-
---muted: rgba(8,33,34,.70);
---muted-light: rgba(8,33,34,.50);
-
---border: rgba(0,130,110,.18);
---gold-border: rgba(150,105,35,.25);
-
---card: rgba(255,255,255,.78);
-
-}
-
-
-/* =========================================================
-RESET
-========================================================= */
-
-* {
-
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-
-}
-
-
-html {
-
-scroll-behavior: smooth;
-
-}
-
-
-body {
-
-min-height: 100vh;
-
-overflow-x: hidden;
-
-color: var(--text);
-
-background:
-
-radial-gradient(
-circle at 50% -10%,
-rgba(0,216,180,.11),
-transparent 34%
-),
-
-radial-gradient(
-circle at 90% 35%,
-rgba(205,167,90,.06),
-transparent 30%
-),
-
-var(--bg);
-
-font-family:
-Georgia,
-"Times New Roman",
-serif;
-
-}
-
-
-img {
-
-display: block;
-max-width: 100%;
-
-}
-
-
-a {
-
-color: inherit;
-text-decoration: none;
-
-}
-
-
-button,
-a {
-
--webkit-tap-highlight-color: transparent;
-
-}
-
-
-button {
-
-font: inherit;
-
-}
-
-
-::selection {
-
-color: #001514;
-background: var(--emerald);
-
-}
-
-
-/* =========================================================
-SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar {
-
-width: 9px;
-
-}
-
-
-::-webkit-scrollbar-track {
-
-background: var(--bg-deep);
-
-}
-
-
-::-webkit-scrollbar-thumb {
-
-background:
-linear-gradient(
-var(--emerald),
-var(--gold)
-);
-
-border-radius: 20px;
-
-}
-
-
-/* =========================================================
-PROGRESS BAR
-========================================================= */
-
-#progress-bar {
-
-position: fixed;
-
-top: 0;
-left: 0;
-
-width: 0;
-
-height: 3px;
-
-background:
-linear-gradient(
-90deg,
-var(--emerald),
-var(--gold-light)
-);
-
-box-shadow:
-0 0 18px rgba(0,216,180,.70);
-
-z-index: 99999;
-
-}
-
-
-/* =========================================================
-HEADER
-========================================================= */
-
-.header {
-
-position: fixed;
-
-top: 17px;
-left: 2.5%;
-
-width: 95%;
-
-height: 70px;
-
-padding:
-0 22px;
-
-display: flex;
-
-align-items: center;
-
-justify-content: space-between;
-
-gap: 20px;
-
-background:
-linear-gradient(
-135deg,
-rgba(7,27,29,.91),
-rgba(2,13,15,.78)
-);
-
-border:
-1px solid rgba(0,216,180,.17);
-
-border-radius: 22px;
-
-backdrop-filter:
-blur(25px);
-
--webkit-backdrop-filter:
-blur(25px);
-
-box-shadow:
-0 15px 50px rgba(0,0,0,.32);
-
-z-index: 1000;
-
-}
-
-
-[data-home-theme="light"] .header {
-
-background:
-rgba(247,252,250,.82);
-
-}
-
-
-/* =========================================================
-LOGO
-========================================================= */
-
-.logo {
-
-display: flex;
-
-align-items: center;
-
-gap: 10px;
-
-font-size: 20px;
-
-font-weight: 700;
-
-white-space: nowrap;
-
-}
-
-
-.logo-mark {
-
-width: 38px;
-height: 38px;
-
-display: grid;
-
-place-items: center;
-
-color: var(--gold-light);
-
-background:
-linear-gradient(
-145deg,
-rgba(205,167,90,.16),
-rgba(0,216,180,.08)
-);
-
-border:
-1px solid var(--gold-border);
-
-border-radius: 12px;
-
-font-size: 22px;
-
-box-shadow:
-inset 0 0 18px rgba(255,255,255,.02);
-
-}
-
-
-.logo-name b {
-
-color: var(--emerald);
-
-}
-
-
-/* =========================================================
-NAV
-========================================================= */
-
-.nav {
-
-display: flex;
-
-align-items: center;
-
-gap: 30px;
-
-}
-
-
-.nav a {
-
-position: relative;
-
-color:
-rgba(255,255,255,.74);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size: 12px;
-
-font-weight: 600;
-
-transition:
-color .25s ease;
-
-}
-
-
-[data-home-theme="light"] .nav a {
-
-color:
-rgba(8,33,34,.68);
-
-}
-
-
-.nav a:hover,
-.nav a.active {
-
-color: var(--emerald);
-
-}
-
-
-.nav a.active::after {
-
-content: "";
-
-position: absolute;
-
-left: 0;
-right: 0;
-
-bottom: -10px;
-
-height: 2px;
-
-border-radius: 10px;
-
-background:
-linear-gradient(
-90deg,
-var(--emerald),
-var(--gold)
-);
-
-box-shadow:
-0 0 12px rgba(0,216,180,.45);
-
-}
-
-
-/* =========================================================
-HEADER ACTIONS
-========================================================= */
-
-.header-actions {
-
-display: flex;
-
-align-items: center;
-
-gap: 9px;
-
-}
-
-
-#theme-toggle {
-
-min-height: 38px;
-
-padding:
-0 13px;
-
-color: var(--white);
-
-background:
-rgba(0,216,180,.06);
-
-border:
-1px solid rgba(0,216,180,.30);
-
-border-radius: 999px;
-
-cursor: pointer;
-
-font-family:
-Arial,
-sans-serif;
-
-font-size: 11px;
-
-font-weight: 700;
-
-transition:
-.25s ease;
-
-}
-
-
-#theme-toggle:hover {
-
-color: #001514;
-
-background:
-var(--emerald);
-
-box-shadow:
-0 0 28px rgba(0,216,180,.30);
-
-}
-
-
-/* =========================================================
-HAMBURGER
-========================================================= */
-
-.menu-toggle {
-
-width: 40px;
-height: 40px;
-
-display: none;
-
-flex-direction: column;
-
-align-items: center;
-justify-content: center;
-
-gap: 5px;
-
-border:
-1px solid rgba(0,216,180,.24);
-
-border-radius: 12px;
-
-background:
-rgba(0,216,180,.05);
-
-cursor: pointer;
-
-}
-
-
-.menu-toggle span {
-
-width: 18px;
-height: 2px;
-
-background:
-var(--emerald);
-
-border-radius: 10px;
-
-transition:
-.25s ease;
-
-}
-
-
-.menu-toggle.open span:nth-child(1) {
-
-transform:
-translateY(7px)
-rotate(45deg);
-
-}
-
-
-.menu-toggle.open span:nth-child(2) {
-
-opacity: 0;
-
-}
-
-
-.menu-toggle.open span:nth-child(3) {
-
-transform:
-translateY(-7px)
-rotate(-45deg);
-
-}
-
-
-/* =========================================================
-HERO
-========================================================= */
-
-.hero {
-
-position: relative;
-
-min-height: 850px;
-
-overflow: hidden;
-
-display: flex;
-
-align-items: center;
-
-padding:
-145px 7% 85px;
-
-background:
-linear-gradient(
-90deg,
-rgba(1,7,8,.98) 0%,
-rgba(2,14,16,.90) 45%,
-rgba(2,8,10,.55) 100%
-);
-
-}
-
-
-.hero-bg {
-
-position: absolute;
-
-inset: 0;
-
-background:
-url("mosque2.jfif")
-center /
-cover
-no-repeat;
-
-opacity: .48;
-
-filter:
-saturate(.78)
-contrast(1.08);
-
-}
-
-
-.hero::before {
-
-content: "";
-
-position: absolute;
-
-inset: 0;
-
-background:
-
-radial-gradient(
-circle at 70% 40%,
-rgba(0,216,180,.17),
-transparent 25%
-),
-
-linear-gradient(
-to bottom,
-rgba(0,0,0,.12),
-var(--bg) 100%
-);
-
-z-index: 1;
-
-}
-
-
-.hero-pattern {
-
-position: absolute;
-
-inset: 0;
-
-z-index: 2;
-
-opacity: .13;
-
-background:
-
-linear-gradient(
-30deg,
-transparent 46%,
-rgba(205,167,90,.28) 47%,
-transparent 48%
-),
-
-linear-gradient(
-150deg,
-transparent 46%,
-rgba(0,216,180,.20) 47%,
-transparent 48%
-);
-
-background-size:
-90px 90px;
-
-mask-image:
-linear-gradient(
-to right,
-transparent,
-black 45%,
-transparent
-);
-
-}
-
-
-.hero-stars {
-
-position: absolute;
-
-inset: 0;
-
-z-index: 2;
-
-opacity: .35;
-
-background-image:
-
-radial-gradient(
-circle at 12% 25%,
-white 0 1px,
-transparent 2px
-),
-
-radial-gradient(
-circle at 28% 14%,
-white 0 1px,
-transparent 2px
-),
-
-radial-gradient(
-circle at 46% 29%,
-white 0 1px,
-transparent 2px
-),
-
-radial-gradient(
-circle at 76% 16%,
-white 0 1px,
-transparent 2px
-),
-
-radial-gradient(
-circle at 89% 36%,
-white 0 1px,
-transparent 2px
-),
-
-radial-gradient(
-circle at 68% 70%,
-white 0 1px,
-transparent 2px
-);
-
-}
-
-
-.hero-glow {
-
-position: absolute;
-
-border-radius: 50%;
-
-filter: blur(80px);
-
-z-index: 1;
-
-}
-
-
-.hero-glow-one {
-
-width: 430px;
-height: 430px;
-
-right: 8%;
-top: 25%;
-
-background:
-rgba(0,216,180,.14);
-
-}
-
-
-.hero-glow-two {
-
-width: 260px;
-height: 260px;
-
-left: 10%;
-bottom: 8%;
-
-background:
-rgba(205,167,90,.08);
-
-}
-
-
-.hero-mosque {
-
-position: absolute;
-
-left: 0;
-right: 0;
-
-bottom: -35px;
-
-height: 220px;
-
-z-index: 3;
-
-opacity: .28;
-
-background:
-
-linear-gradient(
-to top,
-rgba(0,0,0,.98),
-transparent
-),
-
-url("mosque2.jfif")
-center bottom /
-cover
-no-repeat;
-
-filter:
-saturate(.65)
-blur(.5px);
-
-}
-
-
-/* =========================================================
-HERO CONTENT
-========================================================= */
-
-.hero-content {
-
-position: relative;
-
-z-index: 10;
-
-width:
-min(
-1220px,
-100%
-);
-
-margin:
-0 auto;
-
-display: grid;
-
-grid-template-columns:
-1fr
-.95fr;
-
-align-items: center;
-
-gap: 45px;
-
-}
-
-
-/* =========================================================
-HERO TEXT
-========================================================= */
-
-.hero-text {
-
-position: relative;
-
-z-index: 20;
-
-}
-
-
-.arabic-intro {
-
-display: flex;
-
-align-items: center;
-
-gap: 13px;
-
-width: fit-content;
-
-margin-bottom: 17px;
-
-}
-
-
-.arabic-intro p {
-
-color:
-var(--gold-light);
-
-font-size: 22px;
-
-direction: rtl;
-
-text-shadow:
-0 0 20px rgba(205,167,90,.28);
-
-}
-
-
-.arabic-intro span {
-
-width: 32px;
-
-height: 1px;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-var(--gold)
-);
-
-}
-
-
-.arabic-intro span:last-child {
-
-background:
-linear-gradient(
-90deg,
-var(--gold),
-transparent
-);
-
-}
-
-
-.hero-kicker {
-
-display: flex;
-
-align-items: center;
-
-gap: 9px;
-
-margin-bottom: 19px;
-
-color:
-var(--emerald);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size: 8px;
-
-letter-spacing:
-2px;
-
-font-weight: 800;
-
-}
-
-
-.kicker-line {
-
-width: 25px;
-height: 1px;
-
-background:
-var(--emerald);
-
-box-shadow:
-0 0 12px
-rgba(0,216,180,.55);
-
-}
-
-
-.hero h1 {
-
-max-width: 700px;
-
-font-size:
-clamp(
-50px,
-6vw,
-82px
-);
-
-line-height:
-.97;
-
-letter-spacing:
--2.8px;
-
-font-weight:
-700;
-
-text-shadow:
-0 18px 45px
-rgba(0,0,0,.55);
-
-}
-
-
-.hero h1 strong {
-
-color:
-var(--emerald);
-
-text-shadow:
-0 0 28px
-rgba(0,216,180,.38);
-
-}
-
-
-.hero-description {
-
-max-width: 590px;
-
-margin:
-29px 0 31px;
-
-color:
-var(--muted);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-15px;
-
-line-height:
-1.85;
-
-}
-
-
-/* =========================================================
-HERO BUTTONS
-========================================================= */
-
-.hero-buttons {
-
-display: flex;
-
-align-items: center;
-
-flex-wrap: wrap;
-
-gap: 12px;
-
-}
-
-
-.primary-btn,
-.secondary-btn {
-
-min-height: 53px;
-
-padding:
-0 19px;
-
-display: inline-flex;
-
-align-items: center;
-
-justify-content: center;
-
-gap: 10px;
-
-border-radius:
-999px;
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-11px;
-
-font-weight:
-800;
-
-transition:
-.28s ease;
-
-}
-
-
-.primary-btn {
-
-color:
-#001514;
-
-background:
-linear-gradient(
-135deg,
-var(--emerald-bright),
-var(--emerald)
-);
-
-box-shadow:
-0 13px 35px
-rgba(0,216,180,.22);
-
-}
-
-
-.primary-btn b,
-.secondary-btn b {
-
-font-size:
-16px;
-
-}
-
-
-.primary-btn:hover {
-
-transform:
-translateY(-4px);
-
-box-shadow:
-0 18px 45px
-rgba(0,216,180,.38);
-
-}
-
-
-.secondary-btn {
-
-color:
-var(--white);
-
-background:
-rgba(0,216,180,.04);
-
-border:
-1px solid
-rgba(0,216,180,.34);
-
-}
-
-
-.secondary-btn:hover {
-
-color:
-#001514;
-
-background:
-var(--emerald);
-
-transform:
-translateY(-4px);
-
-}
-
-
-/* =========================================================
-HERO STATS
-========================================================= */
-
-.hero-stats {
-
-display: flex;
-
-align-items: center;
-
-gap: 22px;
-
-margin-top:
-34px;
-
-}
-
-
-.hero-stat {
-
-display: flex;
-
-flex-direction: column;
-
-gap: 3px;
-
-}
-
-
-.hero-stat strong {
-
-color:
-var(--gold-light);
-
-font-size:
-19px;
-
-}
-
-
-.hero-stat span {
-
-color:
-var(--muted-light);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-8px;
-
-text-transform:
-uppercase;
-
-letter-spacing:
-1.5px;
-
-}
-
-
-.stat-divider {
-
-width: 1px;
-
-height: 29px;
-
-background:
-rgba(255,255,255,.12);
-
-}
-
-
-/* =========================================================
-HERO VISUAL
-========================================================= */
-
-.hero-visual {
-
-position: relative;
-
-min-height:
-550px;
-
-display: grid;
-
-place-items:
-center;
-
-}
-
-
-.visual-aura {
-
-position: absolute;
-
-width:
-450px;
-
-height:
-450px;
-
-border-radius:
-50%;
-
-background:
-rgba(0,216,180,.15);
-
-filter:
-blur(80px);
-
-}
-
-
-.visual-orbit {
-
-position: absolute;
-
-border-radius:
-50%;
-
-border:
-1px solid
-rgba(0,216,180,.22);
-
-}
-
-
-.orbit-one {
-
-width:
-520px;
-
-height:
-315px;
-
-transform:
-rotate(-18deg);
-
-}
-
-
-.orbit-two {
-
-width:
-570px;
-
-height:
-355px;
-
-border-color:
-rgba(205,167,90,.19);
-
-transform:
-rotate(26deg);
-
-}
-
-
-/* =========================================================
-CRESCENT
-========================================================= */
-
-.crescent {
-
-position: absolute;
-
-right:
-12%;
-
-top:
-5%;
-
-width:
-67px;
-
-height:
-67px;
-
-border-radius:
-50%;
-
-border:
-2px solid
-var(--gold);
-
-box-shadow:
-0 0 30px
-rgba(205,167,90,.16);
-
-}
-
-
-.crescent::after {
-
-content: "";
-
-position: absolute;
-
-width:
-67px;
-
-height:
-67px;
-
-left:
-18px;
-
-top:
--8px;
-
-border-radius:
-50%;
-
-background:
-rgba(2,9,10,.96);
-
-}
-
-
-/* =========================================================
-PORTRAIT
-========================================================= */
-
-.portrait-frame {
-
-position: relative;
-
-width:
-min(
-430px,
-72vw
-);
-
-aspect-ratio:
-1;
-
-z-index: 5;
-
-}
-
-
-.portrait-glow {
-
-position: absolute;
-
-inset:
-12%;
-
-border-radius:
-50%;
-
-background:
-rgba(0,216,180,.22);
-
-filter:
-blur(45px);
-
-}
-
-
-.portrait-inner {
-
-position: absolute;
-
-inset:
-26px;
-
-overflow: hidden;
-
-border-radius:
-50%;
-
-background:
-#082d2d;
-
-border:
-5px solid
-rgba(0,216,180,.85);
-
-box-shadow:
-
-0 0 0 9px
-rgba(0,216,180,.045),
-
-0 0 0 20px
-rgba(205,167,90,.035),
-
-0 0 55px
-rgba(0,216,180,.42),
-
-0 30px 80px
-rgba(0,0,0,.58);
-
-}
-
-
-.hero-person {
-
-width:
-100%;
-
-height:
-100%;
-
-object-fit:
-cover;
-
-object-position:
-center;
-
-border-radius:
-50%;
-
-filter:
-saturate(.92)
-contrast(1.08);
-
-}
-
-
-.portrait-overlay {
-
-position: absolute;
-
-inset: 0;
-
-background:
-
-radial-gradient(
-circle at 40% 25%,
-transparent,
-rgba(0,0,0,.25)
-),
-
-linear-gradient(
-to bottom,
-transparent 55%,
-rgba(0,0,0,.30)
-);
-
-}
-
-
-.portrait-border {
-
-position: absolute;
-
-inset:
-12px;
-
-border:
-1px solid
-rgba(255,255,255,.18);
-
-border-radius:
-50%;
-
-}
-
-
-.gold-ring {
-
-position: absolute;
-
-inset:
-5px;
-
-border-radius:
-50%;
-
-border:
-1px dashed
-rgba(205,167,90,.52);
-
-transform:
-rotate(8deg);
-
-pointer-events:
-none;
-
-}
-
-
-/* =========================================================
-FLOATING CARDS
-========================================================= */
-
-.floating-card {
-
-position: absolute;
-
-z-index: 10;
-
-display: flex;
-
-align-items: center;
-
-gap: 9px;
-
-padding:
-10px 13px;
-
-background:
-rgba(4,19,21,.88);
-
-border:
-1px solid
-rgba(0,216,180,.22);
-
-border-radius:
-15px;
-
-backdrop-filter:
-blur(18px);
-
-box-shadow:
-0 18px 45px
-rgba(0,0,0,.38);
-
-}
-
-
-.floating-icon {
-
-width:
-36px;
-
-height:
-36px;
-
-display: grid;
-
-place-items:
-center;
-
-background:
-rgba(0,216,180,.10);
-
-border:
-1px solid
-rgba(0,216,180,.13);
-
-border-radius:
-11px;
-
-}
-
-
-.floating-icon.gold {
-
-background:
-rgba(205,167,90,.10);
-
-border-color:
-rgba(205,167,90,.18);
-
-}
-
-
-.floating-card small {
-
-display: block;
-
-color:
-var(--muted-light);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-7px;
-
-letter-spacing:
-1.2px;
-
-}
-
-
-.floating-card strong {
-
-display: block;
-
-margin-top:
-2px;
-
-color:
-var(--white);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-11px;
-
-}
-
-
-.floating-quran {
-
-left:
-0;
-
-bottom:
-18%;
-
-}
-
-
-.floating-tilawat {
-
-right:
--1%;
-
-top:
-17%;
-
-}
-
-
-/* =========================================================
-VISUAL DOTS
-========================================================= */
-
-.visual-dot {
-
-position:
-absolute;
-
-border-radius:
-50%;
-
-background:
-var(--emerald);
-
-box-shadow:
-0 0 18px
-rgba(0,216,180,.80);
-
-z-index:
-12;
-
-}
-
-
-.dot-one {
-
-width:
-7px;
-
-height:
-7px;
-
-left:
-7%;
-
-top:
-20%;
-
-}
-
-
-.dot-two {
-
-width:
-4px;
-
-height:
-4px;
-
-right:
-10%;
-
-bottom:
-17%;
-
-}
-
-
-.dot-three {
-
-width:
-10px;
-
-height:
-10px;
-
-right:
-18%;
-
-top:
-7%;
-
-}
-
-
-/* =========================================================
-HERO BOTTOM ORNAMENT
-========================================================= */
-
-.hero-bottom-ornament {
-
-position:
-absolute;
-
-bottom:
-30px;
-
-left:
-50%;
-
-transform:
-translateX(-50%);
-
-display:
-flex;
-
-align-items:
-center;
-
-gap:
-13px;
-
-z-index:
-10;
-
-}
-
-
-.hero-bottom-ornament span {
-
-width:
-55px;
-
-height:
-1px;
-
-background:
-linear-gradient(
-90deg,
-transparent,
-var(--gold)
-);
-
-}
-
-
-.hero-bottom-ornament span:last-child {
-
-background:
-linear-gradient(
-90deg,
-var(--gold),
-transparent
-);
-
-}
-
-
-.hero-bottom-ornament i {
-
-color:
-var(--gold);
-
-font-style:
-normal;
-
-font-size:
-11px;
-
-}
-
-
-/* =========================================================
-NASHEED
-========================================================= */
-
-.nasheed-section {
-
-width:
-min(
-1080px,
-92%
-);
-
-margin:
--26px auto 0;
-
-position:
-relative;
-
-z-index:
-50;
-
-}
-
-
-.nasheed-player {
-
-display:
-grid;
-
-grid-template-columns:
-1.25fr
-auto
-1.35fr;
-
-align-items:
-center;
-
-gap:
-20px;
-
-padding:
-18px;
-
-background:
-linear-gradient(
-135deg,
-rgba(10,40,41,.96),
-rgba(3,17,19,.96)
-);
-
-border:
-1px solid
-rgba(0,216,180,.17);
-
-border-radius:
-24px;
-
-box-shadow:
-var(--shadow);
-
-backdrop-filter:
-blur(20px);
-
-}
-
-
-.nasheed-info {
-
-display:
-flex;
-
-align-items:
-center;
-
-gap:
-12px;
-
-min-width:
-0;
-
-}
-
-
-.nasheed-icon {
-
-width:
-46px;
-
-height:
-46px;
-
-flex:
-0 0 46px;
-
-display:
-grid;
-
-place-items:
-center;
-
-color:
-var(--gold-light);
-
-background:
-rgba(205,167,90,.09);
-
-border:
-1px solid
-rgba(205,167,90,.18);
-
-border-radius:
-14px;
-
-font-size:
-23px;
-
-}
-
-
-.player-label {
-
-color:
-var(--emerald);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-8px;
-
-font-weight:
-800;
-
-letter-spacing:
-1.5px;
-
-}
-
-
-.nasheed-text h3 {
-
-margin-top:
-3px;
-
-font-size:
-15px;
-
-white-space:
-nowrap;
-
-overflow:
-hidden;
-
-text-overflow:
-ellipsis;
-
-}
-
-
-.nasheed-text p {
-
-margin-top:
-3px;
-
-color:
-var(--muted-light);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-9px;
-
-}
-
-
-/* =========================================================
-NASHEED CONTROLS
-========================================================= */
-
-.nasheed-controls {
-
-display:
-flex;
-
-align-items:
-center;
-
-gap:
-8px;
-
-}
-
-
-.control-btn,
-.play-btn {
-
-border:
-0;
-
-cursor:
-pointer;
-
-transition:
-.2s ease;
-
-}
-
-
-.control-btn {
-
-width:
-34px;
-
-height:
-34px;
-
-display:
-grid;
-
-place-items:
-center;
-
-color:
-rgba(255,255,255,.70);
-
-background:
-rgba(255,255,255,.04);
-
-border:
-1px solid
-rgba(255,255,255,.08);
-
-border-radius:
-50%;
-
-}
-
-
-.play-btn {
-
-width:
-48px;
-
-height:
-48px;
-
-color:
-#001514;
-
-background:
-var(--emerald);
-
-border-radius:
-50%;
-
-box-shadow:
-0 0 25px
-rgba(0,216,180,.25);
-
-}
-
-
-.control-btn:hover {
-
-color:
-var(--emerald);
-
-border-color:
-rgba(0,216,180,.30);
-
-}
-
-
-.play-btn:hover {
-
-transform:
-scale(1.07);
-
-box-shadow:
-0 0 35px
-rgba(0,216,180,.42);
-
-}
-
-
-/* =========================================================
-NASHEED PROGRESS
-========================================================= */
-
-.nasheed-progress {
-
-display:
-flex;
-
-align-items:
-center;
-
-gap:
-9px;
-
-color:
-var(--muted-light);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-8px;
-
-}
-
-
-#progress {
-
-width:
-100%;
-
-accent-color:
-var(--emerald);
-
-}
-
-
-/* =========================================================
-PLAYLIST
-========================================================= */
-
-.nasheed-playlist {
-
-grid-column:
-1 / -1;
-
-max-height:
-0;
-
-overflow:
-hidden;
-
-}
-
-
-.playlist-header {
-
-display:
-flex;
-
-justify-content:
-space-between;
-
-color:
-var(--muted-light);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-8px;
-
-}
-
-
-/* =========================================================
-SECTIONS
-========================================================= */
-
-.features-section,
-.reminder-section,
-.quotes-section,
-.gallery-section {
-
-width:
-min(
-1180px,
-92%
-);
-
-margin:
-0 auto;
-
-padding:
-105px 0 25px;
-
-}
-
-
-.section-heading {
-
-display:
-flex;
-
-align-items:
-center;
-
-justify-content:
-center;
-
-gap:
-18px;
-
-text-align:
-center;
-
-margin-bottom:
-40px;
-
-}
-
-
-.section-heading > div:nth-child(2) {
-
-min-width:
-180px;
-
-}
-
-
-.section-heading span {
-
-display:
-block;
-
-color:
-var(--emerald);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-8px;
-
-font-weight:
-800;
-
-letter-spacing:
-2px;
-
-}
-
-
-.section-heading h2 {
-
-margin-top:
-7px;
-
-font-size:
-clamp(
-29px,
-4vw,
-43px
-);
-
-}
-
-
-.heading-ornament {
-
-color:
-var(--gold);
-
-font-size:
-17px;
-
-text-shadow:
-0 0 15px
-rgba(205,167,90,.25);
-
-}
-
-
-/* =========================================================
-FEATURES GRID
-========================================================= */
-
-.features-grid {
-
-display:
-grid;
-
-grid-template-columns:
-repeat(5, 1fr);
-
-gap:
-14px;
-
-}
-
-
-.feature-card {
-
-position:
-relative;
-
-min-height:
-335px;
-
-overflow:
-hidden;
-
-padding:
-22px;
-
-display:
-flex;
-
-flex-direction:
-column;
-
-justify-content:
-flex-end;
-
-background:
-linear-gradient(
-145deg,
-rgba(9,39,40,.88),
-rgba(2,14,16,.97)
-);
-
-border:
-1px solid
-var(--border);
-
-border-radius:
-var(--radius);
-
-box-shadow:
-0 20px 55px
-rgba(0,0,0,.20);
-
-transition:
-transform .35s ease,
-border-color .35s ease,
-box-shadow .35s ease;
-
-}
-
-
-.feature-card:hover {
-
-transform:
-translateY(-9px);
-
-border-color:
-rgba(0,216,180,.44);
-
-box-shadow:
-0 28px 70px
-rgba(0,0,0,.38),
-
-0 0 35px
-rgba(0,216,180,.07);
-
-}
-
-
-.card-image {
-
-position:
-absolute;
-
-inset:
-0;
-
-}
-
-
-.card-image img {
-
-width:
-100%;
-
-height:
-100%;
-
-object-fit:
-cover;
-
-opacity:
-.45;
-
-transition:
-transform .65s ease,
-opacity .4s ease;
-
-}
-
-
-.feature-card:hover
-.card-image img {
-
-transform:
-scale(1.08);
-
-opacity:
-.61;
-
-}
-
-
-.feature-overlay {
-
-position:
-absolute;
-
-inset:
-0;
-
-background:
-
-linear-gradient(
-to top,
-rgba(1,8,9,.99) 5%,
-rgba(1,8,9,.80) 45%,
-rgba(1,8,9,.12) 100%
-);
-
-}
-
-
-.arabic-card-pattern {
-
-position:
-absolute;
-
-inset:
-0;
-
-opacity:
-.07;
-
-background:
-linear-gradient(
-45deg,
-transparent 45%,
-var(--gold) 46%,
-transparent 47%
-);
-
-background-size:
-50px 50px;
-
-}
-
-
-.feature-content {
-
-position:
-relative;
-
-z-index:
-5;
-
-}
-
-
-.feature-icon {
-
-width:
-48px;
-
-height:
-48px;
-
-display:
-grid;
-
-place-items:
-center;
-
-margin-bottom:
-14px;
-
-background:
-rgba(0,216,180,.09);
-
-border:
-1px solid
-rgba(0,216,180,.16);
-
-border-radius:
-14px;
-
-font-size:
-20px;
-
-}
-
-
-.gold-icon {
-
-background:
-rgba(205,167,90,.09);
-
-border-color:
-rgba(205,167,90,.18);
-
-}
-
-
-.feature-kicker {
-
-color:
-var(--emerald);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-7px;
-
-font-weight:
-800;
-
-letter-spacing:
-1.2px;
-
-}
-
-
-.feature-card h3 {
-
-margin:
-6px 0 7px;
-
-font-size:
-24px;
-
-}
-
-
-.feature-card p {
-
-color:
-var(--muted);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-10px;
-
-line-height:
-1.65;
-
-}
-
-
-.feature-link {
-
-display:
-inline-flex;
-
-align-items:
-center;
-
-gap:
-7px;
-
-margin-top:
-14px;
-
-color:
-var(--white);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-9px;
-
-font-weight:
-800;
-
-}
-
-
-.feature-link b {
-
-color:
-var(--emerald);
-
-font-size:
-15px;
-
-}
-
-
-/* =========================================================
-QURAN FEATURE
-========================================================= */
-
-.quran-feature {
-
-width:
-min(
-1120px,
-92%
-);
-
-min-height:
-550px;
-
-margin:
-105px auto 20px;
-
-position:
-relative;
-
-overflow:
-hidden;
-
-display:
-grid;
-
-grid-template-columns:
-1fr
-1fr;
-
-align-items:
-center;
-
-background:
-
-linear-gradient(
-90deg,
-rgba(3,14,15,.40),
-rgba(3,14,15,.97)
-),
-
-url("pic7.jfif")
-center /
-cover
-no-repeat;
-
-border:
-1px solid
-var(--gold-border);
-
-border-radius:
-34px;
-
-box-shadow:
-var(--shadow);
-
-}
-
-
-.quran-feature::before {
-
-content:
-"";
-
-position:
-absolute;
-
-inset:
-0;
-
-background:
-
-radial-gradient(
-circle at 20% 50%,
-rgba(205,167,90,.13),
-transparent 30%
-);
-
-pointer-events:
-none;
-
-}
-
-
-.quran-feature-art {
-
-position:
-relative;
-
-min-height:
-550px;
-
-padding:
-35px;
-
-z-index:
-2;
-
-}
-
-
-.quran-frame-glow {
-
-position:
-absolute;
-
-width:
-60%;
-
-height:
-60%;
-
-left:
-20%;
-
-top:
-20%;
-
-background:
-rgba(205,167,90,.16);
-
-filter:
-blur(65px);
-
-}
-
-
-.quran-image-frame {
-
-position:
-relative;
-
-width:
-100%;
-
-height:
-100%;
-
-overflow:
-hidden;
-
-border-radius:
-27px;
-
-border:
-1px solid
-rgba(205,167,90,.26);
-
-box-shadow:
-0 30px 65px
-rgba(0,0,0,.50);
-
-}
-
-
-.quran-image-frame img {
-
-width:
-100%;
-
-height:
-100%;
-
-object-fit:
-cover;
-
-}
-
-
-.quran-image-shade {
-
-position:
-absolute;
-
-inset:
-0;
-
-background:
-linear-gradient(
-to top,
-rgba(0,0,0,.52),
-transparent 60%
-);
-
-}
-
-
-.quran-decoration {
-
-position:
-absolute;
-
-right:
-48px;
-
-bottom:
-45px;
-
-width:
-74px;
-
-height:
-74px;
-
-display:
-grid;
-
-place-items:
-center;
-
-color:
-var(--gold-light);
-
-background:
-rgba(3,14,15,.78);
-
-border:
-1px solid
-var(--gold-border);
-
-border-radius:
-50%;
-
-backdrop-filter:
-blur(10px);
-
-z-index:
-5;
-
-}
-
-
-.quran-decoration span {
-
-font-size:
-27px;
-
-}
-
-
-.quran-feature-content {
-
-position:
-relative;
-
-z-index:
-5;
-
-padding:
-55px;
-
-}
-
-
-.section-kicker {
-
-color:
-var(--emerald);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-8px;
-
-font-weight:
-800;
-
-letter-spacing:
-2px;
-
-}
-
-
-.quran-feature-content h2 {
-
-max-width:
-480px;
-
-margin:
-15px 0 18px;
-
-font-size:
-clamp(
-38px,
-5vw,
-58px
-);
-
-line-height:
-1.03;
-
-}
-
-
-.quran-feature-content h2 span {
-
-display:
-block;
-
-color:
-var(--gold-light);
-
-}
-
-
-.quran-feature-content > p {
-
-max-width:
-470px;
-
-color:
-var(--muted);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-13px;
-
-line-height:
-1.8;
-
-}
-
-
-.quran-feature-points {
-
-display:
-grid;
-
-grid-template-columns:
-1fr
-1fr;
-
-gap:
-12px 20px;
-
-margin:
-25px 0 30px;
-
-color:
-var(--muted);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-10px;
-
-}
-
-
-.quran-feature-points span {
-
-color:
-var(--emerald);
-
-margin-right:
-5px;
-
-}
-
-
-.gold-btn {
-
-display:
-inline-flex;
-
-align-items:
-center;
-
-gap:
-10px;
-
-min-height:
-46px;
-
-padding:
-0 20px;
-
-color:
-#171105;
-
-background:
-linear-gradient(
-135deg,
-var(--gold-light),
-var(--gold)
-);
-
-border-radius:
-999px;
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-10px;
-
-font-weight:
-800;
-
-box-shadow:
-0 12px 35px
-rgba(205,167,90,.18);
-
-transition:
-.25s ease;
-
-}
-
-
-.gold-btn:hover {
-
-transform:
-translateY(-3px);
-
-box-shadow:
-0 17px 42px
-rgba(205,167,90,.30);
-
-}
-
-
-/* =========================================================
-ARABIC BAND
-========================================================= */
-
-.arabic-band {
-
-position:
-relative;
-
-width:
-min(
-1180px,
-92%
-);
-
-min-height:
-260px;
-
-margin:
-100px auto 0;
-
-overflow:
-hidden;
-
-display:
-flex;
-
-align-items:
-center;
-
-justify-content:
-center;
-
-text-align:
-center;
-
-border:
-1px solid
-var(--gold-border);
-
-border-radius:
-30px;
-
-background:
-#071719;
-
-}
-
-
-.arabic-band-image {
-
-position:
-absolute;
-
-inset:
-0;
-
-background:
-url("calligraphy.jpg")
-center /
-cover
-no-repeat;
-
-opacity:
-.30;
-
-filter:
-saturate(.65);
-
-}
-
-
-.arabic-band::after {
-
-content:
-"";
-
-position:
-absolute;
-
-inset:
-0;
-
-background:
-linear-gradient(
-90deg,
-rgba(1,10,11,.80),
-rgba(1,10,11,.35),
-rgba(1,10,11,.80)
-);
-
-}
-
-
-.arabic-band-content {
-
-position:
-relative;
-
-z-index:
-2;
-
-}
-
-
-.arabic-band-content span {
-
-display:
-block;
-
-color:
-var(--gold-light);
-
-font-size:
-31px;
-
-direction:
-rtl;
-
-}
-
-
-.arabic-band-content h2 {
-
-margin-top:
-8px;
-
-font-size:
-34px;
-
-}
-
-
-.arabic-band-content p {
-
-margin-top:
-8px;
-
-color:
-var(--muted);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-11px;
-
-}
-
-
-/* =========================================================
-REMINDER CARDS
-========================================================= */
-
-.reminder-grid {
-
-display:
-grid;
-
-grid-template-columns:
-repeat(3,1fr);
-
-gap:
-16px;
-
-}
-
-
-.reminder-card {
-
-position:
-relative;
-
-min-height:
-280px;
-
-overflow:
-hidden;
-
-border:
-1px solid
-var(--border);
-
-border-radius:
-25px;
-
-background:
-var(--card);
-
-transition:
-.3s ease;
-
-}
-
-
-.reminder-card:hover {
-
-transform:
-translateY(-7px);
-
-border-color:
-rgba(0,216,180,.35);
-
-}
-
-
-.reminder-image {
-
-position:
-absolute;
-
-inset:
-0;
-
-}
-
-
-.reminder-image img {
-
-width:
-100%;
-
-height:
-100%;
-
-object-fit:
-cover;
-
-opacity:
-.48;
-
-transition:
-.5s ease;
-
-}
-
-
-.reminder-card:hover
-.reminder-image img {
-
-transform:
-scale(1.06);
-
-opacity:
-.60;
-
-}
-
-
-.reminder-card::after {
-
-content:
-"";
-
-position:
-absolute;
-
-inset:
-0;
-
-background:
-linear-gradient(
-to top,
-rgba(1,8,9,.96),
-rgba(1,8,9,.25)
-);
-
-}
-
-
-.reminder-content {
-
-position:
-absolute;
-
-left:
-22px;
-
-right:
-22px;
-
-bottom:
-20px;
-
-z-index:
-4;
-
-}
-
-
-.reminder-icon {
-
-display:
-grid;
-
-place-items:
-center;
-
-width:
-43px;
-
-height:
-43px;
-
-margin-bottom:
-12px;
-
-background:
-rgba(0,216,180,.10);
-
-border:
-1px solid
-rgba(0,216,180,.16);
-
-border-radius:
-13px;
-
-}
-
-
-.reminder-icon.gold {
-
-background:
-rgba(205,167,90,.10);
-
-border-color:
-rgba(205,167,90,.17);
-
-}
-
-
-.reminder-content h3 {
-
-font-size:
-22px;
-
-}
-
-
-.reminder-content p {
-
-margin-top:
-5px;
-
-color:
-var(--muted);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-10px;
-
-line-height:
-1.6;
-
-}
-
-
-/* =========================================================
-QUOTES
-========================================================= */
-
-.quote-grid {
-
-display:
-grid;
-
-grid-template-columns:
-repeat(3,1fr);
-
-gap:
-15px;
-
-}
-
-
-.quote-card {
-
-min-height:
-270px;
-
-position:
-relative;
-
-overflow:
-hidden;
-
-padding:
-24px;
-
-background:
-linear-gradient(
-145deg,
-rgba(8,34,35,.90),
-rgba(2,13,15,.96)
-);
-
-border:
-1px solid
-var(--border);
-
-border-radius:
-25px;
-
-transition:
-.3s ease;
-
-}
-
-
-.quote-card::before {
-
-content:
-"";
-
-position:
-absolute;
-
-width:
-150px;
-
-height:
-150px;
-
-right:
--60px;
-
-top:
--60px;
-
-border:
-1px solid
-rgba(205,167,90,.14);
-
-border-radius:
-50%;
-
-}
-
-
-.quote-card:hover {
-
-transform:
-translateY(-7px);
-
-border-color:
-rgba(205,167,90,.30);
-
-}
-
-
-.quote-top {
-
-display:
-flex;
-
-justify-content:
-space-between;
-
-align-items:
-center;
-
-}
-
-
-.quote-top span {
-
-color:
-var(--gold-light);
-
-font-size:
-21px;
-
-}
-
-
-.quote-top b {
-
-color:
-var(--muted-light);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-8px;
-
-}
-
-
-.quote-mark {
-
-margin-top:
-30px;
-
-color:
-var(--emerald);
-
-font-size:
-50px;
-
-line-height:
-.5;
-
-}
-
-
-.quote-card p {
-
-margin-top:
-17px;
-
-color:
-var(--white);
-
-font-size:
-19px;
-
-line-height:
-1.45;
-
-}
-
-
-.quote-card small {
-
-position:
-absolute;
-
-left:
-24px;
-
-bottom:
-22px;
-
-color:
-var(--gold-light);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-9px;
-
-}
-
-
-/* =========================================================
-GALLERY
-========================================================= */
-
-.gallery-grid {
-
-display:
-grid;
-
-grid-template-columns:
-1.25fr
-.75fr
-.75fr;
-
-grid-template-rows:
-245px
-245px;
-
-gap:
-14px;
-
-}
-
-
-.gallery-card {
-
-position:
-relative;
-
-overflow:
-hidden;
-
-min-height:
-220px;
-
-border:
-1px solid
-var(--border);
-
-border-radius:
-23px;
-
-background:
-#071718;
-
-}
-
-
-.gallery-card.gallery-large {
-
-grid-row:
-1 / 3;
-
-}
-
-
-.gallery-card.gallery-wide {
-
-grid-column:
-2 / 4;
-
-}
-
-
-.gallery-card img {
-
-width:
-100%;
-
-height:
-100%;
-
-object-fit:
-cover;
-
-transition:
-transform .65s ease;
-
-}
-
-
-.gallery-card:hover img {
-
-transform:
-scale(1.08);
-
-}
-
-
-.gallery-overlay {
-
-position:
-absolute;
-
-inset:
-0;
-
-background:
-linear-gradient(
-to top,
-rgba(0,0,0,.88),
-transparent 60%
-);
-
-}
-
-
-.gallery-card figcaption {
-
-position:
-absolute;
-
-left:
-18px;
-
-right:
-18px;
-
-bottom:
-17px;
-
-display:
-flex;
-
-align-items:
-center;
-
-gap:
-12px;
-
-z-index:
-3;
-
-}
-
-
-.gallery-card figcaption > span {
-
-width:
-32px;
-
-height:
-32px;
-
-display:
-grid;
-
-place-items:
-center;
-
-color:
-var(--gold-light);
-
-background:
-rgba(2,11,12,.75);
-
-border:
-1px solid
-var(--gold-border);
-
-border-radius:
-10px;
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-8px;
-
-}
-
-
-.gallery-card figcaption small {
-
-display:
-block;
-
-color:
-var(--emerald);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-7px;
-
-letter-spacing:
-1.3px;
-
-}
-
-
-.gallery-card figcaption strong {
-
-display:
-block;
-
-margin-top:
-3px;
-
-color:
-white;
-
-font-size:
-15px;
-
-}
-
-
-/* =========================================================
-FINAL CTA
-========================================================= */
-
-.final-cta {
-
-position:
-relative;
-
-width:
-min(
-1180px,
-92%
-);
-
-min-height:
-350px;
-
-margin:
-110px auto 0;
-
-overflow:
-hidden;
-
-display:
-flex;
-
-align-items:
-center;
-
-justify-content:
-center;
-
-text-align:
-center;
-
-border:
-1px solid
-var(--gold-border);
-
-border-radius:
-32px;
-
-background:
-linear-gradient(
-135deg,
-#061d1d,
-#071212
-);
-
-}
-
-
-.cta-pattern {
-
-position:
-absolute;
-
-inset:
-0;
-
-opacity:
-.12;
-
-background:
-linear-gradient(
-45deg,
-transparent 45%,
-var(--gold) 46%,
-transparent 47%
-);
-
-background-size:
-70px 70px;
-
-}
-
-
-.cta-content {
-
-position:
-relative;
-
-z-index:
-2;
-
-}
-
-
-.cta-arabic {
-
-display:
-block;
-
-color:
-var(--gold-light);
-
-font-size:
-27px;
-
-margin-bottom:
-12px;
-
-direction:
-rtl;
-
-}
-
-
-.cta-content h2 {
-
-margin:
-13px 0;
-
-font-size:
-clamp(
-34px,
-5vw,
-55px
-);
-
-}
-
-
-.cta-content h2 span {
-
-color:
-var(--emerald);
-
-}
-
-
-.cta-content p {
-
-max-width:
-540px;
-
-margin:
-0 auto 22px;
-
-color:
-var(--muted);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-11px;
-
-line-height:
-1.7;
-
-}
-
-
-/* =========================================================
-FOOTER
-========================================================= */
-
-.footer {
-
-position:
-relative;
-
-overflow:
-hidden;
-
-margin-top:
-110px;
-
-padding:
-65px 7% 25px;
-
-background:
-#02090a;
-
-border-top:
-1px solid
-rgba(0,216,180,.10);
-
-}
-
-
-.footer-pattern {
-
-position:
-absolute;
-
-inset:
-0;
-
-opacity:
-.04;
-
-background:
-linear-gradient(
-30deg,
-transparent 45%,
-var(--gold) 46%,
-transparent 47%
-);
-
-background-size:
-80px 80px;
-
-}
-
-
-.footer-top {
-
-position:
-relative;
-
-z-index:
-2;
-
-width:
-min(
-1180px,
-100%
-);
-
-margin:
-0 auto;
-
-display:
-grid;
-
-grid-template-columns:
-1.7fr
-.8fr
-.8fr;
-
-gap:
-60px;
-
-padding-bottom:
-40px;
-
-}
-
-
-.footer-logo {
-
-display:
-inline-flex;
-
-align-items:
-center;
-
-gap:
-8px;
-
-font-size:
-23px;
-
-font-weight:
-700;
-
-}
-
-
-.footer-logo span {
-
-color:
-var(--gold-light);
-
-}
-
-
-.footer-logo b {
-
-color:
-var(--emerald);
-
-}
-
-
-.footer-brand p {
-
-max-width:
-350px;
-
-margin-top:
-14px;
-
-color:
-var(--muted-light);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-10px;
-
-line-height:
-1.8;
-
-}
-
-
-.footer-social {
-
-display:
-flex;
-
-flex-wrap:
-wrap;
-
-gap:
-8px;
-
-margin-top:
-19px;
-
-}
-
-
-.footer-social a {
-
-padding:
-8px 11px;
-
-color:
-var(--muted);
-
-border:
-1px solid
-rgba(0,216,180,.13);
-
-border-radius:
-999px;
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-8px;
-
-transition:
-.2s ease;
-
-}
-
-
-.footer-social a:hover {
-
-color:
-#001514;
-
-background:
-var(--emerald);
-
-}
-
-
-.footer-links {
-
-display:
-flex;
-
-flex-direction:
-column;
-
-gap:
-10px;
-
-}
-
-
-.footer-links h4 {
-
-margin-bottom:
-7px;
-
-color:
-var(--gold-light);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-8px;
-
-letter-spacing:
-1.7px;
-
-}
-
-
-.footer-links a {
-
-width:
-fit-content;
-
-color:
-var(--muted-light);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-10px;
-
-transition:
-.2s ease;
-
-}
-
-
-.footer-links a:hover {
-
-color:
-var(--emerald);
-
-transform:
-translateX(3px);
-
-}
-
-
-.footer-bottom {
-
-position:
-relative;
-
-z-index:
-2;
-
-width:
-min(
-1180px,
-100%
-);
-
-margin:
-0 auto;
-
-padding-top:
-20px;
-
-display:
-flex;
-
-justify-content:
-space-between;
-
-gap:
-20px;
-
-border-top:
-1px solid
-rgba(255,255,255,.07);
-
-color:
-var(--muted-light);
-
-font-family:
-Arial,
-sans-serif;
-
-font-size:
-8px;
-
-}
-
-
-/* =========================================================
-REVEAL ANIMATION
-========================================================= */
-
-.feature-card,
-.quran-feature,
-.reminder-card,
-.quote-card,
-.gallery-card,
-.final-cta {
-
-opacity:
-0;
-
-transform:
-translateY(25px);
-
-transition:
-opacity .65s ease,
-transform .65s ease;
-
-}
-
-
-.feature-card.visible,
-.quran-feature.visible,
-.reminder-card.visible,
-.quote-card.visible,
-.gallery-card.visible,
-.final-cta.visible {
-
-opacity:
-1;
-
-transform:
-translateY(0);
-
-}
-
-
-/* =========================================================
-LIGHT MODE COMPONENTS
-========================================================= */
-
-[data-home-theme="light"] .feature-card,
-[data-home-theme="light"] .quote-card,
-[data-home-theme="light"] .nasheed-player {
-
-background:
-rgba(255,255,255,.72);
-
-}
-
-
-[data-home-theme="light"] .feature-overlay {
-
-background:
-linear-gradient(
-to top,
-rgba(3,20,21,.90),
-rgba(3,20,21,.20)
-);
-
-}
-
-
-[data-home-theme="light"] .hero {
-
-background:
-var(--bg-soft);
-
-}
-
-
-[data-home-theme="light"] .hero-bg {
-
-opacity:
-.22;
-
-}
-
-
-[data-home-theme="light"] .hero::before {
-
-background:
-linear-gradient(
-to bottom,
-transparent,
-var(--bg)
-);
-
-}
-
-
-[data-home-theme="light"] .footer {
-
-background:
-#dcece8;
-
-}
-
-
-[data-home-theme="light"] .floating-card {
 
-background:
-rgba(255,255,255,.84);
+/* =========================================
+   02. API
+========================================= */
 
-color:
-#082122;
+/*
+   Nasheed Collection API
+*/
 
-}
-
-
-/* =========================================================
-TABLET
-========================================================= */
-
-@media (max-width: 1100px) {
-
-
-.header {
-
-left:
-3%;
-
-width:
-94%;
-
-}
-
-
-.nav {
-
-gap:
-20px;
-
-}
-
-
-.hero {
-
-padding-left:
-5%;
-
-padding-right:
-5%;
-
-}
-
-
-.hero-content {
-
-grid-template-columns:
-1fr
-.9fr;
-
-gap:
-25px;
-
-}
-
-
-.features-grid {
-
-grid-template-columns:
-repeat(3,1fr);
-
-}
-
-
-.quran-feature {
-
-width:
-92%;
-
-}
-
-
-.footer {
-
-padding-left:
-5%;
-
-padding-right:
-5%;
-
-}
-
-}
-
-
-/* =========================================================
-TABLET / SMALL LAPTOP
-========================================================= */
-
-@media (max-width: 850px) {
-
-
-.header {
-
-height:
-64px;
-
-padding:
-0 13px;
-
-top:
-10px;
-
-}
-
-
-.logo {
-
-font-size:
-17px;
-
-}
-
-
-.logo-mark {
-
-width:
-32px;
-
-height:
-32px;
-
-}
-
-
-.nav {
-
-display:
-none;
-
-position:
-absolute;
-
-left:
-0;
-
-right:
-0;
-
-top:
-calc(100% + 10px);
-
-padding:
-13px;
-
-flex-direction:
-column;
-
-align-items:
-stretch;
-
-gap:
-5px;
-
-background:
-rgba(4,18,20,.96);
-
-border:
-1px solid
-rgba(0,216,180,.18);
-
-border-radius:
-18px;
-
-backdrop-filter:
-blur(20px);
-
-}
-
-
-.nav.mobile-open {
-
-display:
-flex;
-
-}
-
-
-.nav a {
-
-padding:
-13px 14px;
-
-border-radius:
-11px;
-
-}
-
-
-.nav a:hover,
-.nav a.active {
-
-background:
-rgba(0,216,180,.08);
-
-}
-
-
-.nav a.active::after {
-
-display:
-none;
-
-}
-
-
-.menu-toggle {
-
-display:
-flex;
-
-}
-
-
-.hero {
-
-min-height:
-auto;
-
-padding:
-125px 5% 70px;
-
-}
-
-
-.hero-content {
-
-grid-template-columns:
-1fr;
-
-text-align:
-center;
-
-}
-
-
-.hero-text {
-
-display:
-flex;
-
-flex-direction:
-column;
-
-align-items:
-center;
-
-}
+const API_URL =
+    "https://iamaanahmad.github.io/NasheedCollection/audio_catalog.json";
 
 
-.hero-kicker {
+/*
+   Maximum number of songs
+   shown in playlist
+*/
 
-justify-content:
-center;
+ const MAX_SONGS = 10;
 
-}
-
-
-.hero-description {
-
-max-width:
-600px;
-
-}
-
-
-.hero-buttons {
 
-justify-content:
-center;
+/* =========================================
+   03. PLAYER STATE
+========================================= */
 
-}
-
-
-.hero-stats {
-
-justify-content:
-center;
+let playlist = [];
 
-}
+let currentSongIndex = 0;
 
 
-.hero-visual {
+/* =========================================
+   04. PLAYLIST CONTAINER
+========================================= */
 
-min-height:
-490px;
+let playlistContainer =
+    document.querySelector(".nasheed-playlist");
 
-margin-top:
-5px;
 
-}
+/*
+   যদি HTML-এ playlist না থাকে,
+   তাহলে JavaScript নিজেই তৈরি করবে।
+*/
 
+function createPlaylist() {
 
-.floating-quran {
+    if (playlistContainer) {
+        return playlistContainer;
+    }
 
-left:
-7%;
+    if (!nasheedPlayer) {
+        return null;
+    }
 
-}
+    playlistContainer =
+        document.createElement("div");
 
+    playlistContainer.className =
+        "nasheed-playlist";
 
-.floating-tilawat {
 
-right:
-5%;
+    playlistContainer.innerHTML = `
 
-}
+        <div class="playlist-header">
 
+            <span>🎵</span>
 
-.features-grid {
+            <h4>
+                Nasheed Playlist
+            </h4>
 
-grid-template-columns:
-repeat(2,1fr);
+        </div>
 
-}
+    `;
 
 
-.quran-feature {
+    nasheedPlayer.appendChild(
+        playlistContainer
+    );
 
-grid-template-columns:
-1fr;
 
+    return playlistContainer;
 }
-
 
-.quran-feature-art {
 
-min-height:
-390px;
-
-}
+/* =========================================
+   05. FORMAT TIME
+========================================= */
 
+function formatTime(seconds) {
 
-.quran-feature-content {
+    if (
+        !Number.isFinite(seconds) ||
+        seconds < 0
+    ) {
+        return "0:00";
+    }
 
-padding:
-10px 35px 40px;
 
-}
+    const minutes =
+        Math.floor(seconds / 60);
 
 
-.reminder-grid {
+    const remainingSeconds =
+        Math.floor(seconds % 60);
 
-grid-template-columns:
-1fr 1fr;
 
+    return (
+        minutes +
+        ":" +
+        String(remainingSeconds)
+            .padStart(2, "0")
+    );
 }
-
 
-.reminder-card:last-child {
 
-grid-column:
-1 / -1;
-
-}
+/* =========================================
+   06. PLAYING STATE
+========================================= */
 
+function setPlayingState(isPlaying) {
 
-.quote-grid {
+    if (!nasheedPlayer) {
+        return;
+    }
 
-grid-template-columns:
-1fr 1fr;
 
+    nasheedPlayer.classList.toggle(
+        "playing",
+        isPlaying
+    );
 }
 
 
-.quote-card:last-child {
+/* =========================================
+   07. PLAY BUTTON UI
+========================================= */
 
-grid-column:
-1 / -1;
+function updatePlayButton(isPlaying) {
 
-}
+    if (!playButton) {
+        return;
+    }
 
 
-.gallery-grid {
+    if (isPlaying) {
 
-grid-template-columns:
-1fr 1fr;
+        playButton.textContent =
+            "⏸";
 
-grid-template-rows:
-230px 230px;
+        playButton.setAttribute(
+            "aria-label",
+            "Pause Nasheed"
+        );
 
-}
+    }
 
+    else {
 
-.gallery-card.gallery-large {
+        playButton.textContent =
+            "▶";
 
-grid-row:
-auto;
+        playButton.setAttribute(
+            "aria-label",
+            "Play Nasheed"
+        );
 
+    }
 }
-
-
-.gallery-card.gallery-wide {
 
-grid-column:
-1 / -1;
 
-}
-
+/* =========================================
+   08. UPDATE ACTIVE PLAYLIST
+========================================= */
 
-.footer-top {
+function updateActivePlaylist() {
 
-grid-template-columns:
-1fr 1fr;
+    if (!playlistContainer) {
+        return;
+    }
 
-}
 
+    const items =
+        playlistContainer.querySelectorAll(
+            ".playlist-item"
+        );
 
-.footer-brand {
 
-grid-column:
-1 / -1;
+    items.forEach(
+        (item, index) => {
 
-}
+            item.classList.toggle(
+                "active",
+                index === currentSongIndex
+            );
 
+        }
+    );
 }
 
 
-/* =========================================================
-PHONE
-========================================================= */
+/* =========================================
+   09. LOAD SONG
+========================================= */
 
-@media (max-width: 600px) {
+function loadSong(index) {
 
+    if (
+        !nasheedAudio ||
+        !playlist.length
+    ) {
+        return;
+    }
 
-.header {
 
-width:
-94%;
+    if (index < 0) {
 
-left:
-3%;
+        index =
+            playlist.length - 1;
 
-}
-
+    }
 
-#theme-toggle {
 
-padding:
-0 10px;
+    if (
+        index >=
+        playlist.length
+    ) {
 
-font-size:
-10px;
-
-}
+        index = 0;
 
+    }
 
-.hero {
 
-padding:
-120px 18px 60px;
+    currentSongIndex =
+        index;
 
-}
 
+    const song =
+        playlist[currentSongIndex];
 
-.arabic-intro p {
 
-font-size:
-18px;
+    /*
+       Stop current audio
+    */
 
-}
+    nasheedAudio.pause();
 
 
-.hero-kicker {
+    /*
+       Set new audio
+    */
 
-font-size:
-7px;
+    nasheedAudio.src =
+        song.src;
 
-letter-spacing:
-1.3px;
 
-}
+    nasheedAudio.load();
 
 
-.hero h1 {
+    /*
+       Update title
+    */
 
-font-size:
-clamp(
-42px,
-13vw,
-57px
-);
+    if (titleElement) {
 
-letter-spacing:
--1.5px;
+        titleElement.textContent =
+            song.title;
 
-}
+    }
 
 
-.hero-description {
+    /*
+       Update artist
+    */
 
-font-size:
-12px;
+    if (artistElement) {
 
-line-height:
-1.75;
+        artistElement.textContent =
+            song.artist;
 
-}
+    }
 
 
-.hero-buttons {
+    /*
+       Reset time
+    */
 
-width:
-100%;
+    if (currentTimeElement) {
 
-flex-direction:
-column;
+        currentTimeElement.textContent =
+            "0:00";
 
-}
+    }
 
 
-.primary-btn,
-.secondary-btn {
+    if (durationElement) {
 
-width:
-100%;
+        durationElement.textContent =
+            "0:00";
 
-}
+    }
 
 
-.hero-stats {
+    /*
+       Reset progress
+    */
 
-width:
-100%;
+    if (progress) {
 
-justify-content:
-space-around;
+        progress.value = 0;
 
-gap:
-5px;
+        progress.style.setProperty(
+            "--progress-value",
+            "0%"
+        );
 
-}
+    }
 
 
-.stat-divider {
+    updatePlayButton(false);
 
-height:
-24px;
+    setPlayingState(false);
 
+    updateActivePlaylist();
 }
 
-
-.hero-visual {
-
-min-height:
-390px;
-
-}
 
+/* =========================================
+   10. PLAY SONG
+========================================= */
 
-.visual-orbit.orbit-one {
+async function playSong() {
 
-width:
-330px;
+    if (
+        !nasheedAudio ||
+        !playlist.length
+    ) {
+        return;
+    }
 
-height:
-210px;
 
-}
+    try {
 
+        await nasheedAudio.play();
 
-.visual-orbit.orbit-two {
+    }
 
-width:
-360px;
+    catch (error) {
 
-height:
-225px;
+        console.error(
+            "Unable to play Nasheed:",
+            error
+        );
 
+    }
 }
-
-
-.portrait-frame {
-
-width:
-285px;
 
-}
 
+/* =========================================
+   11. PAUSE SONG
+========================================= */
 
-.portrait-inner {
+function pauseSong() {
 
-inset:
-18px;
+    if (!nasheedAudio) {
+        return;
+    }
 
-border-width:
-4px;
 
+    nasheedAudio.pause();
 }
-
-
-.floating-card {
-
-padding:
-7px 9px;
 
-border-radius:
-12px;
 
-}
-
+/* =========================================
+   12. PLAY / PAUSE
+========================================= */
 
-.floating-icon {
+function togglePlay() {
 
-width:
-30px;
+    if (!nasheedAudio) {
+        return;
+    }
 
-height:
-30px;
 
-font-size:
-14px;
+    if (nasheedAudio.paused) {
 
-}
+        playSong();
 
+    }
 
-.floating-card small {
+    else {
 
-font-size:
-6px;
+        pauseSong();
 
+    }
 }
 
 
-.floating-card strong {
+/* =========================================
+   13. NEXT SONG
+========================================= */
 
-font-size:
-9px;
+function nextSong() {
 
-}
+    if (!playlist.length) {
+        return;
+    }
 
 
-.floating-quran {
+    currentSongIndex++;
 
-left:
--2%;
 
-bottom:
-12%;
+    if (
+        currentSongIndex >=
+        playlist.length
+    ) {
 
-}
+        currentSongIndex = 0;
 
+    }
 
-.floating-tilawat {
 
-right:
--2%;
+    loadSong(
+        currentSongIndex
+    );
 
-top:
-9%;
 
+    playSong();
 }
-
 
-.crescent {
 
-width:
-48px;
+/* =========================================
+   14. PREVIOUS SONG
+========================================= */
 
-height:
-48px;
+function previousSong() {
 
-right:
-4%;
+    if (!playlist.length) {
+        return;
+    }
 
-}
 
+    currentSongIndex--;
 
-.crescent::after {
 
-width:
-48px;
+    if (currentSongIndex < 0) {
 
-height:
-48px;
+        currentSongIndex =
+            playlist.length - 1;
 
-}
+    }
 
 
-.nasheed-section {
+    loadSong(
+        currentSongIndex
+    );
 
-width:
-94%;
 
+    playSong();
 }
 
 
-.nasheed-player {
+/* =========================================
+   15. UPDATE TIME
+========================================= */
 
-grid-template-columns:
-1fr;
+function updateTime() {
 
-gap:
-15px;
+    if (!nasheedAudio) {
+        return;
+    }
 
-padding:
-17px;
 
-}
-
+    if (currentTimeElement) {
 
-.nasheed-controls {
+        currentTimeElement.textContent =
+            formatTime(
+                nasheedAudio.currentTime
+            );
 
-justify-content:
-center;
-
-}
+    }
 
 
-.nasheed-progress {
+    if (durationElement) {
 
-width:
-100%;
+        durationElement.textContent =
+            formatTime(
+                nasheedAudio.duration
+            );
 
+    }
 }
-
-
-.features-section,
-.reminder-section,
-.quotes-section,
-.gallery-section {
-
-width:
-92%;
-
-padding-top:
-78px;
 
-}
 
+/* =========================================
+   16. UPDATE PROGRESS
+========================================= */
 
-.section-heading {
+function updateProgress() {
 
-margin-bottom:
-30px;
+    if (
+        !nasheedAudio ||
+        !progress
+    ) {
+        return;
+    }
 
-}
 
+    const duration =
+        nasheedAudio.duration;
 
-.section-heading h2 {
 
-font-size:
-28px;
+    if (
+        !Number.isFinite(duration) ||
+        duration <= 0
+    ) {
+        return;
+    }
 
-}
 
+    const percentage =
+        (
+            nasheedAudio.currentTime /
+            duration
+        ) * 100;
 
-.features-grid {
 
-grid-template-columns:
-1fr 1fr;
+    progress.value =
+        percentage;
 
-gap:
-10px;
 
+    progress.style.setProperty(
+        "--progress-value",
+        percentage + "%"
+    );
 }
-
 
-.feature-card {
 
-min-height:
-255px;
+/* =========================================
+   17. SEEK SONG
+========================================= */
 
-padding:
-16px;
+function seekSong() {
 
-border-radius:
-20px;
+    if (
+        !nasheedAudio ||
+        !progress
+    ) {
+        return;
+    }
 
-}
 
+    const duration =
+        nasheedAudio.duration;
 
-.feature-icon {
 
-width:
-39px;
+    if (
+        !Number.isFinite(duration) ||
+        duration <= 0
+    ) {
+        return;
+    }
 
-height:
-39px;
 
-margin-bottom:
-11px;
+    nasheedAudio.currentTime =
+        (
+            Number(progress.value) /
+            100
+        ) * duration;
 
-font-size:
-17px;
 
+    progress.style.setProperty(
+        "--progress-value",
+        progress.value + "%"
+    );
 }
-
-
-.feature-card h3 {
-
-font-size:
-19px;
 
-}
 
+/* =========================================
+   18. CONVERT API SONG
+========================================= */
 
-.feature-card p {
+function convertSong(song) {
 
-font-size:
-9px;
+    if (!song) {
+        return null;
+    }
 
-line-height:
-1.5;
 
-}
+    let source = "";
 
 
-.feature-link {
+    /*
+       API CDN URL
+    */
 
-margin-top:
-10px;
+    if (
+        song.urls &&
+        song.urls.cdn
+    ) {
 
-font-size:
-8px;
+        source =
+            song.urls.cdn;
 
-}
+    }
 
 
-.quran-feature {
+    /*
+       GitHub Pages URL
+    */
 
-width:
-92%;
+    else if (
+        song.urls &&
+        song.urls.github_pages
+    ) {
 
-margin-top:
-75px;
+        source =
+            song.urls.github_pages;
 
-border-radius:
-25px;
+    }
 
-}
 
+    /*
+       Other possible fields
+    */
 
-.quran-feature-art {
+    else if (song.audio) {
 
-min-height:
-290px;
+        source =
+            song.audio;
 
-padding:
-18px;
+    }
 
-}
+    else if (song.audioUrl) {
 
+        source =
+            song.audioUrl;
 
-.quran-decoration {
+    }
 
-right:
-30px;
+    else if (song.url) {
 
-bottom:
-30px;
+        source =
+            song.url;
 
-width:
-55px;
+    }
 
-height:
-55px;
 
-}
+    if (!source) {
+        return null;
+    }
 
 
-.quran-decoration span {
+    return {
 
-font-size:
-20px;
+        title:
+            song.title ||
+            "Unknown Nasheed",
 
-}
+        artist:
+            song.artist ||
+            "Unknown Artist",
 
+        language:
+            String(
+                song.language || ""
+            ).toLowerCase(),
 
-.quran-feature-content {
+        category:
+            String(
+                song.category || ""
+            ).toLowerCase(),
 
-padding:
-8px 22px 28px;
+        src:
+            source
 
+    };
 }
 
 
-.quran-feature-content h2 {
+/* =========================================
+   19. RENDER PLAYLIST
+========================================= */
 
-font-size:
-37px;
+function renderPlaylist() {
 
-}
+    const container =
+        createPlaylist();
 
 
-.quran-feature-points {
+    if (!container) {
+        return;
+    }
 
-grid-template-columns:
-1fr;
 
-}
+    /*
+       Remove old playlist items
+    */
 
+    container
+        .querySelectorAll(
+            ".playlist-item"
+        )
+        .forEach(
+            item => item.remove()
+        );
 
-.arabic-band {
 
-width:
-92%;
+    /*
+       No songs
+    */
 
-min-height:
-220px;
+    if (!playlist.length) {
 
-margin-top:
-75px;
+        const empty =
+            document.createElement(
+                "p"
+            );
 
-}
+        empty.className =
+            "playlist-empty";
 
+        empty.textContent =
+            "No Nasheeds available.";
 
-.arabic-band-content span {
+        container.appendChild(
+            empty
+        );
 
-font-size:
-24px;
+        return;
+    }
 
-}
 
+    /*
+       Create each song
+    */
 
-.arabic-band-content h2 {
+    playlist.forEach(
+        (song, index) => {
 
-font-size:
-28px;
+            const item =
+                document.createElement(
+                    "div"
+                );
 
-}
 
+            item.className =
+                "playlist-item";
 
-.reminder-grid {
 
-grid-template-columns:
-1fr;
+            item.setAttribute(
+                "role",
+                "button"
+            );
 
-}
 
+            item.setAttribute(
+                "tabindex",
+                "0"
+            );
 
-.reminder-card:last-child {
 
-grid-column:
-auto;
+            /*
+               Number
+            */
 
-}
+            const number =
+                document.createElement(
+                    "div"
+                );
 
 
-.quote-grid {
+            number.className =
+                "playlist-number";
 
-grid-template-columns:
-1fr;
 
-}
+            number.textContent =
+                index + 1;
 
 
-.quote-card:last-child {
+            /*
+               Details
+            */
 
-grid-column:
-auto;
+            const details =
+                document.createElement(
+                    "div"
+                );
 
-}
 
+            details.className =
+                "playlist-details";
 
-.quote-card {
 
-min-height:
-240px;
+            /*
+               Title
+            */
 
-}
+            const songTitle =
+                document.createElement(
+                    "span"
+                );
 
 
-.gallery-grid {
+            songTitle.className =
+                "playlist-title";
 
-grid-template-columns:
-1fr 1fr;
 
-grid-template-rows:
-160px 160px 160px;
+            songTitle.textContent =
+                song.title;
 
-gap:
-9px;
 
-}
+            /*
+               Artist
+            */
 
+            const songArtist =
+                document.createElement(
+                    "span"
+                );
 
-.gallery-card.gallery-large {
 
-grid-column:
-1 / -1;
+            songArtist.className =
+                "playlist-artist";
 
-grid-row:
-auto;
 
-}
+            songArtist.textContent =
+                song.artist;
 
 
-.gallery-card.gallery-wide {
+            /*
+               Playing animation
+            */
 
-grid-column:
-1 / -1;
+            const bars =
+                document.createElement(
+                    "div"
+                );
 
-}
 
+            bars.className =
+                "playing-bars";
 
-.gallery-card figcaption {
 
-left:
-10px;
+            bars.innerHTML = `
+                <span></span>
+                <span></span>
+                <span></span>
+            `;
 
-right:
-10px;
 
-bottom:
-10px;
+            details.appendChild(
+                songTitle
+            );
 
-gap:
-7px;
 
-}
+            details.appendChild(
+                songArtist
+            );
 
 
-.gallery-card figcaption > span {
+            item.appendChild(
+                number
+            );
 
-width:
-25px;
 
-height:
-25px;
+            item.appendChild(
+                details
+            );
 
-font-size:
-7px;
 
-}
+            item.appendChild(
+                bars
+            );
 
 
-.gallery-card figcaption strong {
+            /*
+               Select song
+            */
 
-font-size:
-10px;
+            function selectSong() {
 
-}
+                currentSongIndex =
+                    index;
 
 
-.gallery-card figcaption small {
+                loadSong(
+                    currentSongIndex
+                );
 
-font-size:
-5px;
 
-}
+                playSong();
 
+            }
 
-.final-cta {
 
-width:
-92%;
+            item.addEventListener(
+                "click",
+                selectSong
+            );
 
-min-height:
-300px;
 
-margin-top:
-75px;
+            item.addEventListener(
+                "keydown",
+                event => {
 
-border-radius:
-25px;
+                    if (
+                        event.key ===
+                            "Enter" ||
+                        event.key ===
+                            " "
+                    ) {
 
-}
+                        event.preventDefault();
 
+                        selectSong();
 
-.cta-arabic {
+                    }
 
-font-size:
-21px;
+                }
+            );
 
-}
 
+            container.appendChild(
+                item
+            );
 
-.cta-content {
+        }
+    );
 
-padding:
-20px;
 
+    updateActivePlaylist();
 }
-
-
-.cta-content h2 {
 
-font-size:
-34px;
 
-}
+/* =========================================
+   20. LOAD NASHEEDS FROM API
+========================================= */
 
+async function loadNasheedsFromAPI() {
 
-.footer {
+    console.log(
+        "🎵 Loading Nasheeds from API..."
+    );
 
-margin-top:
-75px;
 
-padding:
-50px 7% 20px;
+    try {
 
-}
+        const response =
+            await fetch(
+                API_URL,
+                {
+                    cache: "no-store"
+                }
+            );
 
 
-.footer-top {
+        if (!response.ok) {
 
-grid-template-columns:
-1fr;
+            throw new Error(
+                "HTTP Error: " +
+                response.status
+            );
 
-gap:
-32px;
+        }
 
-}
 
+        const data =
+            await response.json();
 
-.footer-brand {
 
-grid-column:
-auto;
+        /*
+           API-এর files array
+        */
 
-}
+        if (
+            !data ||
+            !Array.isArray(
+                data.files
+            )
+        ) {
 
+            throw new Error(
+                "Invalid API response."
+            );
 
-.footer-bottom {
+        }
 
-flex-direction:
-column;
 
-text-align:
-center;
+        /*
+           Convert songs
+        */
 
-gap:
-8px;
+        const allSongs =
+            data.files
+                .map(convertSong)
+                .filter(Boolean);
 
-}
 
-}
+        /*
+           Arabic songs first
+        */
 
+        const arabicSongs =
+            allSongs.filter(
+                song =>
+                    song.language ===
+                    "arabic"
+            );
 
-/* =========================================================
-VERY SMALL PHONE
-========================================================= */
 
-@media (max-width: 390px) {
+        /*
+           Islamic categories
+        */
 
+        const islamicArabicSongs =
+            arabicSongs.filter(
+                song =>
+                    [
+                        "religious",
+                        "supplication",
+                        "prophet",
+                        "seasonal"
+                    ].includes(
+                        song.category
+                    )
+            );
 
-.logo-name {
 
-font-size:
-15px;
+        /*
+           Priority:
+           Islamic Arabic
+           → Arabic
+           → Islamic songs
+           → All songs
+        */
 
-}
+        if (
+            islamicArabicSongs.length
+        ) {
 
+            playlist =
+                islamicArabicSongs.slice(
+                    0,
+                    MAX_SONGS
+                );
 
-.logo-mark {
+        }
 
-width:
-30px;
+        else if (
+            arabicSongs.length
+        ) {
 
-height:
-30px;
+            playlist =
+                arabicSongs.slice(
+                    0,
+                    MAX_SONGS
+                );
 
-}
+        }
 
+        else {
 
-#theme-toggle {
+            const islamicSongs =
+                allSongs.filter(
+                    song =>
+                        [
+                            "religious",
+                            "supplication",
+                            "prophet",
+                            "seasonal"
+                        ].includes(
+                            song.category
+                        )
+                );
 
-display:
-none;
 
-}
+            if (islamicSongs.length) {
 
+                playlist =
+                    islamicSongs.slice(
+                        0,
+                        MAX_SONGS
+                    );
 
-.hero {
+            }
 
-padding-left:
-14px;
+            else {
 
-padding-right:
-14px;
+                playlist =
+                    allSongs.slice(
+                        0,
+                        MAX_SONGS
+                    );
 
-}
+            }
 
+        }
 
-.hero h1 {
 
-font-size:
-40px;
+        /*
+           Check playlist
+        */
 
-}
+        if (!playlist.length) {
 
+            throw new Error(
+                "No playable Nasheeds found."
+            );
 
-.features-grid {
+        }
 
-grid-template-columns:
-1fr;
 
-}
+        /*
+           Start first song
+        */
 
+        currentSongIndex = 0;
 
-.feature-card {
 
-min-height:
-285px;
+        renderPlaylist();
 
-}
 
+        loadSong(0);
 
-.portrait-frame {
 
-width:
-250px;
+        console.log(
+            "✅ Nasheed API loaded:",
+            playlist.length,
+            "songs"
+        );
 
-}
+    }
 
 
-.hero-visual {
+    catch (error) {
 
-min-height:
-340px;
+        console.error(
+            "❌ Nasheed API failed:",
+            error
+        );
 
-}
 
+        /*
+           Local fallback
+        */
 
-.floating-quran {
+        playlist = [
 
-left:
--4%;
+            {
+                title:
+                    "Daily Nasheed",
 
-}
+                artist:
+                    "Local Audio",
 
+                src:
+                    "nasheed.mp3"
 
-.floating-tilawat {
+            }
 
-right:
--4%;
+        ];
 
-}
 
+        currentSongIndex = 0;
 
-}
 
+        renderPlaylist();
 
-/* =========================================================
-REDUCED MOTION
-========================================================= */
 
-@media (prefers-reduced-motion: reduce) {
+        loadSong(0);
 
-html {
 
-scroll-behavior:
-auto;
+        console.warn(
+            "⚠️ API unavailable. Using local nasheed.mp3."
+        );
 
+    }
 }
 
 
-*,
-*::before,
-*::after {
+/* =========================================
+   21. PLAY BUTTON
+========================================= */
 
-animation-duration:
-.01ms !important;
+if (playButton) {
 
-animation-iteration-count:
-1 !important;
-
-transition-duration:
-.01ms !important;
-
-}
+    playButton.addEventListener(
+        "click",
+        togglePlay
+    );
 
 }
 
 
 /* =========================================
-   ISLAMIC SOLDIER — AUTH MODAL
+   22. NEXT BUTTON
 ========================================= */
 
-.auth-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
+if (nextButton) {
 
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-}
-
-.auth-modal.is-open {
-    display: flex;
-}
-
-.auth-backdrop {
-    position: absolute;
-    inset: 0;
-
-    background: rgba(0, 8, 9, 0.82);
-    backdrop-filter: blur(9px);
-    -webkit-backdrop-filter: blur(9px);
-}
-
-.auth-dialog {
-    position: relative;
-    z-index: 1;
-
-    width: 100%;
-    max-width: 420px;
-    max-height: 90vh;
-    overflow-y: auto;
-
-    padding: 34px 28px 26px;
-
-    color: var(--text);
-    background: linear-gradient(
-        145deg,
-        #0b2020,
-        #041011 75%
+    nextButton.addEventListener(
+        "click",
+        nextSong
     );
 
-    border: 1px solid var(--gold-border);
-    border-radius: 24px;
-
-    box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.55),
-        0 0 35px rgba(0, 216, 180, 0.07);
-
-    animation: auth-popup-in 0.25s ease;
 }
 
-@keyframes auth-popup-in {
-    from {
-        opacity: 0;
-        transform: translateY(12px) scale(0.98);
-    }
 
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
+/* =========================================
+   23. PREVIOUS BUTTON
+========================================= */
 
-.auth-close {
-    position: absolute;
-    top: 12px;
-    right: 15px;
+if (previousButton) {
 
-    width: 36px;
-    height: 36px;
-
-    color: var(--muted);
-    background: transparent;
-
-    border: 1px solid var(--border);
-    border-radius: 50%;
-
-    font-size: 25px;
-    cursor: pointer;
-}
-
-.auth-close:hover {
-    color: var(--gold-light);
-    border-color: var(--gold);
-}
-
-.auth-brand {
-    margin-bottom: 12px;
-
-    color: var(--gold-light);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-align: center;
-}
-
-.auth-dialog h2 {
-    margin: 0;
-    color: var(--text);
-    font-size: 29px;
-    text-align: center;
-}
-
-.auth-subtitle {
-    margin: 9px 0 24px;
-
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.6;
-    text-align: center;
-}
-
-.auth-tabs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 7px;
-
-    margin-bottom: 22px;
-    padding: 5px;
-
-    background: rgba(0, 0, 0, 0.22);
-    border: 1px solid var(--border);
-    border-radius: 13px;
-}
-
-.auth-tab {
-    min-height: 40px;
-
-    color: var(--muted);
-    background: transparent;
-
-    border: 0;
-    border-radius: 9px;
-
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.auth-tab.active {
-    color: #001512;
-    background: var(--emerald);
-}
-
-#auth-form {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-}
-
-#auth-form label {
-    margin-top: 7px;
-
-    color: var(--text);
-    font-size: 12px;
-    font-weight: 700;
-}
-
-#auth-form input {
-    width: 100%;
-    min-height: 46px;
-
-    padding: 0 13px;
-
-    color: var(--text);
-    background: rgba(255, 255, 255, 0.035);
-
-    border: 1px solid var(--border);
-    border-radius: 11px;
-
-    font: inherit;
-    font-size: 13px;
-    outline: none;
-}
-
-#auth-form input:focus {
-    border-color: var(--emerald);
-    box-shadow: 0 0 0 3px rgba(0, 216, 180, 0.08);
-}
-
-#auth-form input::placeholder {
-    color: var(--muted-light);
-}
-
-.auth-submit {
-    min-height: 47px;
-    margin-top: 13px;
-
-    color: #001512;
-    background: linear-gradient(
-        110deg,
-        var(--emerald),
-        var(--emerald-bright)
+    previousButton.addEventListener(
+        "click",
+        previousSong
     );
 
-    border: 0;
-    border-radius: 12px;
-
-    font-size: 14px;
-    font-weight: 800;
-
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.auth-submit:hover {
-    transform: translateY(-2px);
-}
-
-.auth-message {
-    min-height: 0;
-    margin: 0;
-
-    color: var(--gold-light);
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-.auth-guest {
-    margin: 19px 0 0;
-
-    color: var(--muted);
-    font-size: 11px;
-    line-height: 1.7;
-    text-align: center;
-}
-
-.auth-modal [hidden] {
-    display: none !important;
-}
-
-@media (max-width: 480px) {
-    .auth-modal {
-        padding: 12px;
-    }
-
-    .auth-dialog {
-        padding: 32px 20px 22px;
-        border-radius: 20px;
-    }
-
-    .auth-dialog h2 {
-        font-size: 25px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .auth-dialog {
-        animation: none;
-    }
 }
 
 
+/* =========================================
+   24. PROGRESS BAR
+========================================= */
 
-/* PASSWORD SHOW / HIDE */
-.auth-password-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
+if (progress) {
 
-.auth-password-wrap input {
-    padding-right: 65px !important;
-}
-
-.toggle-password {
-    position: absolute;
-    right: 10px;
-    padding: 6px 8px;
-    color: var(--gold-light);
-    background: transparent;
-    border: none;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.toggle-password:hover {
-    color: var(--emerald-bright);
-}
-
-.toggle-password:focus-visible {
-    outline: 2px solid var(--emerald);
-    outline-offset: 2px;
-}
-
-.forgot-password-btn {
-    align-self: flex-end;
-    margin-top: 2px;
-    padding: 5px 0;
-    color: var(--gold-light);
-    background: transparent;
-    border: 0;
-    font-size: 11px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.forgot-password-btn:hover {
-    color: var(--emerald-bright);
-    text-decoration: underline;
-}
-
-/* ===== Luxury Emerald Glass Login Button ===== */
-
-.auth-open-btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    padding: 11px 22px;
-    overflow: hidden;
-
-    color: #d9fff6;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.4px;
-
-    background: linear-gradient(
-        135deg,
-        rgba(0, 230, 195, 0.16),
-        rgba(0, 100, 85, 0.12)
+    progress.addEventListener(
+        "input",
+        seekSong
     );
 
-    border: 1px solid rgba(0, 230, 195, 0.48);
-    border-radius: 12px;
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.15),
-        inset 0 -1px 0 rgba(0, 230, 195, 0.08),
-        0 5px 18px rgba(0, 230, 195, 0.10);
-
-    cursor: pointer;
-    transition: all 0.35s ease;
 }
 
-/* Glass Highlight */
-.auth-open-btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 70%;
-    height: 100%;
 
-    background: linear-gradient(
-        110deg,
-        transparent,
-        rgba(255, 255, 255, 0.16),
-        transparent
+/* =========================================
+   25. AUDIO EVENTS
+========================================= */
+
+if (nasheedAudio) {
+
+
+    /*
+       Time update
+    */
+
+    nasheedAudio.addEventListener(
+        "timeupdate",
+        () => {
+
+            updateTime();
+
+            updateProgress();
+
+        }
     );
 
-    transform: skewX(-20deg);
-    transition: left 0.6s ease;
-}
 
-.auth-open-btn:hover::before {
-    left: 150%;
-}
+    /*
+       Metadata loaded
+    */
 
-.auth-open-btn:hover {
-    color: #ffffff;
-
-    background: linear-gradient(
-        135deg,
-        rgba(0, 230, 195, 0.28),
-        rgba(0, 120, 100, 0.22)
+    nasheedAudio.addEventListener(
+        "loadedmetadata",
+        updateTime
     );
 
-    border-color: #00e6c3;
 
-    box-shadow:
-        0 0 10px rgba(0, 230, 195, 0.30),
-        0 0 25px rgba(0, 230, 195, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    /*
+       Playing
+    */
 
-    transform: translateY(-2px);
+    nasheedAudio.addEventListener(
+        "play",
+        () => {
+
+            updatePlayButton(
+                true
+            );
+
+            setPlayingState(
+                true
+            );
+
+            updateActivePlaylist();
+
+        }
+    );
+
+
+    /*
+       Paused
+    */
+
+    nasheedAudio.addEventListener(
+        "pause",
+        () => {
+
+            updatePlayButton(
+                false
+            );
+
+            setPlayingState(
+                false
+            );
+
+        }
+    );
+
+
+    /*
+       Song finished
+    */
+
+    nasheedAudio.addEventListener(
+        "ended",
+        () => {
+
+            nextSong();
+
+        }
+    );
+
+
+    /*
+       Audio error
+    */
+
+    nasheedAudio.addEventListener(
+        "error",
+        event => {
+
+            console.error(
+                "❌ Audio error:",
+                event
+            );
+
+        }
+    );
+
 }
 
-/* Professional Login User Icon */
 
-.login-user-icon {
-    position: relative;
-    z-index: 2;
+/* =========================================
+   26. INITIALIZE
+========================================= */
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+updatePlayButton(false);
 
-    width: 23px;
-    height: 23px;
+setPlayingState(false);
 
-    color: #00e6c3;
-    transition: all 0.3s ease;
-}
+createPlaylist();
 
-.login-user-icon svg {
-    width: 100%;
-    height: 100%;
-    stroke: currentColor;
-}
+loadNasheedsFromAPI();
 
-.auth-open-btn:hover .login-user-icon {
-    color: #ffffff;
-    filter: drop-shadow(0 0 5px rgba(0, 230, 195, 0.8));
-}
 
-.auth-open-btn span:last-child {
-    position: relative;
-    z-index: 1;
-}
+/* =========================================
+   🚀 READY
+========================================= */
+
+console.log(
+    "🚀 Islamic Soldier Nasheed Player Ready!"
+);
