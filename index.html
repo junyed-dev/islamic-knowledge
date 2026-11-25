@@ -90,7 +90,17 @@
                 id="auth-open-btn"
                 class="auth-open-btn"
                 type="button">
-                <span aria-hidden="true">♙</span>
+                <span class="login-user-icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="8" r="4"
+                stroke="currentColor" stroke-width="1.7"/>
+        <path d="M4.5 20C4.5 16.4 7.5 13.5 12 13.5
+                 C16.5 13.5 19.5 16.4 19.5 20"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"/>
+    </svg>
+</span>
                 <span>Login</span>
            </button>
 
@@ -2110,11 +2120,6 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-/* =========================================
-   ISLAMIC SOLDIER — AUTH MODAL CONTROLS
-========================================= */
  <script>
 (() => {
     const supabaseClient = window.supabase.createClient(
